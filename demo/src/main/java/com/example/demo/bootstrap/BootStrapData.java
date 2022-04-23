@@ -27,9 +27,24 @@ public class BootStrapData implements CommandLineRunner {
         User christian = new User("christian.gemesi@students.fhnw.ch");
         Date date = new Date();
 
-        WeightEntry ddd = new WeightEntry(70.0,date,christian);
+        WeightEntry christianWeight = new WeightEntry(70.0,date,christian);
+        christian.getWeightEntriesSet().add(christianWeight);
 
 
+        userRepository.save(christian);
+        weightEntryRepository.save(christianWeight);
+
+        User daniel = new User("daniel.vonatzigen@students.fhnw.ch");
+        WeightEntry danielWeight = new WeightEntry(65.0,date,daniel);
+
+        daniel.getWeightEntriesSet().add(danielWeight);
+
+        userRepository.save(daniel);
+        weightEntryRepository.save(danielWeight);
+
+
+        System.out.println("Number of Users " + userRepository.count());
+        System.out.println("Number of WeightEntries " + weightEntryRepository.count());
 
     }
 }

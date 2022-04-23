@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -12,8 +13,8 @@ public class User {
 
     private String email;
 
-    @OneToMany(mappedBy = "users")
-    private Set<WeightEntry> weightEntrySet;
+    @OneToMany(mappedBy="user")
+    private Set<WeightEntry> weightEntrySet = new HashSet<>();
 
     public User(String email) {
         this.email = email;

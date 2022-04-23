@@ -12,8 +12,9 @@ public class WeightEntry {
     private Long id;
 
 
+    //TODO I have no clue what JoinTable does, but it works without it aswell
     @ManyToOne
-    @JoinTable(name = "weightEntry_user",joinColumns = @JoinColumn(name = "weightEntry_id"))
+    //@JoinTable(name = "weightEntry_user",joinColumns = @JoinColumn(name = "weightEntry_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
     private User user;
 
     private double weight;
