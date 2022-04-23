@@ -15,9 +15,8 @@ public class User {
     @OneToMany(mappedBy = "users")
     private Set<WeightEntry> weightEntrySet;
 
-    public User(String email, Set<WeightEntry> weightEntrySet) {
+    public User(String email) {
         this.email = email;
-        this.weightEntrySet = weightEntrySet;
     }
 
     public User() {
