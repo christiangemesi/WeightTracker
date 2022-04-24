@@ -10,7 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomeScreenController {
 
-    @RequestMapping("/")
+    @RequestMapping("/test")
     public String  welcome() {
         return "home.html";
     }
