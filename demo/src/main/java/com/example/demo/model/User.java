@@ -14,7 +14,7 @@ public class User {
 
     private String email;
 
-    @OneToMany(mappedBy="user")
+    @OneToMany(mappedBy = "user")
     private Set<WeightEntry> weightEntrySet = new HashSet<>();
 
     public User() {

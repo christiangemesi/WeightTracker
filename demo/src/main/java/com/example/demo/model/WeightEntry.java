@@ -13,10 +13,10 @@ public class WeightEntry {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne()
     private User user;
 
-    @OneToMany(mappedBy="weightEntry")
+    @OneToMany(mappedBy = "weightEntry")
     private Set<Image> imageSet = new HashSet<>();
 
     private double weight;
