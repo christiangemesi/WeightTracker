@@ -37,6 +37,7 @@ public class BootStrapData implements CommandLineRunner {
         christian.getWeightEntriesSet().add(christianWeight);
 
         Image image1 = new Image(christianWeight);
+        christianWeight.getImageSet().add(image1);
         imageRepository.save(image1);
 
 
@@ -48,12 +49,13 @@ public class BootStrapData implements CommandLineRunner {
         weightEntryRepository.save(danielWeight);
 
         Image image2 = new Image(danielWeight);
+        danielWeight.getImageSet().add(image2);
         imageRepository.save(image2);
 
 
         System.out.println("Number of Users " + userRepository.count());
         System.out.println("Number of WeightEntries " + weightEntryRepository.count());
-        System.out.println("Number of Images " + imageRepository.count());
+        System.out.println("Number of Images from christian " + christianWeight.getImageSet().size());
 
     }
 }

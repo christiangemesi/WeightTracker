@@ -10,6 +10,7 @@ public class Image {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "image_id")
     private WeightEntry weightEntry;
 
     public Image() {
