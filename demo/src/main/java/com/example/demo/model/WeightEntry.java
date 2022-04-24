@@ -2,6 +2,8 @@ package com.example.demo.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -11,15 +13,17 @@ public class WeightEntry {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-
-    //TODO I have no clue what JoinTable does, but it works without it aswell
     @ManyToOne
-    //@JoinTable(name = "weightEntry_user",joinColumns = @JoinColumn(name = "weightEntry_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
     private User user;
+
+    @OneToMany(mappedBy="weightEntry")
+    private Set<Image> imageSet = new HashSet<>();
 
     private double weight;
     private Date date;
 
+    public WeightEntry() {
+    }
 
     public WeightEntry(double weight, Date date, User user) {
         this.weight = weight;
@@ -27,8 +31,13 @@ public class WeightEntry {
         this.user = user;
     }
 
-    public WeightEntry() {
+    public WeightEntry(User user, Set<Image> imageSet, double weight, Date date) {
+        this.user = user;
+        this.imageSet = imageSet;
+        this.weight = weight;
+        this.date = date;
     }
+
 
     public User getUser() {
         return user;
@@ -60,6 +69,14 @@ public class WeightEntry {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public Set<Image> getImageSet() {
+        return imageSet;
+    }
+
+    public void setImageSet(Set<Image> imageSet) {
+        this.imageSet = imageSet;
     }
 
     @Override

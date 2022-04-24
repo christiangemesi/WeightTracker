@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -16,11 +17,40 @@ public class User {
     @OneToMany(mappedBy="user")
     private Set<WeightEntry> weightEntrySet = new HashSet<>();
 
+    public User() {
+    }
+
     public User(String email) {
         this.email = email;
     }
 
-    public User() {
+    public User(String email, Set<WeightEntry> weightEntrySet) {
+        this.email = email;
+        this.weightEntrySet = weightEntrySet;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", weightEntrySet=" + weightEntrySet +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        return id != null ? id.equals(user.id) : user.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
     }
 
     public Long getId() {
@@ -47,27 +77,11 @@ public class User {
         this.weightEntrySet = weightEntrySet;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", weightEntrySet=" + weightEntrySet +
-                '}';
+    public Set<WeightEntry> getWeightEntrySet() {
+        return weightEntrySet;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        User user = (User) o;
-
-        return id != null ? id.equals(user.id) : user.id == null;
-    }
-
-    @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+    public void setWeightEntrySet(Set<WeightEntry> weightEntrySet) {
+        this.weightEntrySet = weightEntrySet;
     }
 }
