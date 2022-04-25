@@ -1,7 +1,7 @@
 package com.example.demo.repositories;
 
 import com.example.demo.model.Image;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ImageRepository extends CrudRepository<Image,Long> {
+public interface ImageRepository extends JpaRepository<Image,Long> {
 }
