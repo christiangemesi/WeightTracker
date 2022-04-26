@@ -81,10 +81,7 @@ public class WeightEntry {
 
     @Override
     public String toString() {
-        return "WeightEntry{" +
-                "id=" + id +
-                ", user=" + user +
-                ", weight=" + weight +
+        return "{ weight=" + weight +
                 ", date=" + date +
                 '}';
     }

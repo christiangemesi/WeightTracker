@@ -34,7 +34,6 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", email='" + email + '\'' +
-                ", weightEntrySet=" + weightEntrySet +
                 '}';
     }
 
@@ -67,14 +66,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Set<WeightEntry> getWeightEntriesSet() {
-        return weightEntrySet;
-    }
-
-    public void setWeightEntriesSet(Set<WeightEntry> weightEntrySet) {
-        this.weightEntrySet = weightEntrySet;
     }
 
     public Set<WeightEntry> getWeightEntrySet() {
