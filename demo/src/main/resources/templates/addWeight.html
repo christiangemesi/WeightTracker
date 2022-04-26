@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AddWeight</title>
+</head>
+<body>
+<H1>AddWeight</H1>
+
+<span class="username" th:text="${#authentication.getPrincipal().getUsername()}">User-Email</span>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Logout">
+</form>
+
+</body>
+</html>

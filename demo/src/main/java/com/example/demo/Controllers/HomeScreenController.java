@@ -15,4 +15,14 @@ public class HomeScreenController {
         return "home.html";
     }
 
+    @RequestMapping("/addweight")
+    public String  addWeight() {
+        return "addWeight.html";
+    }
+
+    @RequestMapping("/signup")
+    public String  signUp() {
+        return "signUp.html";
+    }
+
 }
