@@ -25,4 +25,10 @@ public class HomeScreenController {
         return "signUp.html";
     }
 
+    @RequestMapping("/about")
+    public String  about() {
+        return "about.html";
+    }
+
+
 }
