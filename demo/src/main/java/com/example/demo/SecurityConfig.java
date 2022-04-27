@@ -20,6 +20,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .mvcMatchers("/signup").permitAll()
                 .anyRequest().authenticated();
     }
-
-
 }
