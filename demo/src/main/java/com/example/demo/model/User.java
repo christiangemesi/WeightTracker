@@ -11,19 +11,17 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="user_data")
 public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
     private Long id;
 
 
-    @Column(name="username", unique = true)
+    @Column(nullable = false, unique = true)
     private String username;
 
-    @Column(name="password",nullable = false)
+    @Column(nullable = false)
     private String password;
 
     @OneToMany(mappedBy = "user")
@@ -32,8 +30,8 @@ public class User implements UserDetails {
     public User() {
     }
 
-    public User(String username) {
-        this.username = username;
+    public User(String email) {
+        this.username = email;
     }
 
     public User(String username, String password, Set<String> authorities) {
@@ -42,8 +40,8 @@ public class User implements UserDetails {
         this.authorities = authorities;
     }
 
-    public User(String username, String password, Set<String> authorities, Set<WeightEntry> weightEntrySet) {
-        this.username = username;
+    public User(String email, String password, Set<String> authorities, Set<WeightEntry> weightEntrySet) {
+        this.username = email;
         this.password = password;
         this.authorities = authorities;
         this.weightEntrySet = weightEntrySet;
@@ -56,7 +54,7 @@ public class User implements UserDetails {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", username='" + username + '\'' +
+                ", email='" + username + '\'' +
                 '}';
     }
 
@@ -88,10 +86,6 @@ public class User implements UserDetails {
         return this.authorities.stream().map(SimpleGrantedAuthority::new).toList();
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     @Override
     public String getPassword() {
         return password;
@@ -121,8 +115,8 @@ public class User implements UserDetails {
         return true;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUsername(String email) {
+        this.username = email;
     }
 
     public Set<WeightEntry> getWeightEntrySet() {
