@@ -10,7 +10,7 @@
 <div id="login-box">
     <div class="left">
 
-        <form th:action="@{/signup}" method="post" >
+        <form th:action="@{/signup}" method="post">
 
             <label for="username">Username</label><br/>
             <input type="text" id="username" name="username"/>
@@ -19,13 +19,11 @@
             <input type="password" id="password" name="password"/>
 
             <div class="form-actions">
-                <button type="submit" class="btn">signup</button>
+                <button type="submit" class="btn">Signup</button>
             </div>
-
-        <input type="submit" name="signup_submit" value="Sign up" />
+        </form>
+        <a href="/login">Already have an account?</a>
     </div>
-    <a href="/login">Already have an account?</a>
-</div>
 
 </body>
 </html>
