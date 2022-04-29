@@ -33,13 +33,13 @@ public class BootStrapData implements CommandLineRunner {
         try {
             userService.loadUserByUsername("admin");
         } catch (UsernameNotFoundException e) {
-            this.userService.addUser("admin", "admin",new HashSet<>());
+            this.userService.addUser("admin", "admin",Set.of("ROLE_ADMIN"));
         }
 
         try {
             userService.loadUserByUsername("admin2");
         } catch (UsernameNotFoundException e) {
-            this.userService.addUser("admin2", "admin2",new HashSet<>());
+            this.userService.addUser("user", "user",Set.of("ROLE_USER"));
         }
 
     }
