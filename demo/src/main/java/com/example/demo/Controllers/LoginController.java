@@ -4,14 +4,13 @@ import com.example.demo.Service.UserService;
 import com.example.demo.model.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
@@ -19,9 +18,11 @@ import java.util.Set;
 public class LoginController {
 
     private final UserService userService;
+    private final PasswordEncoder passwordEncoder;
 
-    public LoginController(UserService userService) {
+    public LoginController(UserService userService, PasswordEncoder passwordEncoder) {
         this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @RequestMapping(path = "/login", method = RequestMethod.GET)
@@ -57,8 +58,9 @@ public class LoginController {
         }
     }
 
-    @GetMapping("/{id}")
-    public String editUser(@PathVariable int id, Model model) {
+    @GetMapping("/{id}/edit")
+    public String showUser(@PathVariable int id,
+                           Model model) {
         Authentication authentication  = SecurityContextHolder.getContext().getAuthentication();
         User customUser = (User)authentication.getPrincipal();
         long userId = customUser.getId();
@@ -68,6 +70,20 @@ public class LoginController {
             return "edit";
         }
         return "error";
+    }
+
+    @PostMapping("/{id}/edit")
+    public String editContact(@PathVariable int id,
+                              @RequestParam String username,
+                              @RequestParam String password) {
+        var contact = userService.findContact(id).orElseThrow();
+        contact.setUsername(username);
+        contact.setPassword(passwordEncoder.encode(password));
+        System.out.println(username);
+        System.out.println(password);
+
+        userService.update(contact);
+        return "redirect:/";
     }
 
 
