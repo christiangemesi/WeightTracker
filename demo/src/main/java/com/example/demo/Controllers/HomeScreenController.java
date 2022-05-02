@@ -30,5 +30,4 @@ public class HomeScreenController {
         return "about.html";
     }
 
-
 }

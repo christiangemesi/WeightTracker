@@ -19,13 +19,9 @@ import java.util.Set;
 public class LoginController {
 
     private final UserService userService;
-    private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
 
-    public LoginController(UserService userService, UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public LoginController(UserService userService) {
         this.userService = userService;
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
     }
 
     @RequestMapping(path = "/login", method = RequestMethod.GET)
@@ -37,11 +33,6 @@ public class LoginController {
 
             return "login";
         }
-    }
-
-    @RequestMapping(path = "/signup", method = RequestMethod.GET)
-    public String signup() {
-        return "signup";
     }
 
     @RequestMapping(path = "/signup", method = RequestMethod.POST)
@@ -61,46 +52,4 @@ public class LoginController {
         }
     }
 
-    @GetMapping("/{id}/edit")
-    public String showUser(@PathVariable int id,
-                           Model model) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User customUser = (User) authentication.getPrincipal();
-        long userId = customUser.getId();
-        User user = userService.findContact(id).orElseThrow();
-        if (user.getId() == userId) {
-            model.addAttribute("user", user);
-            return "edit";
-        }
-        return "error";
-    }
-
-    @PostMapping("/{id}/edit")
-    public String editContact(@PathVariable int id,
-                              @RequestParam String username,
-                              @RequestParam String password) {
-        var contact = userService.findContact(id).orElseThrow();
-        contact.setUsername(username);
-        contact.setPassword(passwordEncoder.encode(password));
-        System.out.println(username);
-        System.out.println(password);
-
-        userService.update(contact);
-        return "redirect:/";
-    }
-
-    @PostMapping("/{id}/delete")
-    public String deleteUser(@PathVariable int id) {
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User customUser = (User) authentication.getPrincipal();
-        long userId = customUser.getId();
-        User user = userService.findContact(id).orElseThrow();
-        if (user.getId() == userId) {
-            userService.delete(user);
-
-            return "redirect:/login";
-        }
-        return "error";
-    }
 }
