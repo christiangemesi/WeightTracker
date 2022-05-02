@@ -26,7 +26,6 @@ public class WeigthController {
         this.weightEntityService = weightEntityService;
     }
 
-
     @RequestMapping(path = "/addweight", method = RequestMethod.POST)
     public String addWeight(WeightEntry weightEntry, BindingResult bindingResult, Model model) {
 

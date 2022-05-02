@@ -1,7 +1,6 @@
 package com.example.demo.bootstrap;
 
 import com.example.demo.Service.UserService;
-import com.example.demo.model.User;
 import com.example.demo.repositories.ImageRepository;
 import com.example.demo.repositories.UserRepository;
 import com.example.demo.repositories.WeightEntryRepository;
@@ -9,7 +8,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import java.util.HashSet;
 import java.util.Set;
 
 
@@ -39,7 +37,7 @@ public class BootStrapData implements CommandLineRunner {
         System.out.println(userRepository.findByUsername("admin").get().getId());
 
         try {
-            userService.loadUserByUsername("admin2");
+            userService.loadUserByUsername("user");
         } catch (UsernameNotFoundException e) {
             this.userService.addUser("user", "user",Set.of("ROLE_USER"));
         }
