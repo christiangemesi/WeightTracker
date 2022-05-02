@@ -2,6 +2,7 @@ package com.example.demo.Controllers;
 
 import com.example.demo.Service.UserService;
 import com.example.demo.model.User;
+import com.example.demo.repositories.UserRepository;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -18,10 +19,12 @@ import java.util.Set;
 public class LoginController {
 
     private final UserService userService;
+    private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public LoginController(UserService userService, PasswordEncoder passwordEncoder) {
+    public LoginController(UserService userService, UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userService = userService;
+        this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -42,7 +45,7 @@ public class LoginController {
     }
 
     @RequestMapping(path = "/signup", method = RequestMethod.POST)
-    public String signup( User user, BindingResult bindingResult, Model model) {
+    public String signup(User user, BindingResult bindingResult, Model model) {
         if (this.userService.usernameAlreadyExists(user.getUsername())) {
             bindingResult.addError(new FieldError("user", "username", "Username already exists"));
         }
@@ -61,11 +64,11 @@ public class LoginController {
     @GetMapping("/{id}/edit")
     public String showUser(@PathVariable int id,
                            Model model) {
-        Authentication authentication  = SecurityContextHolder.getContext().getAuthentication();
-        User customUser = (User)authentication.getPrincipal();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User customUser = (User) authentication.getPrincipal();
         long userId = customUser.getId();
         User user = userService.findContact(id).orElseThrow();
-        if(user.getId() == userId){
+        if (user.getId() == userId) {
             model.addAttribute("user", user);
             return "edit";
         }
@@ -86,21 +89,18 @@ public class LoginController {
         return "redirect:/";
     }
 
-    @PostMapping("/contacts/{id}/delete")
+    @PostMapping("/{id}/delete")
     public String deleteUser(@PathVariable int id) {
 
-        Authentication authentication  = SecurityContextHolder.getContext().getAuthentication();
-        User customUser = (User)authentication.getPrincipal();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User customUser = (User) authentication.getPrincipal();
         long userId = customUser.getId();
         User user = userService.findContact(id).orElseThrow();
-        if(user.getId() == userId){
+        if (user.getId() == userId) {
             userService.delete(user);
 
             return "redirect:/login";
         }
         return "error";
     }
-
-
-
 }

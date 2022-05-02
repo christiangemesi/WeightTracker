@@ -17,7 +17,6 @@ public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
-
     public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
@@ -48,8 +47,6 @@ public class UserService implements UserDetailsService {
         userRepository.delete(user);
     }
 
-    public void deleteId(Long id) {
-        userRepository.deleteUserById(id);
-    }
+
 
 }

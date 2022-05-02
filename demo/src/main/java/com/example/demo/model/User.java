@@ -25,6 +25,7 @@ public class User implements UserDetails {
 
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<String> authorities;
+
     @OneToMany(mappedBy = "user")
     private Set<WeightEntry> weightEntrySet = new HashSet<>();
 
