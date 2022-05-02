@@ -37,6 +37,7 @@ public class LoginController {
 
     @RequestMapping(path = "/signup", method = RequestMethod.POST)
     public String signup(User user, BindingResult bindingResult, Model model) {
+
         if (this.userService.usernameAlreadyExists(user.getUsername())) {
             bindingResult.addError(new FieldError("user", "username", "Username already exists"));
         }
@@ -47,6 +48,8 @@ public class LoginController {
             return "signup";
         } else {
             this.userService.addUser(user.getUsername(), user.getPassword(), Set.of("ROLE_USER"));
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            SecurityContextHolder.getContext().setAuthentication(null);
 
             return "redirect:/login";
         }
