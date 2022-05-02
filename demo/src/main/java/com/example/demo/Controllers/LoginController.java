@@ -86,5 +86,21 @@ public class LoginController {
         return "redirect:/";
     }
 
+    @PostMapping("/contacts/{id}/delete")
+    public String deleteUser(@PathVariable int id) {
+
+        Authentication authentication  = SecurityContextHolder.getContext().getAuthentication();
+        User customUser = (User)authentication.getPrincipal();
+        long userId = customUser.getId();
+        User user = userService.findContact(id).orElseThrow();
+        if(user.getId() == userId){
+            userService.delete(user);
+
+            return "redirect:/login";
+        }
+        return "error";
+    }
+
+
 
 }

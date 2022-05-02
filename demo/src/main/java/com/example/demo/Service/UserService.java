@@ -44,4 +44,12 @@ public class UserService implements UserDetailsService {
         return userRepository.save(user); // 'save' might return new object
     }
 
+    public void delete(User user) {
+        userRepository.delete(user);
+    }
+
+    public void deleteId(Long id) {
+        userRepository.deleteUserById(id);
+    }
+
 }

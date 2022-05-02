@@ -22,34 +22,35 @@
 <!--
 Source: https://github.com/Frontend-Paathshala/Datepicker-Bootstrap-4/blob/main/index.html
 Source: https://www.youtube.com/watch?v=8ptKpzW-KLo&ab_channel=FrontendPaathshala
-
 -->
 
 
 <section class="container">
-    <h3 class="pt-4 pb-2">Input date</h3>
 
-    <div class="row form-group">
-        <div class="col-sm-4">
-            <div class="input-group date" id="datepicker">
-                <input type="text" class="form-control">
-                <span class="input-group-append">
+    <form method="post" enctype="multipart/form-data">
+        <h3>Input date</h3>
+
+
+        <div class="input-group date" id="datepicker">
+            <input type="text" class="form-control">
+            <span class="input-group-append">
                             <span class="input-group-text bg-white">
                                 <i class="fa fa-calendar"></i>
                             </span>
                         </span>
-            </div>
-
-            <div>
-                <h3 class="pt-4 pb-2">Input weight</h3>
-                <input type="numer" min="0" id="addWeight" name="addWeight">
-
-                <input type="submit" value="Add to Database">
-            </div>
         </div>
 
-    </div>
+        <div>
+            <h3 class="pt-4 pb-2">Input weight</h3>
+            <input type="numer" min="0" id="addWeight" name="addWeight">
+        </div>
 
+
+        <label for="files">Select files:</label>
+        <input type="file" id="files" name="files" multiple><br><br>
+
+        <input type="submit" value="Add to Database">
+    </form>
 
 </section>
 
