@@ -3,6 +3,7 @@ package com.example.demo.Controllers;
 import com.example.demo.Service.UserService;
 import com.example.demo.model.User;
 import com.example.demo.repositories.UserRepository;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -46,6 +47,9 @@ public class UserController {
         System.out.println(username);
         System.out.println(password);
 
+        Authentication auth = new UsernamePasswordAuthenticationToken(contact,contact.getPassword(),contact.getAuthorities());
+        SecurityContextHolder.getContext().setAuthentication(auth);
+
         userService.update(contact);
         return "redirect:/";
     }
@@ -56,9 +60,12 @@ public class UserController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User customUser = (User) authentication.getPrincipal();
         long userId = customUser.getId();
+
         User user = userService.findContact(id).orElseThrow();
+
         if (user.getId() == userId) {
             userService.delete(user);
+            SecurityContextHolder.getContext().setAuthentication(null);
 
             return "redirect:/login";
         }
