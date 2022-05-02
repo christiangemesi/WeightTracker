@@ -1,6 +1,7 @@
 package com.example.demo.bootstrap;
 
 import com.example.demo.Service.UserService;
+import com.example.demo.model.User;
 import com.example.demo.repositories.ImageRepository;
 import com.example.demo.repositories.UserRepository;
 import com.example.demo.repositories.WeightEntryRepository;
@@ -33,13 +34,14 @@ public class BootStrapData implements CommandLineRunner {
         try {
             userService.loadUserByUsername("admin");
         } catch (UsernameNotFoundException e) {
-            this.userService.addUser("admin", "admin",new HashSet<>());
+            this.userService.addUser("admin", "admin",Set.of("ROLE_ADMIN"));
         }
+        System.out.println(userRepository.findByUsername("admin").get().getId());
 
         try {
             userService.loadUserByUsername("admin2");
         } catch (UsernameNotFoundException e) {
-            this.userService.addUser("admin2", "admin2",new HashSet<>());
+            this.userService.addUser("user", "user",Set.of("ROLE_USER"));
         }
 
     }

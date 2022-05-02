@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+</head>
+<body>
+
+<form th:action="@{edit}" method="post">
+
+    <label for="username" class="username">Username:</label>
+    <input type="text" name="username" id="username">
+
+    <label for="password" class="password">password:</label>
+    <input type="password" name="password" id="password">
+
+    <div class="form-actions">
+        <input type="submit" value="Save">
+    </div>
+
+    <form th:action="@{delete}" method="post">
+        <input type="hidden" name="id" th:value="${user.id}" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+    </form>
+
+
+</form>
+
+</body>
+</html>

@@ -9,14 +9,13 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
 import java.util.Set;
 
 @Service
 public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-
-
 
     public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
@@ -35,4 +34,19 @@ public class UserService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Username not found."));
     }
+
+    public Optional<User> findContact(int id) {
+        return userRepository.findById((long) id);
+    }
+
+    public User update(User user) {
+        return userRepository.save(user); // 'save' might return new object
+    }
+
+    public void delete(User user) {
+        userRepository.delete(user);
+    }
+
+
+
 }

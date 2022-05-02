@@ -17,12 +17,14 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-
     @Column(nullable = false, unique = true)
     private String username;
 
     @Column(nullable = false)
     private String password;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    private Set<String> authorities;
 
     @OneToMany(mappedBy = "user")
     private Set<WeightEntry> weightEntrySet = new HashSet<>();
@@ -46,9 +48,6 @@ public class User implements UserDetails {
         this.authorities = authorities;
         this.weightEntrySet = weightEntrySet;
     }
-
-    @ElementCollection(fetch = FetchType.EAGER)
-    private Set<String> authorities;
 
     @Override
     public String toString() {
@@ -89,6 +88,10 @@ public class User implements UserDetails {
     @Override
     public String getPassword() {
         return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getUsername() {

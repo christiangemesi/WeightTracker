@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Sign-Up</title>
@@ -10,14 +10,20 @@
 <div id="login-box">
     <div class="left">
 
-        <input type="text" name="email" placeholder="E-mail" />
-        <input type="password" name="password" placeholder="Password" />
-        <input type="password" name="password2" placeholder="Retype password" />
+        <form th:action="@{/signup}" method="post">
 
-        <input type="submit" name="signup_submit" value="Sign up" />
+            <label for="username">Username</label><br/>
+            <input type="text" id="username" name="username"/>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password"/>
+
+            <div class="form-actions">
+                <button type="submit" class="btn">Signup</button>
+            </div>
+        </form>
+        <a href="/login">Already have an account?</a>
     </div>
-
-</div>
 
 </body>
 </html>
