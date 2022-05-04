@@ -7,6 +7,7 @@ import java.util.Set;
 
 
 @Entity
+@Table(name="WeightEntry")
 public class WeightEntry {
 
     @Id

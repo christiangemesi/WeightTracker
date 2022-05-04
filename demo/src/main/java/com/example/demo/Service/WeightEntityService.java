@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -24,8 +25,7 @@ public class WeightEntityService {
         this.weightEntryRepository.save(new WeightEntry(weight,date, user));
     }
 
-    @PostConstruct
-    public Optional<WeightEntry>  getAllWeights(Long userId) {
-        return weightEntryRepository.findById(userId);
+    public List<WeightEntry> getAllWeights(Long userId) {
+        return weightEntryRepository.findWeightEntryById(userId);
     }
 }
