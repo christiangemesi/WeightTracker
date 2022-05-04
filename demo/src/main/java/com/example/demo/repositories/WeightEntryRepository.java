@@ -11,14 +11,15 @@ import java.util.Optional;
 
 @Repository
 public interface WeightEntryRepository extends JpaRepository<WeightEntry,Long> {
+
     @Query(
-        "SELECT weightEntry"
+        "SELECT WeightEntry.weight"
             + " FROM "
             + "WeightEntry weightEntry"
             + " WHERE "
-            + "weightEntry.user = :#{#user.id}"
+            + "weightEntry.user.id = :#{#user.id}"
     )
-    Optional<WeightEntry> findById(@Param("user") User user);
+    Optional<WeightEntry> findWeightEntryBy(@Param("user") User user);
 
 
 
