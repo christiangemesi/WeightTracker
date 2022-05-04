@@ -1,25 +1,25 @@
 package com.example.demo.repositories;
 
+import com.example.demo.model.User;
 import com.example.demo.model.WeightEntry;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
 
 @Repository
 public interface WeightEntryRepository extends JpaRepository<WeightEntry,Long> {
-
-
-    /*
     @Query(
-        "SELECT report"
+        "SELECT weightEntry"
             + " FROM "
-            + "Report report"
+            + "WeightEntry weightEntry"
             + " WHERE "
-            + "report.incident.id = :#{#path.incidentId}"
-            + " AND "
-            + "report.id = :id"
+            + "weightEntry.user = :#{#user.id}"
     )
-    @Override
-    Optional<Report> findByPath(@Param("path") ReportPath path, @Param("id") Long id);
-     */
+    Optional<WeightEntry> findById(@Param("user") User user);
+
+
 
 }
