@@ -67,6 +67,6 @@ public class BootStrapData implements CommandLineRunner {
         WeightEntry weightEntry3 = new WeightEntry(70, date2, user);
         weightEntryRepository.save(weightEntry3);
 
-        //var x = weightEntityService.getAllWeights(admin);
+        //var x = weightEntryRepository.findById(admin.getId());
     }
 }

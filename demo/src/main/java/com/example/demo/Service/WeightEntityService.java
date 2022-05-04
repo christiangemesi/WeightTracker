@@ -25,7 +25,7 @@ public class WeightEntityService {
     }
 
     @PostConstruct
-    public Optional<WeightEntry>  getAllWeights(User user) {
-        return weightEntryRepository.findWeightEntryBy(user);
+    public Optional<WeightEntry>  getAllWeights(Long userId) {
+        return weightEntryRepository.findById(userId);
     }
 }
