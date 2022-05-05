@@ -14,6 +14,9 @@ public class Image {
 
     private String name;
 
+    @Lob
+    private byte[] file;
+
     public Image() {
     }
 
@@ -21,8 +24,10 @@ public class Image {
         this.weightEntry = weightEntry;
     }
 
-    public Image(String name) {
+    public Image(String name, byte[] file, WeightEntry weightEntry) {
         this.name = name;
+        this.file = file;
+        this.weightEntry = weightEntry;
     }
 
     @Override
