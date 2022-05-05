@@ -21,8 +21,8 @@ public class WeightEntityService {
         this.weightEntryRepository = weightEntryRepository;
     }
 
-    public void addWeightEntity(double weight, Date date, User user) {
-        this.weightEntryRepository.save(new WeightEntry(weight,date, user));
+    public WeightEntry addWeightEntity(double weight, Date date, User user) {
+        return this.weightEntryRepository.save(new WeightEntry(weight,date, user));
     }
 
     public List<WeightEntry> getAllWeights(Long userId) {
