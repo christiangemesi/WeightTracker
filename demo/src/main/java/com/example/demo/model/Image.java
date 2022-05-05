@@ -12,6 +12,8 @@ public class Image {
     @ManyToOne
     private WeightEntry weightEntry;
 
+    private String name;
+
     public Image() {
     }
 
@@ -19,12 +21,16 @@ public class Image {
         this.weightEntry = weightEntry;
     }
 
+    public Image(String name) {
+        this.name = name;
+    }
 
     @Override
     public String toString() {
         return "Image{" +
                 "id=" + id +
                 ", weightEntry=" + weightEntry +
+                ", name='" + name + '\'' +
                 '}';
     }
 
@@ -49,6 +55,14 @@ public class Image {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public WeightEntry getWeightEntry() {
