@@ -20,5 +20,7 @@ public interface WeightEntryRepository extends JpaRepository<WeightEntry,Long> {
             + "weightEntry.user.id = :#{#userId}")
     List<WeightEntry> findWeightEntryById(@Param("userId") Long userId);
 
+    List<WeightEntry> findAllByUserId(Long userId);
+
 
 }

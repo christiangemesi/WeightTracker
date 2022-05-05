@@ -26,6 +26,6 @@ public class WeightEntityService {
     }
 
     public List<WeightEntry> getAllWeights(Long userId) {
-        return weightEntryRepository.findWeightEntryById(userId);
+        return weightEntryRepository.findAllByUserId(userId);
     }
 }

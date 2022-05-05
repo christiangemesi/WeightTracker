@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
