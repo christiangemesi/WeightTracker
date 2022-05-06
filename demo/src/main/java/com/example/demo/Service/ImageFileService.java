@@ -4,6 +4,7 @@ import com.example.demo.model.Image;
 import com.example.demo.model.WeightEntry;
 import com.example.demo.repositories.ImageRepository;
 import com.example.demo.repositories.WeightEntryRepository;
+import org.apache.tika.Tika;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,9 +22,13 @@ public class ImageFileService {
     }
 
     public Image save(byte[] bytes, String imageName, long weightEntryId) {
+        Tika tika = new Tika();
+        String mimeType = tika.detect(bytes);
+
         WeightEntry weightEntry = weightEntryRepository.findById(weightEntryId).orElseThrow();
 
         Image image = new Image(imageName, bytes, weightEntry);
+        image.setMimeType(mimeType);
         image = imageRepository.save(image);
 
 

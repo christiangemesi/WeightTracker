@@ -2,6 +2,7 @@ package com.example.demo.Controllers;
 
 import com.example.demo.Service.ImageFileService;
 import com.example.demo.Service.WeightEntityService;
+import com.example.demo.model.Image;
 import com.example.demo.model.User;
 import com.example.demo.model.WeightEntry;
 import org.springframework.http.MediaType;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Arrays;
 
 
 @Controller
@@ -39,13 +41,21 @@ public class WeigthController {
         weightEntry = weightEntityService.addWeightEntity(weightEntry.getWeight(), weightEntry.getDate(), customUser);
         model.addAttribute("weightEntry", weightEntry);
 
+        //Im sure this can be done better
         try {
-            imageFileService.save(front.getBytes(), front.getName(), weightEntry.getId());
-            imageFileService.save(back.getBytes(), back.getName(), weightEntry.getId());
-            imageFileService.save(side.getBytes(), side.getName(), weightEntry.getId());
+            if (front.getBytes().length != 0) {
+                imageFileService.save(front.getBytes(), front.getName(), weightEntry.getId());
+            }
+            if(back.getBytes().length != 0){
+                imageFileService.save(back.getBytes(), back.getName(), weightEntry.getId());
+            }
+            if(side.getBytes().length != 0){
+                imageFileService.save(side.getBytes(), side.getName(), weightEntry.getId());
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
+
 
         return "redirect:/addweight";
     }
