@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import org.apache.tika.Tika;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,6 +14,13 @@ public class Image {
     @ManyToOne
     private WeightEntry weightEntry;
 
+    private String name;
+
+    @Lob
+    private byte[] file;
+
+    private String mimeType;
+
     public Image() {
     }
 
@@ -19,12 +28,18 @@ public class Image {
         this.weightEntry = weightEntry;
     }
 
+    public Image(String name, byte[] file, WeightEntry weightEntry) {
+        this.name = name;
+        this.file = file;
+        this.weightEntry = weightEntry;
+    }
 
     @Override
     public String toString() {
         return "Image{" +
                 "id=" + id +
                 ", weightEntry=" + weightEntry +
+                ", name='" + name + '\'' +
                 '}';
     }
 
@@ -49,6 +64,31 @@ public class Image {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+
+    public byte[] getFile() {
+        return file;
+    }
+
+    public void setFile(byte[] file) {
+        this.file = file;
+    }
+
+    public String getMimeType() {
+        return mimeType;
+    }
+
+    public void setMimeType(String mimeType) {
+        this.mimeType = mimeType;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public WeightEntry getWeightEntry() {

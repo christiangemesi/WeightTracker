@@ -26,8 +26,7 @@ Source: https://www.youtube.com/watch?v=8ptKpzW-KLo&ab_channel=FrontendPaathshal
 
 
 <section class="container">
-
-    <form method="post">
+    <form method="post" th:action="@{/addweight}" enctype="multipart/form-data">
         <h3>Input date</h3>
 
         <div class="input-group date" id="datepicker">
@@ -38,14 +37,30 @@ Source: https://www.youtube.com/watch?v=8ptKpzW-KLo&ab_channel=FrontendPaathshal
                             </span>
                         </span>
         </div>
+        <h3>Input Weight</h3>
+        <input type="number" id="weight" name="weight">
+        <br/>
 
         <div>
-            <h3>Input weight</h3>
-            <input type="numer" min="0" name="weight">
+            <label>Front: </label>
+            <input type="file" name="front" accept="image/png, image/jpeg"/>
+        </div>
+        <div>
+            <label>Back: </label>
+            <input type="file" name="back" accept="image/png, image/jpeg"/>
+        </div>
+        <div>
+            <label>Side: </label>
+            <input type="file" name="side" accept="image/png, image/jpeg"/>
         </div>
 
         <input type="submit" value="Add to Database">
     </form>
+
+    <!--    <form th:action="@{/weight-entries/#{weightEntry.id}/images}" method="post">-->
+
+    <!--        <input type="submit" value="Add to Database">-->
+    <!--    </form>-->
 </section>
 
 

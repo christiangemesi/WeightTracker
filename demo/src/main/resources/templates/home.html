@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Homescreen</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 <H1>Homescreen</H1>
@@ -12,6 +14,49 @@
 <form th:action="@{/logout}" method="post">
     <input type="submit" value="Logout">
 </form>
+
+<div>
+    <canvas id="myChart"></canvas>
+</div>
+
+<script>
+    const labels = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'Octobe',
+        'December'
+    ];
+
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'My First dataset',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [70, 69.8, 69.3, 69.7, 68.7, 68.6, 68.2, 67.9, 68.4, 67.9, 67.4, 67.0, 66.9, 66.5, 66.6],
+        }]
+    };
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: {}
+    };
+</script>
+
+<script>
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+</script>
 
 </body>
 </html>
