@@ -23,16 +23,14 @@ public interface WeightEntryRepository extends JpaRepository<WeightEntry,Long> {
 
     List<WeightEntry> findAllByUserId(Long userId);
 
-/*
+
     @Query("SELECT weightEntry"
             + " FROM "
             + "WeightEntry weightEntry"
             + " WHERE "
             + "weightEntry.user.id = :#{#userId}"
             + " AND "
-            + "weightEntry.date = :#{date}"
-    )
-    Boolean isDuplicatePresent(Date date, Long userId);
+            + "weightEntry.date = :#{#date}")
+    List<WeightEntry> listWithDuplicates(@Param("userId") Long userId, @Param("date") Date date);
 
- */
 }

@@ -5,6 +5,7 @@ import com.example.demo.model.WeightEntry;
 import com.example.demo.repositories.WeightEntryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.PostConstruct;
 import java.util.Date;
@@ -25,15 +26,13 @@ public class WeightEntityService {
         return this.weightEntryRepository.save(new WeightEntry(weight,date, user));
     }
 
-    /*
+
     public boolean isDuplicateWeightEntryPresent(Date date,User user){
-        return weightEntryRepository.isDuplicatePresent(date,user.getId());
+        return weightEntryRepository.listWithDuplicates(user.getId(),date).size()>=1;
     }
 
-     */
-
     public void removeWeightEntry(WeightEntry weightEntry){
-        weightEntryRepository.delete(weightEntry);
+        weightEntryRepository.deleteById(weightEntry.getId());
     }
 
     public List<WeightEntry> getAllWeights(Long userId) {

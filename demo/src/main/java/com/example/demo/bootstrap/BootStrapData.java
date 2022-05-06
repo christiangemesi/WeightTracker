@@ -11,10 +11,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Set;
+import java.util.*;
 
 
 @Component
@@ -56,19 +53,12 @@ public class BootStrapData implements CommandLineRunner {
 
         Date date = new Date(2022, Calendar.JUNE, 4);
         WeightEntry weightEntry1 = new WeightEntry(68, date, admin);
+        WeightEntry weightEntry2 = new WeightEntry(200, date, admin);
         weightEntryRepository.save(weightEntry1);
-
-        Date date2 = new Date(2022, Calendar.JUNE, 5);
-        WeightEntry weightEntry2 = new WeightEntry(69, date2, admin);
         weightEntryRepository.save(weightEntry2);
 
-
-        Date date3 = new Date(2022, Calendar.JUNE, 6);
-        WeightEntry weightEntry3 = new WeightEntry(70, date2, user);
-        weightEntryRepository.save(weightEntry3);
-
-        var x = weightEntityService.getAllWeights(admin.getId());
-        System.out.print(x);
+        boolean list = weightEntityService.isDuplicateWeightEntryPresent(date,admin);
+        System.out.println(list);
 
     }
 }
