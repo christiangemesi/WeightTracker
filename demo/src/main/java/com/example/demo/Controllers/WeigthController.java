@@ -38,10 +38,16 @@ public class WeigthController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User customUser = (User) authentication.getPrincipal();
 
+        /*
+        if(weightEntityService.isDuplicateWeightEntryPresent(weightEntry.getDate(),customUser)){
+            weightEntityService.removeWeightEntry(weightEntry);
+        }
+         */
+
         weightEntry = weightEntityService.addWeightEntity(weightEntry.getWeight(), weightEntry.getDate(), customUser);
         model.addAttribute("weightEntry", weightEntry);
 
-        //Im sure this can be done better
+        //TODO Im sure this can be done better
         try {
             if (front.getBytes().length != 0) {
                 imageFileService.save(front.getBytes(), front.getName(), weightEntry.getId());
@@ -55,7 +61,6 @@ public class WeigthController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
         return "redirect:/addweight";
     }

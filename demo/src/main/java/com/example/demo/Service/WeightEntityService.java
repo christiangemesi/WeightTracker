@@ -25,6 +25,17 @@ public class WeightEntityService {
         return this.weightEntryRepository.save(new WeightEntry(weight,date, user));
     }
 
+    /*
+    public boolean isDuplicateWeightEntryPresent(Date date,User user){
+        return weightEntryRepository.isDuplicatePresent(date,user.getId());
+    }
+
+     */
+
+    public void removeWeightEntry(WeightEntry weightEntry){
+        weightEntryRepository.delete(weightEntry);
+    }
+
     public List<WeightEntry> getAllWeights(Long userId) {
         return weightEntryRepository.findAllByUserId(userId);
     }

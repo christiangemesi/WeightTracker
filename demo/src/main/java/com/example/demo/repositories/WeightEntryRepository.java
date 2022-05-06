@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,5 +23,16 @@ public interface WeightEntryRepository extends JpaRepository<WeightEntry,Long> {
 
     List<WeightEntry> findAllByUserId(Long userId);
 
+/*
+    @Query("SELECT weightEntry"
+            + " FROM "
+            + "WeightEntry weightEntry"
+            + " WHERE "
+            + "weightEntry.user.id = :#{#userId}"
+            + " AND "
+            + "weightEntry.date = :#{date}"
+    )
+    Boolean isDuplicatePresent(Date date, Long userId);
 
+ */
 }
