@@ -24,18 +24,18 @@ public class WeightEntry {
     private Set<Image> imageSet = new HashSet<>();
 
     private double weight;
-    private LocalDate date;
+    private Date date;
 
     public WeightEntry() {
     }
 
-    public WeightEntry(double weight, LocalDate date, User user) {
+    public WeightEntry(double weight, Date date, User user) {
         this.weight = weight;
         this.date = date;
         this.user = user;
     }
 
-    public WeightEntry(User user, Set<Image> imageSet, double weight, LocalDate date) {
+    public WeightEntry(User user, Set<Image> imageSet, double weight, Date date) {
         this.user = user;
         this.imageSet = imageSet;
         this.weight = weight;
@@ -67,11 +67,11 @@ public class WeightEntry {
         this.weight = weight;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

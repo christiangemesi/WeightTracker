@@ -32,6 +32,6 @@ public interface WeightEntryRepository extends JpaRepository<WeightEntry,Long> {
             + "weightEntry.user.id = :#{#userId}"
             + " AND "
             + "weightEntry.date = :#{#date}")
-    WeightEntry listWithDuplicates(@Param("userId") Long userId, @Param("date") LocalDate date);
+    WeightEntry listWithDuplicates(@Param("userId") Long userId, @Param("date") Date date);
 
 }

@@ -52,7 +52,7 @@ public class BootStrapData implements CommandLineRunner {
         User user = (User) userService.loadUserByUsername("user");
         User admin = (User) userService.loadUserByUsername("admin");
 
-        LocalDate date = LocalDate.of(2022, 6, 4);
+        Date date = new Date(2022, 6, 4);
 
         WeightEntry weightEntry1 = new WeightEntry(68, date, admin);
         WeightEntry weightEntry2 = new WeightEntry(200, date, admin);
