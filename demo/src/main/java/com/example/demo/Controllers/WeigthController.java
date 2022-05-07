@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 
 @Controller
@@ -21,13 +22,11 @@ public class WeigthController {
 
     private final WeightEntityService weightEntityService;
     private final ImageFileService imageFileService;
-    private final WeightEntryRepository weightEntryRepository;
 
 
-    public WeigthController(WeightEntityService weightEntityService, ImageFileService imageFileService, WeightEntryRepository weightEntryRepository) {
+    public WeigthController(WeightEntityService weightEntityService, ImageFileService imageFileService) {
         this.weightEntityService = weightEntityService;
         this.imageFileService = imageFileService;
-        this.weightEntryRepository = weightEntryRepository;
     }
 
     @RequestMapping(path = "/addweight", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -40,6 +39,7 @@ public class WeigthController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User customUser = (User) authentication.getPrincipal();
 
+
         WeightEntry duplicate = weightEntityService.isDuplicateWeightEntryPresent(weightEntry.getDate(),customUser);
 
         if(duplicate != null){
@@ -47,6 +47,7 @@ public class WeigthController {
         }
 
         weightEntry = weightEntityService.addWeightEntity(weightEntry.getWeight(), weightEntry.getDate(), customUser);
+
         model.addAttribute("weightEntry", weightEntry);
 
         //TODO Im sure this can be done better

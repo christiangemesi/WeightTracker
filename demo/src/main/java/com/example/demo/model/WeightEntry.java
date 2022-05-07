@@ -1,8 +1,9 @@
 package com.example.demo.model;
 
-import org.springframework.web.multipart.MultipartFile;
+import org.apache.tomcat.jni.Local;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -23,18 +24,18 @@ public class WeightEntry {
     private Set<Image> imageSet = new HashSet<>();
 
     private double weight;
-    private Date date;
+    private LocalDate date;
 
     public WeightEntry() {
     }
 
-    public WeightEntry(double weight, Date date, User user) {
+    public WeightEntry(double weight, LocalDate date, User user) {
         this.weight = weight;
         this.date = date;
         this.user = user;
     }
 
-    public WeightEntry(User user, Set<Image> imageSet, double weight, Date date) {
+    public WeightEntry(User user, Set<Image> imageSet, double weight, LocalDate date) {
         this.user = user;
         this.imageSet = imageSet;
         this.weight = weight;
@@ -66,11 +67,11 @@ public class WeightEntry {
         this.weight = weight;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
