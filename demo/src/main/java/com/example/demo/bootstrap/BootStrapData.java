@@ -55,10 +55,5 @@ public class BootStrapData implements CommandLineRunner {
         WeightEntry weightEntry1 = new WeightEntry(68, date, admin);
         WeightEntry weightEntry2 = new WeightEntry(200, date, admin);
         weightEntryRepository.save(weightEntry1);
-        weightEntryRepository.save(weightEntry2);
-
-        boolean list = weightEntityService.isDuplicateWeightEntryPresent(date,admin);
-        System.out.println(list);
-
     }
 }

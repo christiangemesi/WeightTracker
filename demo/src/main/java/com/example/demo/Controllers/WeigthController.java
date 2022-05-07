@@ -1,7 +1,6 @@
 package com.example.demo.Controllers;
 
 import com.example.demo.Service.ImageFileService;
-import com.example.demo.Service.UserService;
 import com.example.demo.Service.WeightEntityService;
 import com.example.demo.model.User;
 import com.example.demo.model.WeightEntry;
@@ -22,11 +21,13 @@ public class WeigthController {
 
     private final WeightEntityService weightEntityService;
     private final ImageFileService imageFileService;
+    private final WeightEntryRepository weightEntryRepository;
 
 
-    public WeigthController(WeightEntityService weightEntityService, ImageFileService imageFileService) {
+    public WeigthController(WeightEntityService weightEntityService, ImageFileService imageFileService, WeightEntryRepository weightEntryRepository) {
         this.weightEntityService = weightEntityService;
         this.imageFileService = imageFileService;
+        this.weightEntryRepository = weightEntryRepository;
     }
 
     @RequestMapping(path = "/addweight", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -35,12 +36,14 @@ public class WeigthController {
                             @RequestParam("back") MultipartFile back,
                             @RequestParam("side") MultipartFile side,
                             Model model) {
+
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User customUser = (User) authentication.getPrincipal();
 
+        WeightEntry duplicate = weightEntityService.isDuplicateWeightEntryPresent(weightEntry.getDate(),customUser);
 
-        if(weightEntityService.isDuplicateWeightEntryPresent(weightEntry.getDate(),customUser)){
-            weightEntityService.removeWeightEntry(weightEntry);
+        if(duplicate != null){
+            weightEntityService.removeWeightEntryById(duplicate.getId());
         }
 
         weightEntry = weightEntityService.addWeightEntity(weightEntry.getWeight(), weightEntry.getDate(), customUser);
@@ -51,10 +54,10 @@ public class WeigthController {
             if (front.getBytes().length != 0) {
                 imageFileService.save(front.getBytes(), front.getName(), weightEntry.getId());
             }
-            if(back.getBytes().length != 0){
+            if (back.getBytes().length != 0) {
                 imageFileService.save(back.getBytes(), back.getName(), weightEntry.getId());
             }
-            if(side.getBytes().length != 0){
+            if (side.getBytes().length != 0) {
                 imageFileService.save(side.getBytes(), side.getName(), weightEntry.getId());
             }
         } catch (IOException e) {
