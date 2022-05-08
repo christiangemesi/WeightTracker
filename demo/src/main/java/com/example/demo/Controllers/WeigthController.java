@@ -48,7 +48,7 @@ public class WeigthController {
 
         weightEntry = weightEntityService.addWeightEntity(weightEntry.getWeight(), weightEntry.getDate(), customUser);
 
-        model.addAttribute("weightEntry", weightEntry);
+        model.addAttribute("WeightEntries", weightEntry);
 
         //TODO Im sure this can be done better
         try {
