@@ -11,7 +11,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
 import java.util.*;
 
 
@@ -57,5 +56,8 @@ public class BootStrapData implements CommandLineRunner {
         WeightEntry weightEntry1 = new WeightEntry(68, date, admin);
         WeightEntry weightEntry2 = new WeightEntry(200, date, admin);
         weightEntryRepository.save(weightEntry1);
+
+        var x = weightEntryRepository.findAll();
+        System.out.println(x.toString());
     }
 }

@@ -1,4 +1,4 @@
-package Model;
+package com.example.demo.Model;
 
 import com.example.demo.model.Image;
 import com.example.demo.model.User;
@@ -44,6 +44,5 @@ public class WeightEntryTest {
 
         assertEquals(2,weightEntry.getImageList().size());
     }
-
 
 }

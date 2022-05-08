@@ -4,7 +4,6 @@ import com.example.demo.Service.ImageFileService;
 import com.example.demo.Service.WeightEntityService;
 import com.example.demo.model.User;
 import com.example.demo.model.WeightEntry;
-import com.example.demo.repositories.WeightEntryRepository;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.List;
 
 
 @Controller
@@ -29,6 +27,11 @@ public class WeigthController {
         this.imageFileService = imageFileService;
     }
 
+    @RequestMapping("/addweight")
+    public String  addWeight() {
+        return "addWeight.html";
+    }
+
     @RequestMapping(path = "/addweight", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public String addWeight(WeightEntry weightEntry,
                             @RequestParam("front") MultipartFile front,
@@ -40,7 +43,7 @@ public class WeigthController {
         User customUser = (User) authentication.getPrincipal();
 
 
-        WeightEntry duplicate = weightEntityService.isDuplicateWeightEntryPresent(weightEntry.getDate(),customUser);
+        WeightEntry duplicate = weightEntityService.getDuplicateWeightEntry(weightEntry.getDate(),customUser);
 
         if(duplicate != null){
             weightEntityService.removeWeightEntryById(duplicate.getId());
@@ -48,7 +51,9 @@ public class WeigthController {
 
         weightEntry = weightEntityService.addWeightEntity(weightEntry.getWeight(), weightEntry.getDate(), customUser);
 
-        model.addAttribute("WeightEntries", weightEntry);
+        double weight = weightEntry.getWeight();
+
+        model.addAttribute("weight", weight);
 
         //TODO Im sure this can be done better
         try {

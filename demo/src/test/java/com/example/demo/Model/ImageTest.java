@@ -1,4 +1,4 @@
-package Model;
+package com.example.demo.Model;
 
 import com.example.demo.model.Image;
 import com.example.demo.model.User;
@@ -27,7 +27,5 @@ public class ImageTest {
         assertEquals("image/jpeg", image.getMimeType());
         assertEquals(byteArray,image.getFile());
     }
-
-
 
 }

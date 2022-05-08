@@ -1,4 +1,4 @@
-package Model;
+package com.example.demo.Model;
 
 import com.example.demo.model.User;
 import com.example.demo.model.WeightEntry;

@@ -35,6 +35,11 @@ public class LoginController {
         }
     }
 
+    @RequestMapping("/signup")
+    public String  signUp() {
+        return "signUp.html";
+    }
+
     @RequestMapping(path = "/signup", method = RequestMethod.POST)
     public String signup(User user, BindingResult bindingResult, Model model) {
 
