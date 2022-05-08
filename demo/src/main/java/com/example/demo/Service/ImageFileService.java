@@ -31,15 +31,7 @@ public class ImageFileService {
         image.setMimeType(mimeType);
         image = imageRepository.save(image);
 
-
-        // imageRepository.save(bytes, image.getId());
         return image;
     }
-
-//    public Optional<FileSystemResource> find(Long imageId) {
-//        return imageRepository.findById(imageId).map((image) -> (
-//                fileRepository.findInFileSystem(image.getId())
-//        ));
-//    }
 
 }

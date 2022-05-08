@@ -5,7 +5,7 @@ import com.example.demo.model.User;
 import com.example.demo.repositories.UserRepository;
 import com.example.demo.repositories.WeightEntryRepository;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -64,9 +64,4 @@ public class UserRepositoryTest {
         this.userRepository.delete(users);
         assertEquals(0, this.userRepository.findAll().size());
     }
-
-
-
-
-
 }
