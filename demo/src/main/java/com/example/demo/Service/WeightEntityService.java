@@ -3,14 +3,10 @@ package com.example.demo.Service;
 import com.example.demo.model.User;
 import com.example.demo.model.WeightEntry;
 import com.example.demo.repositories.WeightEntryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 
 @Service
 public class WeightEntityService {
@@ -22,7 +18,16 @@ public class WeightEntityService {
     }
 
     public WeightEntry addWeightEntity(double weight, Date date, User user) {
-        return this.weightEntryRepository.save(new WeightEntry(weight,date, user));
+        return this.weightEntryRepository.save(new WeightEntry(weight, date, user));
+    }
+
+
+    public WeightEntry getDuplicateWeightEntry(Date date, User user) {
+        return weightEntryRepository.listWithDuplicates(user.getId(), date);
+    }
+
+    public void removeWeightEntryById(Long weightEntryId) {
+        weightEntryRepository.deleteById(weightEntryId);
     }
 
     public List<WeightEntry> getAllWeights(Long userId) {

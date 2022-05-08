@@ -1,28 +1,22 @@
 package com.example.demo.Controllers;
 
+import com.example.demo.Service.WeightEntityService;
+import com.example.demo.model.User;
+import com.example.demo.model.WeightEntry;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 public class HomeScreenController {
 
     @RequestMapping("/")
-    public String  welcome() {
+    public String  welcome(Model model) {
         return "home.html";
-    }
-
-    @RequestMapping("/addweight")
-    public String  addWeight() {
-        return "addWeight.html";
-    }
-
-    @RequestMapping("/signup")
-    public String  signUp() {
-        return "signUp.html";
     }
 
     @RequestMapping("/about")

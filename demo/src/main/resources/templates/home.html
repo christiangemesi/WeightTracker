@@ -20,6 +20,8 @@
 </div>
 
 <script>
+    let number = [[${weight}]]
+
     const labels = [
         'January',
         'February',
@@ -27,20 +29,15 @@
         'April',
         'May',
         'June',
-        'July',
-        'August',
-        'September',
-        'Octobe',
-        'December'
     ];
 
     const data = {
         labels: labels,
         datasets: [{
-            label: 'My First dataset',
+            label: 'My Weight Jurney',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
-            data: [70, 69.8, 69.3, 69.7, 68.7, 68.6, 68.2, 67.9, 68.4, 67.9, 67.4, 67.0, 66.9, 66.5, 66.6],
+            data: [0, 10, 5, 2, 20, 30, 45],
         }]
     };
 
@@ -50,6 +47,7 @@
         options: {}
     };
 </script>
+
 
 <script>
     const myChart = new Chart(

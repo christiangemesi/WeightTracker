@@ -1,11 +1,7 @@
 package com.example.demo.model;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 
 @Entity
@@ -20,7 +16,7 @@ public class WeightEntry {
     private User user;
 
     @OneToMany(mappedBy = "weightEntry")
-    private Set<Image> imageSet = new HashSet<>();
+    private List<Image> imageSet = new ArrayList<>();
 
     private double weight;
     private Date date;
@@ -34,7 +30,7 @@ public class WeightEntry {
         this.user = user;
     }
 
-    public WeightEntry(User user, Set<Image> imageSet, double weight, Date date) {
+    public WeightEntry(User user, List<Image> imageSet, double weight, Date date) {
         this.user = user;
         this.imageSet = imageSet;
         this.weight = weight;
@@ -74,11 +70,11 @@ public class WeightEntry {
         this.date = date;
     }
 
-    public Set<Image> getImageSet() {
+    public List<Image> getImageList() {
         return imageSet;
     }
 
-    public void setImageSet(Set<Image> imageSet) {
+    public void setImageList(List<Image> imageSet) {
         this.imageSet = imageSet;
     }
 

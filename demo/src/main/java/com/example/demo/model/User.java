@@ -6,9 +6,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name="User")
@@ -28,7 +26,7 @@ public class User implements UserDetails {
     private Set<String> authorities;
 
     @OneToMany(mappedBy = "user")
-    private Set<WeightEntry> weightEntrySet = new HashSet<>();
+    private List<WeightEntry> weightEntrySet = new ArrayList<>();
 
     public User() {
     }
@@ -43,7 +41,7 @@ public class User implements UserDetails {
         this.authorities = authorities;
     }
 
-    public User(String email, String password, Set<String> authorities, Set<WeightEntry> weightEntrySet) {
+    public User(String email, String password, Set<String> authorities, List<WeightEntry> weightEntrySet) {
         this.username = email;
         this.password = password;
         this.authorities = authorities;
@@ -123,11 +121,11 @@ public class User implements UserDetails {
         this.username = email;
     }
 
-    public Set<WeightEntry> getWeightEntrySet() {
+    public List<WeightEntry> getWeightEntryList() {
         return weightEntrySet;
     }
 
-    public void setWeightEntrySet(Set<WeightEntry> weightEntrySet) {
+    public void setWeightEntryList(List<WeightEntry> weightEntrySet) {
         this.weightEntrySet = weightEntrySet;
     }
 }
