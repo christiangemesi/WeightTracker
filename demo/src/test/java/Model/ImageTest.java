@@ -27,4 +27,7 @@ public class ImageTest {
         assertEquals("image/jpeg", image.getMimeType());
         assertEquals(byteArray,image.getFile());
     }
+
+
+
 }
