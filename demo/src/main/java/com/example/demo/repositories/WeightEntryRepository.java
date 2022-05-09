@@ -9,10 +9,10 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface WeightEntryRepository extends JpaRepository<WeightEntry,Long> {
+
 
     @Query("SELECT weightEntry"
             + " FROM "
@@ -22,6 +22,7 @@ public interface WeightEntryRepository extends JpaRepository<WeightEntry,Long> {
     List<WeightEntry> findWeightEntryById(@Param("userId") Long userId);
 
     List<WeightEntry> findAllByUserId(Long userId);
+
 
     @Query("SELECT weightEntry"
             + " FROM "

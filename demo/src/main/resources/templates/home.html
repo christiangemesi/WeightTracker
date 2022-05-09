@@ -29,26 +29,28 @@
 </div>
 
 
-<script>
 
-    let number = [[${weight}]]
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    let weightEntries = /*[[${weightEntries}]]*/ [];
+    /*]]>*/
 
-    const labels = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-    ];
+    const labels = weightEntries.map(weightEntry => {
+        const date = new Date(weightEntry.date);
+        return date.toDateString();
+    });
+
+    const values = weightEntries.map(weightEntry => {
+        return weightEntry.weight
+    });
 
     const data = {
         labels: labels,
         datasets: [{
-            label: 'My Weight Jurney',
+            label: 'My Weight Journey',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45],
+            data: values,
         }]
     };
 
@@ -57,10 +59,7 @@
         data: data,
         options: {}
     };
-</script>
 
-
-<script>
     const myChart = new Chart(
         document.getElementById('myChart'),
         config

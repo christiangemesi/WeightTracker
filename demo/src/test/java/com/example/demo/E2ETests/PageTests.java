@@ -61,6 +61,7 @@ public class PageTests {
         assertEquals("http://localhost:8080/login?error", currentUrl);
     }
 
+    /* Note this only works if not logged in */
     @Test
     void signupInvalid() {
 

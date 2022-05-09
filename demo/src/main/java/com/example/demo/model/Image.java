@@ -1,5 +1,6 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.tika.Tika;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ public class Image {
     private Long id;
 
     @ManyToOne
+    @JsonIgnore
     private WeightEntry weightEntry;
 
     private String name;

@@ -33,5 +33,4 @@ public class ImageFileService {
 
         return image;
     }
-
 }

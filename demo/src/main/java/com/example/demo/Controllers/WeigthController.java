@@ -4,12 +4,15 @@ import com.example.demo.Service.ImageFileService;
 import com.example.demo.Service.WeightEntityService;
 import com.example.demo.model.User;
 import com.example.demo.model.WeightEntry;
+import com.example.demo.repositories.WeightEntryRepository;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -20,16 +23,13 @@ public class WeigthController {
 
     private final WeightEntityService weightEntityService;
     private final ImageFileService imageFileService;
+    private final WeightEntryRepository weightEntryRepository;
 
 
-    public WeigthController(WeightEntityService weightEntityService, ImageFileService imageFileService) {
+    public WeigthController(WeightEntityService weightEntityService, ImageFileService imageFileService, WeightEntryRepository weightEntryRepository) {
         this.weightEntityService = weightEntityService;
         this.imageFileService = imageFileService;
-    }
-
-    @RequestMapping("/addweight")
-    public String  addWeight() {
-        return "addWeight.html";
+        this.weightEntryRepository = weightEntryRepository;
     }
 
     @RequestMapping(path = "/addweight", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -43,17 +43,15 @@ public class WeigthController {
         User customUser = (User) authentication.getPrincipal();
 
 
-        WeightEntry duplicate = weightEntityService.getDuplicateWeightEntry(weightEntry.getDate(),customUser);
+        WeightEntry duplicate = weightEntityService.isDuplicateWeightEntryPresent(weightEntry.getDate(),customUser);
 
         if(duplicate != null){
             weightEntityService.removeWeightEntryById(duplicate.getId());
         }
 
-        weightEntry = weightEntityService.addWeightEntity(weightEntry.getWeight(), weightEntry.getDate(), customUser);
+        weightEntityService.addWeightEntity(weightEntry.getWeight(), weightEntry.getDate(), customUser);
 
-        double weight = weightEntry.getWeight();
-
-        model.addAttribute("weight", weight);
+        model.addAttribute("WeightEntries", weightEntry);
 
         //TODO Im sure this can be done better
         try {
