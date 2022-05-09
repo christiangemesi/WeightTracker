@@ -45,5 +45,4 @@ public class HomeScreenController {
     public String  about() {
         return "about.html";
     }
-
 }

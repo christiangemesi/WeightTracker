@@ -53,7 +53,7 @@ public class UserRepositoryTest {
         assertThrows(DataIntegrityViolationException.class, () -> userRepository.saveAndFlush(user2));
     }
 
-    /*
+
     @Test
     public void testDeleteUser() {
         var user1 = new User("username1","password1", Set.of("ROLE_USER"));
@@ -66,5 +66,5 @@ public class UserRepositoryTest {
         assertEquals(0, this.userRepository.findAll().size());
     }
 
-     */
+
 }
