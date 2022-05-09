@@ -6,6 +6,23 @@
 </head>
 <body>
 <H1>About Page</H1>
+
+<span class="username" th:text="${#authentication.getPrincipal().getUsername()}">User-Email</span>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Logout">
+</form>
+
+<button onclick="location.href='/'" id="toHome"type="button">
+    Home</button>
+
+<button onclick="location.href='/addweight'" id="toAddweight"type="button">
+    addWeight</button>
+
+<button onclick="location.href='/about'" id="toAbout"type="button">
+    About</button>
+
+
+
 <p>We build good application :)</p>
 </body>
 </html>
