@@ -16,9 +16,11 @@ public class WeightEntry {
     private User user;
 
     @OneToMany(mappedBy = "weightEntry")
-    private List<Image> imageSet = new ArrayList<>();
+    private List<Image> imageList = new ArrayList<>();
 
     private double weight;
+
+
     private Date date;
 
     public WeightEntry() {
@@ -32,7 +34,7 @@ public class WeightEntry {
 
     public WeightEntry(User user, List<Image> imageSet, double weight, Date date) {
         this.user = user;
-        this.imageSet = imageSet;
+        this.imageList = imageSet;
         this.weight = weight;
         this.date = date;
     }
@@ -71,11 +73,11 @@ public class WeightEntry {
     }
 
     public List<Image> getImageList() {
-        return imageSet;
+        return imageList;
     }
 
-    public void setImageList(List<Image> imageSet) {
-        this.imageSet = imageSet;
+    public void setImageList(List<Image> imageList) {
+        this.imageList = imageList;
     }
 
     @Override

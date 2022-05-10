@@ -59,5 +59,7 @@ public class BootStrapData implements CommandLineRunner {
 
         var x = weightEntryRepository.findAll();
         System.out.println(x.toString());
+
+
     }
 }

@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -26,7 +27,8 @@ public class User implements UserDetails {
     private Set<String> authorities;
 
     @OneToMany(mappedBy = "user")
-    private List<WeightEntry> weightEntrySet = new ArrayList<>();
+    @JsonIgnore
+    private List<WeightEntry> weightEntryList = new ArrayList<>();
 
     public User() {
     }
@@ -45,7 +47,7 @@ public class User implements UserDetails {
         this.username = email;
         this.password = password;
         this.authorities = authorities;
-        this.weightEntrySet = weightEntrySet;
+        this.weightEntryList = weightEntrySet;
     }
 
     @Override
@@ -122,10 +124,10 @@ public class User implements UserDetails {
     }
 
     public List<WeightEntry> getWeightEntryList() {
-        return weightEntrySet;
+        return weightEntryList;
     }
 
     public void setWeightEntryList(List<WeightEntry> weightEntrySet) {
-        this.weightEntrySet = weightEntrySet;
+        this.weightEntryList = weightEntrySet;
     }
 }

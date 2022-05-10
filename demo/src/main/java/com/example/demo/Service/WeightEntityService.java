@@ -5,6 +5,8 @@ import com.example.demo.model.WeightEntry;
 import com.example.demo.repositories.WeightEntryRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -22,7 +24,7 @@ public class WeightEntityService {
     }
 
 
-    public WeightEntry getDuplicateWeightEntry(Date date, User user) {
+    public WeightEntry isDuplicateWeightEntryPresent(Date date, User user) {
         return weightEntryRepository.listWithDuplicates(user.getId(), date);
     }
 
@@ -31,6 +33,8 @@ public class WeightEntityService {
     }
 
     public List<WeightEntry> getAllWeights(Long userId) {
-        return weightEntryRepository.findAllByUserId(userId);
+        return weightEntryRepository.findAllByUserId(userId).stream()
+                .sorted(Comparator.comparing(WeightEntry::getDate))
+                .toList();
     }
 }

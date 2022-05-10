@@ -15,29 +15,42 @@
     <input type="submit" value="Logout">
 </form>
 
+<button onclick="location.href='/'" id="toHome"type="button">
+    Home</button>
+
+<button onclick="location.href='/addweight'" id="toAddweight"type="button">
+    addWeight</button>
+
+<button onclick="location.href='/about'" id="toAbout"type="button">
+    About</button>
+
 <div>
     <canvas id="myChart"></canvas>
 </div>
 
-<script>
-    let number = [[${weight}]]
 
-    const labels = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-    ];
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    let weightEntries = /*[[${weightEntries}]]*/ [];
+    /*]]>*/
+
+    const labels = weightEntries.map(weightEntry => {
+        const date = new Date(weightEntry.date);
+        return date.toDateString();
+    });
+
+    const values = weightEntries.map(weightEntry => {
+        return weightEntry.weight
+    });
 
     const data = {
         labels: labels,
         datasets: [{
-            label: 'My Weight Jurney',
+            label: 'My Weight Journey',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45],
+            data: values,
         }]
     };
 
@@ -46,10 +59,7 @@
         data: data,
         options: {}
     };
-</script>
 
-
-<script>
     const myChart = new Chart(
         document.getElementById('myChart'),
         config
