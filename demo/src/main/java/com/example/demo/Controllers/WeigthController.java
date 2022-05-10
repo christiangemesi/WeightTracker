@@ -2,6 +2,7 @@ package com.example.demo.Controllers;
 
 import com.example.demo.Service.ImageFileService;
 import com.example.demo.Service.WeightEntityService;
+import com.example.demo.model.Image;
 import com.example.demo.model.User;
 import com.example.demo.model.WeightEntry;
 import com.example.demo.repositories.WeightEntryRepository;
@@ -32,6 +33,11 @@ public class WeigthController {
         this.weightEntryRepository = weightEntryRepository;
     }
 
+    @RequestMapping("/addweight")
+    public String  addWeight() {
+        return "addWeight.html";
+    }
+
     @RequestMapping(path = "/addweight", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public String addWeight(WeightEntry weightEntry,
                             @RequestParam("front") MultipartFile front,
@@ -42,33 +48,39 @@ public class WeigthController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User customUser = (User) authentication.getPrincipal();
 
+        WeightEntry duplicate = weightEntityService.isDuplicateWeightEntryPresent(weightEntry.getDate(), customUser);
 
-        WeightEntry duplicate = weightEntityService.isDuplicateWeightEntryPresent(weightEntry.getDate(),customUser);
-
-        if(duplicate != null){
+        if (duplicate != null) {
             weightEntityService.removeWeightEntryById(duplicate.getId());
         }
 
-        weightEntityService.addWeightEntity(weightEntry.getWeight(), weightEntry.getDate(), customUser);
-
-        model.addAttribute("WeightEntries", weightEntry);
+        weightEntry = weightEntityService.addWeightEntity(weightEntry.getWeight(), weightEntry.getDate(), customUser);
 
         //TODO Im sure this can be done better
         try {
             if (front.getBytes().length != 0) {
+                Image image = new Image(front.getName(),front.getBytes(),weightEntry);
+
                 imageFileService.save(front.getBytes(), front.getName(), weightEntry.getId());
+                model.addAttribute("front", image);
             }
             if (back.getBytes().length != 0) {
+                Image image = new Image(back.getName(),back.getBytes(),weightEntry);
+                model.addAttribute("back", image);
                 imageFileService.save(back.getBytes(), back.getName(), weightEntry.getId());
             }
             if (side.getBytes().length != 0) {
+                Image image = new Image(side.getName(),side.getBytes(),weightEntry);
+                model.addAttribute("side", image);
                 imageFileService.save(side.getBytes(), side.getName(), weightEntry.getId());
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        return "redirect:/addweight";
+        model.addAttribute("WeightEntries", weightEntry);
+
+        return "redirect:/";
     }
 }
 

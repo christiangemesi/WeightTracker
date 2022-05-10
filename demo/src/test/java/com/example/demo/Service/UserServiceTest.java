@@ -15,7 +15,6 @@ public class UserServiceTest {
     @Autowired
     private UserService userService;
 
-
     /* Note this Test only works if executed alone */
     @Test
     public void testSaveUserWithSameUsername() {
@@ -25,8 +24,6 @@ public class UserServiceTest {
 
         assertTrue(userService.usernameAlreadyExists(user3.getUsername()));
     }
-
-
 
     @Test
     public void testLoadUserByUsername() {
