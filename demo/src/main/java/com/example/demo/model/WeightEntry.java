@@ -20,6 +20,7 @@ public class WeightEntry {
 
     private double weight;
 
+
     private Date date;
 
     public WeightEntry() {
