@@ -27,7 +27,6 @@ public class UserServiceTest {
     }
 
 
-
     @Test
     public void testLoadUserByUsername() {
         var user2 = new User("username1", "password1", Set.of("ROLE_USER"));
