@@ -32,9 +32,6 @@ public class ImageServiceTest {
 
         imageFileService.save(array, image.getName(),weightEntry.getId());
 
-
-
-        assertEquals(array,);
     }
 
 }
