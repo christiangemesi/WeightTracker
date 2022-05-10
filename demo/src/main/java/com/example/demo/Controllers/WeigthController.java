@@ -49,7 +49,7 @@ public class WeigthController {
             weightEntityService.removeWeightEntryById(duplicate.getId());
         }
 
-        weightEntityService.addWeightEntity(weightEntry.getWeight(), weightEntry.getDate(), customUser);
+        weightEntry = weightEntityService.addWeightEntity(weightEntry.getWeight(), weightEntry.getDate(), customUser);
 
         model.addAttribute("WeightEntries", weightEntry);
 
