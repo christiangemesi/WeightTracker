@@ -40,6 +40,11 @@
         return date.toDateString();
     });
 
+    const images = weightEntries.map(weightEntry => {
+        console.log(weightEntry.imageList)
+        return weightEntry.imageList;
+    })
+
     const values = weightEntries.map(weightEntry => {
         return weightEntry.weight
     });
