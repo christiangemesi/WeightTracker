@@ -41,8 +41,9 @@
     });
 
     const images = weightEntries.map(weightEntry => {
-        console.log(weightEntry.imageList)
-        return weightEntry.imageList;
+        weightEntry.imageList.forEach(element => {
+            console.log(element)
+        })
     })
 
     const values = weightEntries.map(weightEntry => {
@@ -69,6 +70,7 @@
         document.getElementById('myChart'),
         config
     );
+
 </script>
 
 </body>
