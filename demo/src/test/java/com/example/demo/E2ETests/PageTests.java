@@ -21,7 +21,7 @@ public class PageTests {
     }
 
     /*
-    Note this Test will only work until the username and password are valid
+    Note this Test will only work until username and password are valid
      */
     @Test
     void loginValid() {

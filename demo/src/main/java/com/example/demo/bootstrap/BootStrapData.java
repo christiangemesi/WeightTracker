@@ -17,25 +17,16 @@ import java.util.*;
 @Component
 public class BootStrapData implements CommandLineRunner {
 
-    private final UserRepository userRepository;
     private final WeightEntryRepository weightEntryRepository;
-    private final ImageRepository imageRepository;
     private final UserService userService;
-    private final WeightEntityService weightEntityService;
 
-    public BootStrapData(UserRepository userRepository, WeightEntryRepository weightEntryRepository, ImageRepository imageRepository, UserService userService, WeightEntityService weightEntityService) {
-        this.userRepository = userRepository;
+    public BootStrapData(WeightEntryRepository weightEntryRepository, UserService userService) {
         this.weightEntryRepository = weightEntryRepository;
-        this.imageRepository = imageRepository;
         this.userService = userService;
-        this.weightEntityService = weightEntityService;
     }
-
-
 
     @Override
     public void run(String... args) throws Exception {
-
 
         try {
             userService.loadUserByUsername("admin");
@@ -47,19 +38,5 @@ public class BootStrapData implements CommandLineRunner {
         } catch (UsernameNotFoundException e) {
             this.userService.addUser("user", "user", Set.of("ROLE_USER"));
         }
-
-        User user = (User) userService.loadUserByUsername("user");
-        User admin = (User) userService.loadUserByUsername("admin");
-
-        Date date = new Date(2022, 6, 4);
-
-        WeightEntry weightEntry1 = new WeightEntry(68, date, admin);
-        WeightEntry weightEntry2 = new WeightEntry(200, date, admin);
-        weightEntryRepository.save(weightEntry1);
-
-        var x = weightEntryRepository.findAll();
-        System.out.println(x.toString());
-
-
     }
 }

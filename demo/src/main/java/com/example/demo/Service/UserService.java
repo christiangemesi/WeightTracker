@@ -40,13 +40,10 @@ public class UserService implements UserDetailsService {
     }
 
     public User update(User user) {
-        return userRepository.save(user); // 'save' might return new object
+        return userRepository.save(user);
     }
 
     public void delete(User user) {
         userRepository.delete(user);
     }
-
-
-
 }
