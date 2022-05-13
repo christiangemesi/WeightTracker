@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 public class ImageServiceTest {
-
+/*
     @Autowired
     private ImageFileService imageFileService;
 
@@ -33,5 +33,7 @@ public class ImageServiceTest {
         imageFileService.save(array, image.getName(),weightEntry.getId());
 
     }
+
+ */
 
 }
