@@ -27,19 +27,14 @@
 
 <button onclick="location.href='/about'" id="toAbout"type="button">
     About</button>
-
-
-
 <!--
 Source: https://github.com/Frontend-Paathshala/Datepicker-Bootstrap-4/blob/main/index.html
 Source: https://www.youtube.com/watch?v=8ptKpzW-KLo&ab_channel=FrontendPaathshala
 -->
 
-
 <section class="container">
     <form method="post" th:action="'/editweight/' + ${weightEntry.id}" enctype="multipart/form-data">
         <h3>Input date</h3>
-
         <div class="input-group date" id="datepicker">
             <input type="text" id="date" name="date" th:value="${#dates.format(weightEntry.date, 'MM/dd/yyyy')}">
             <span class="input-group-append">
@@ -51,50 +46,30 @@ Source: https://www.youtube.com/watch?v=8ptKpzW-KLo&ab_channel=FrontendPaathshal
         <h3>Input Weight</h3>
         <input type="number" id="weight" name="weight" th:value="${weightEntry.weight}">
         <br/>
-
         <div>
             <label>Front: </label>
             <input type="file" name="front" accept="image/png, image/jpeg"/>
         </div>
-
         <img th:if="${front != null}" th:src="'/weightentries/' + ${weightEntry.id} + '/images/' + ${front.id}">
-
         <div>
             <label>Back: </label>
             <input type="file" name="back" accept="image/png, image/jpeg"/>
         </div>
-
         <img th:if="${back != null}" th:src="'/weightentries/' + ${weightEntry.id} + '/images/' + ${back.id}">
         <div>
-
             <label>Side: </label>
             <input type="file" name="side" accept="image/png, image/jpeg"/>
         </div>
-
         <img th:if="${side != null}" th:src="'/weightentries/' + ${weightEntry.id} + '/images/' + ${side.id}">
-
         <br>
         <input type="submit" value="Update WeightEntry">
     </form>
-
-    <!--    <form th:action="@{/weight-entries/#{weightEntry.id}/images}" method="post">-->
-
-    <!--        <input type="submit" value="Add to Database">-->
-    <!--    </form>-->
 </section>
-
 
 <script type="text/javascript">
     $(function () {
         $('#datepicker').datepicker();
     });
-
-    function formatDate(date) {
-        const formattedDate = new Date(date);
-        return formattedDate.getMonth() + '/' + formattedDate.getDate() + '/' + formattedDate.getFullYear();
-    }
 </script>
-
-
 </body>
 </html>
