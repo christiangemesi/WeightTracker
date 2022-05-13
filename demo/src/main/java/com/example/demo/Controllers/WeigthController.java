@@ -23,13 +23,10 @@ public class WeigthController {
 
     private final WeightEntityService weightEntityService;
     private final ImageFileService imageFileService;
-    private final WeightEntryRepository weightEntryRepository;
 
-
-    public WeigthController(WeightEntityService weightEntityService, ImageFileService imageFileService, WeightEntryRepository weightEntryRepository) {
+    public WeigthController(WeightEntityService weightEntityService, ImageFileService imageFileService) {
         this.weightEntityService = weightEntityService;
         this.imageFileService = imageFileService;
-        this.weightEntryRepository = weightEntryRepository;
     }
 
     @RequestMapping("/addweight")
@@ -55,7 +52,6 @@ public class WeigthController {
 
         weightEntry = weightEntityService.addWeightEntity(weightEntry.getWeight(), weightEntry.getDate(), customUser);
 
-        //TODO Im sure this can be done better
         try {
             if (front.getBytes().length != 0) {
                 Image image = new Image(front.getName(),front.getBytes(),weightEntry);
