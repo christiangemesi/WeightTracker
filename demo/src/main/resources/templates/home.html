@@ -15,24 +15,31 @@
     <input type="submit" value="Logout">
 </form>
 
-<button onclick="location.href='/'" id="toHome"type="button">
-    Home</button>
+<button onclick="location.href='/'" id="toHome" type="button">
+    Home
+</button>
 
-<button onclick="location.href='/addweight'" id="toAddweight"type="button">
-    addWeight</button>
+<button onclick="location.href='/addweight'" id="toAddweight" type="button">
+    addWeight
+</button>
 
-<button onclick="location.href='/about'" id="toAbout"type="button">
-    About</button>
+<button onclick="location.href='/about'" id="toAbout" type="button">
+    About
+</button>
+
+<button onclick="location.href='/' + user.id + '/edit'" id="toEdit" type="button">
+    Edit Account
+</button>
 
 <div>
     <canvas id="myChart"></canvas>
 </div>
 
 
-
 <script th:inline="javascript">
     /*<![CDATA[*/
     let weightEntries = /*[[${weightEntries}]]*/ [];
+    let user = /*[[${user}]]*/ {};
     /*]]>*/
 
     const labels = weightEntries.map(weightEntry => {
@@ -57,13 +64,26 @@
     const config = {
         type: 'line',
         data: data,
-        options: {}
+        options: {
+            onClick: (e) => {
+                const canvasPosition = Chart.helpers.getRelativePosition(e, myChart);
+
+                // Substitute the appropriate scale IDs
+                const dataX = myChart.scales.x.getValueForPixel(canvasPosition.x);
+                const dataY = myChart.scales.y.getValueForPixel(canvasPosition.y);
+
+                const weightEntry = weightEntries[dataX];
+
+                location.href = '/editweight/' + weightEntry.id;
+            },
+        }
     };
 
     const myChart = new Chart(
         document.getElementById('myChart'),
         config
     );
+
 </script>
 
 </body>

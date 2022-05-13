@@ -46,7 +46,4 @@ public class UserService implements UserDetailsService {
     public void delete(User user) {
         userRepository.delete(user);
     }
-
-
-
 }
