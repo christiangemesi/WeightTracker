@@ -13,8 +13,9 @@ public class ImageFileRepository {
     public static final String RESOURCES_DIR = "uploads/";
 
     public void save(byte[] content, Long id) {
+
         try {
-            Path newFile = Paths.get(RESOURCES_DIR + id + ".jpeg");
+            Path newFile = Paths.get(RESOURCES_DIR + id);
             if (!Files.exists(newFile.getParent())) {
                 Files.createDirectories(newFile.getParent());
             }
@@ -25,11 +26,11 @@ public class ImageFileRepository {
     }
 
     public FileSystemResource findInFileSystem(Long id) {
-        return new FileSystemResource(Paths.get(RESOURCES_DIR + id + ".jpeg"));
+        return new FileSystemResource(Paths.get(RESOURCES_DIR + id));
     }
 
     public boolean delete(Long id) {
-        Path file = Paths.get(RESOURCES_DIR + id + ".jpeg");
+        Path file = Paths.get(RESOURCES_DIR + id);
         try {
             Files.delete(file);
         } catch (IOException e) {
