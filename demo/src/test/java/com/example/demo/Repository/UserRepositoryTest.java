@@ -54,6 +54,7 @@ public class UserRepositoryTest {
     }
 
 
+    /*note this only works if tested alone */
     @Test
     public void testDeleteUser() {
         var user1 = new User("username1","password1", Set.of("ROLE_USER"));

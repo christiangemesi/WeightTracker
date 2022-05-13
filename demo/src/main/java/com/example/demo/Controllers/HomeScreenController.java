@@ -7,6 +7,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -21,18 +23,19 @@ public class HomeScreenController {
     }
 
     @RequestMapping("/")
-    public String  welcome(Model model) {
+    public String welcome(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User customUser = (User) authentication.getPrincipal();
 
         List<WeightEntry> weightEntries = weightEntityService.getAllWeights(customUser.getId());
         model.addAttribute("weightEntries", weightEntries);
+        model.addAttribute("user", customUser);
 
         return "home.html";
     }
 
     @RequestMapping("/about")
-    public String  about() {
+    public String about() {
         return "about.html";
     }
 }

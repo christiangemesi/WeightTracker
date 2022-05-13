@@ -23,6 +23,13 @@ public class WeightEntityService {
         return this.weightEntryRepository.save(new WeightEntry(weight, date, user));
     }
 
+    public WeightEntry updateWeightEntry(long id, double weight, Date date) {
+        WeightEntry weightEntry = getWeightEntryById(id);
+        weightEntry.setWeight(weight);
+        weightEntry.setDate(date);
+
+        return weightEntryRepository.save(weightEntry);
+    }
 
     public WeightEntry isDuplicateWeightEntryPresent(Date date, User user) {
         return weightEntryRepository.listWithDuplicates(user.getId(), date);
@@ -36,5 +43,11 @@ public class WeightEntityService {
         return weightEntryRepository.findAllByUserId(userId).stream()
                 .sorted(Comparator.comparing(WeightEntry::getDate))
                 .toList();
+    }
+
+    public WeightEntry getWeightEntryById(long weightEntryId) {
+        return weightEntryRepository
+                .findById(weightEntryId)
+                .orElseThrow();
     }
 }
