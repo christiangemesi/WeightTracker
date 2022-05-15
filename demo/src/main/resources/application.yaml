@@ -14,3 +14,9 @@ spring:
     user:
       name: admin
       password: admin
+
+  web:
+    resources:
+      static-locations: classpath:/resources/static
+      cache:
+        period: 0
