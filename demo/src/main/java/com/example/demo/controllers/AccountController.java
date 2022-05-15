@@ -27,7 +27,10 @@ public class AccountController {
     }
 
     @PutMapping("/username")
-    public String updateUsername(@RequestParam String username, RedirectAttributes redirectAttributes) {
+    public String updateUsername(
+        @RequestParam String username,
+        RedirectAttributes redirectAttributes
+    ) {
         User currentUser = accountService.requireCurrentUser();
         currentUser.setUsername(username);
         currentUser = userService.update(currentUser);
@@ -39,24 +42,26 @@ public class AccountController {
     @PutMapping("/password")
     public String updatePassword(
         @RequestParam String password,
-        @RequestParam String passwordConfirmation
+        @RequestParam("password-confirmation") String passwordConfirmation,
+        RedirectAttributes redirectAttributes
     ) {
         if (!password.equals(passwordConfirmation)) {
-            throw new ResponseStatusException(HttpStatus.PRECONDITION_FAILED, "passwords must match");
+            redirectAttributes.addFlashAttribute("error", "Passwords did not match!");
+            return "redirect:/account?tab=1";
         }
         User currentUser = accountService.requireCurrentUser();
         currentUser = userService.updatePassword(currentUser, password);
         accountService.setCurrentUser(currentUser);
-        return "redirect:/account";
+        redirectAttributes.addFlashAttribute("success", "Password has been changed.");
+        return "redirect:/account?tab=1";
     }
 
     @DeleteMapping
-    public String delete() {
-        System.out.println("yes its me");
-
+    public String delete(RedirectAttributes redirectAttributes) {
         User currentUser = accountService.requireCurrentUser();
         userService.delete(currentUser);
         accountService.clearCurrentUser();
+        redirectAttributes.addFlashAttribute("success", "Your account has been deleted.");
         return "redirect:/login";
     }
 
