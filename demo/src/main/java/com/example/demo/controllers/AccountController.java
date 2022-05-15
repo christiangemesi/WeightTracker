@@ -1,71 +1,65 @@
 package com.example.demo.controllers;
 
+import com.example.demo.services.AccountService;
 import com.example.demo.services.UserService;
 import com.example.demo.models.User;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @Controller
-public class UserController {
-
-
+@RequestMapping("account")
+public class AccountController {
     private final UserService userService;
-    private final PasswordEncoder passwordEncoder;
+    private final AccountService accountService;
 
-    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
+    public AccountController(UserService userService, AccountService accountService) {
         this.userService = userService;
-        this.passwordEncoder = passwordEncoder;
+        this.accountService = accountService;
     }
 
-    @GetMapping("/user/edit")
-    public String edit(Model model) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User currentUser = (User) authentication.getPrincipal();
-        model.addAttribute("user", currentUser);
-        return "pages/user/edit";
+    @GetMapping
+    public String show() {
+        return "pages/account";
     }
 
-    @PostMapping("/user/edit")
-    public String update(
-        @RequestParam String username,
-        @RequestParam String password
-    ) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User currentUser = (User) authentication.getPrincipal();
+    @PutMapping("/username")
+    public String updateUsername(@RequestParam String username) {
+        User currentUser = accountService.requireCurrentUser();
         currentUser.setUsername(username);
-        currentUser.setPassword(passwordEncoder.encode(password));
         currentUser = userService.update(currentUser);
-
-        Authentication auth = new UsernamePasswordAuthenticationToken(
-            currentUser,
-            currentUser.getPassword(),
-            currentUser.getAuthorities()
-        );
-        SecurityContextHolder.getContext().setAuthentication(auth);
-
-        return "redirect:/";
+        accountService.setCurrentUser(currentUser);
+        return "redirect:/account";
     }
 
-    @PostMapping("/{id}/delete")
-    public String deleteUser(@PathVariable int id) {
-
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User customUser = (User) authentication.getPrincipal();
-        long userId = customUser.getId();
-
-        User user = userService.findContact(id).orElseThrow();
-
-        if (user.getId() == userId) {
-            userService.delete(user);
-            SecurityContextHolder.getContext().setAuthentication(null);
-
-            return "redirect:/pages/login";
+    @PutMapping("/password")
+    public String updatePassword(
+        @RequestParam String password,
+        @RequestParam String passwordConfirmation
+    ) {
+        if (!password.equals(passwordConfirmation)) {
+            throw new ResponseStatusException(HttpStatus.PRECONDITION_FAILED, "passwords must match");
         }
-        return "pages/error";
+        User currentUser = accountService.requireCurrentUser();
+        currentUser = userService.updatePassword(currentUser, password);
+        accountService.setCurrentUser(currentUser);
+        return "redirect:/account";
+    }
+
+    @DeleteMapping
+    public String delete() {
+        System.out.println("yes its me");
+
+        User currentUser = accountService.requireCurrentUser();
+        userService.delete(currentUser);
+        accountService.clearCurrentUser();
+        return "redirect:/login";
+    }
+
+    @ModelAttribute
+    public User user() {
+        return accountService.requireCurrentUser();
     }
 }
