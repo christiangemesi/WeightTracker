@@ -22,12 +22,13 @@
 <div layout:fragment="header">
     <header th:replace="fragments/header"></header>
 </div>
-<section layout:fragment="content">
+<main layout:fragment="content">
     <p>Page content goes here</p>
-</section>
-<footer>
-    <p>My footer</p>
-    <p layout:fragment="custom-footer">Custom footer here</p>
-</footer>
+</main>
+<div layout:fragment="footer">
+    <footer>
+        FOOTER!
+    </footer>
+</div>
 </body>
 </html>

@@ -9,6 +9,7 @@ import org.springframework.security.authentication.dao.DaoAuthenticationProvider
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -33,17 +34,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.formLogin()
-                .loginPage("/login").permitAll()
+        http
+            .csrf().disable() // TODO enable this.
+            .headers().frameOptions().disable() // TODO what is this for?
+            .and().formLogin()
                 .defaultSuccessUrl("/")
-                .and().authorizeRequests()
+                .loginPage("/login").permitAll()
+            .and().authorizeRequests()
+                .mvcMatchers("/about", "/signup").permitAll()
+                .antMatchers(new String[] { "/public/**", "/static/**" }).permitAll()
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                .mvcMatchers("/about").permitAll()
-                .mvcMatchers("/signup").permitAll()
                 .anyRequest().authenticated();
-
-        http.csrf().disable();
-        http.headers().frameOptions().disable();
     }
 
     @Override

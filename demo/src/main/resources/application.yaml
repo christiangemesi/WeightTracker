@@ -17,6 +17,8 @@ spring:
 
   web:
     resources:
-      static-locations: classpath:/resources/static
       cache:
         period: 0
+
+  mvc:
+    static-path-pattern: /public/**

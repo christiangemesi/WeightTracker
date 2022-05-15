@@ -5,12 +5,12 @@
 >
 <head>
     <title>Login</title>
+
+    <link type="text/css" rel="stylesheet" th:href="@{public/css/pages/login.css}"  />
 </head>
 <body>
-    <header layout:fragment="header">
-        NO HEERE
-    </header>
-    <section layout:fragment="content">
+    <header layout:fragment="header"></header>
+    <main layout:fragment="content">
         <h1>Login Page</h1>
 
         <form name ="f" th:action="@{/login}" method="post">
@@ -25,9 +25,7 @@
             </div>
             <a href="/signup">not having an account yet?</a>
         </form>
-    </section>
-    <footer>
-        <p layout:fragment="custom-footer">This is some footer content from content page 1</p>
-    </footer>
+    </main>
+    <footer layout:fragment="footer"></footer>
 </body>
 </html>
