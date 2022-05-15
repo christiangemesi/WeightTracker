@@ -1,0 +1,21 @@
+
+.alerts {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    width: 30rem;
+    max-width: calc(100vw - 4rem);
+}
+.alerts > .alert .alert__text {
+    display: flex;
+    align-items: center;
+    max-height: 8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.alerts > .alert i.bi {
+    font-size: 1.25em;
+}
+.alerts > .alert:last-child {
+    margin-bottom: 0;
+}

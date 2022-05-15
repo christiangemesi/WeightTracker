@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("account")
@@ -26,11 +27,12 @@ public class AccountController {
     }
 
     @PutMapping("/username")
-    public String updateUsername(@RequestParam String username) {
+    public String updateUsername(@RequestParam String username, RedirectAttributes redirectAttributes) {
         User currentUser = accountService.requireCurrentUser();
         currentUser.setUsername(username);
         currentUser = userService.update(currentUser);
         accountService.setCurrentUser(currentUser);
+        redirectAttributes.addFlashAttribute("success", "Username has been changed.");
         return "redirect:/account";
     }
 
