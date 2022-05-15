@@ -1,7 +1,7 @@
 package com.example.demo.Model;
 
-import com.example.demo.model.User;
-import com.example.demo.model.WeightEntry;
+import com.example.demo.models.User;
+import com.example.demo.models.WeightEntry;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;

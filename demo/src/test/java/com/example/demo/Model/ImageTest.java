@@ -1,11 +1,7 @@
 package com.example.demo.Model;
 
-import com.example.demo.model.Image;
-import com.example.demo.model.User;
-import com.example.demo.model.WeightEntry;
+import com.example.demo.models.Image;
 import org.junit.jupiter.api.Test;
-
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

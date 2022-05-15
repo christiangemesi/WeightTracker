@@ -1,13 +1,12 @@
 package com.example.demo.Repository;
 
-import com.example.demo.model.User;
-import com.example.demo.model.WeightEntry;
+import com.example.demo.models.User;
+import com.example.demo.models.WeightEntry;
 import com.example.demo.repositories.UserRepository;
 import com.example.demo.repositories.WeightEntryRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.dao.DataIntegrityViolationException;
 
 import java.util.Calendar;
 import java.util.Date;

@@ -98,12 +98,7 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>htmlunit-driver</artifactId>
         </dependency>
-
-
-
     </dependencies>
-
-
 
     <build>
         <plugins>
