@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}"
+    lang="en"
+>
+<head>
+    <title>Edit Account ◆ WeightTracker</title>
+</head>
+<body>
+<main layout:fragment="content">
+    <section class="container">
+        <div class="row justify-content-center text-center">
+            <div
+                class="col-lg-6"
+                th:with="tab = ${param.tab == null ? '0' : param.tab[0]}"
+            >
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit Account</li>
+                    </ol>
+                </nav>
+                <h1 class="mb-4">
+                    Edit your Account
+                </h1>
+
+                <ul class="nav nav-tabs nav-fill mb-3">
+                    <li class="nav-item" th:with="isActive = ${tab.equals('0')}">
+                        <a
+                            th:class="${isActive ? 'nav-link active' : 'nav-link'}"
+                            th:aria-current="${isActive ? 'page' : null}" href="/user/edit?tab=0"
+                        >
+                            Change Username
+                        </a>
+                    </li>
+                    <li class="nav-item" th:with="isActive = ${tab.equals('1')}">
+                        <a
+                            th:class="${isActive ? 'nav-link active' : 'nav-link'}"
+                            th:aria-current="${isActive ? 'page' : null}"
+                            href="/user/edit?tab=1"
+                        >
+                            Change Password
+                        </a>
+                    </li>
+                    <li class="nav-item" th:with="isActive = ${tab.equals('2')}">
+                        <a
+                            th:class="${isActive ? 'nav-link active' : 'nav-link'}"
+                            th:aria-current="${isActive ? 'page' : null}"
+                            href="/user/edit?tab=2"
+                        >
+                            Delete Account
+                        </a>
+                    </li>
+                </ul>
+
+                <section th:if="${tab.equals('0')}" aria-label="Change Username">
+                    <form th:action="@{/user/edit-username}" method="post" class="d-flex flex-column gap-2">
+                        <div class="form-floating">
+                            <input
+                                id="username"
+                                name="username"
+                                type="text"
+                                class="form-control"
+                                placeholder="Username"
+                                th:value="${user.getUsername()}"
+                            >
+                            <label for="username">Username</label>
+                        </div>
+                        <button class="btn btn-primary" type="submit">
+                            Change Username
+                        </button>
+                    </form>
+                </section>
+
+                <section th:if="${tab.equals('1')}" aria-label="Change Password">
+                    <form th:action="@{/user/edit-password}" method="post" class="d-flex flex-column gap-2">
+                        <div class="form-floating">
+                            <input
+                                id="password"
+                                name="password"
+                                type="password"
+                                class="form-control"
+                                placeholder="Password"
+                            >
+                            <label for="password">New Password</label>
+                        </div>
+                        <div class="form-floating">
+                            <input
+                                id="password-confirmation"
+                                name="password-confirmation"
+                                type="password"
+                                class="form-control"
+                                placeholder="Confirm Password"
+                            >
+                            <label for="password-confirmation">Confirm Password</label>
+                        </div>
+                        <button class="btn btn-primary" type="submit">
+                            Change Password
+                        </button>
+                    </form>
+                </section>
+
+                <section th:if="${tab.equals('2')}" aria-label="Change Username">
+                    <p>
+                        Deletes your account. This action cannot be reverted.
+                    </p>
+                    <form th:action="@{delete}" method="post">
+                        <button type="submit" class="btn btn-danger" title="Delete your account">
+                            <i class="bi bi-exclamation-circle me-2"></i>
+                            Delete
+                            <i class="bi bi-exclamation-circle ms-2"></i>
+                        </button>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>
