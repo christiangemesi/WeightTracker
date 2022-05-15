@@ -16,12 +16,3 @@
 .navbar-brand:hover > .navbar-brand__name {
     letter-spacing: 0.05em;
 }
-
-.btn-logout {
-    transition: 150ms ease-in;
-    transition-property: transform;
-    will-change: transform;
-}
-.btn-logout:hover {
-    transform: scale(1.1);
-}

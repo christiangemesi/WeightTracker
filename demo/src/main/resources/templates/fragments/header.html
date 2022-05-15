@@ -4,8 +4,8 @@
     <link type="text/css" rel="stylesheet" th:href="@{public/css/fragments/header.css}"  />
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container-fluid">
+<header class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="container-fluid">
         <a class="navbar-brand" href="/" title="Home">
             <span class="navbar-brand__icon">
                 ◆
@@ -51,18 +51,39 @@
 <!--                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
 <!--                </li>-->
             </ul>
-            <form class="d-flex gap-2">
-                <span
-                    class="navbar-text text-light"
-                    th:text="${#authentication.getPrincipal().getUsername()}">
-                </span>
-
-                <a href="/logout" class="btn btn-outline-light btn-logout" title="Sign out">
-                    <i class="bi bi-box-arrow-right"></i>
-                </a>
-            </form>
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item dropdown dropdown- me-2">
+                    <a
+                        href="#"
+                        role="button"
+                        class="nav-link dropdown-toggle dropdown-toggle--no-icon"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
+                        <span th:text="${#authentication.getPrincipal().getUsername()}"></span>
+                        <i class="bi bi-person-circle mw-1"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li>
+                            <a href="/user/edit" class="dropdown-item d-flex justify-content-between">
+                                Edit
+                                <i class="bi bi-pen"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a href="/logout" class="dropdown-item d-flex justify-content-between">
+                                Sign out
+                                <i class="bi bi-box-arrow-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
-    </div>
-</nav>
+    </nav>
+</header>
 </body>
 </html>
