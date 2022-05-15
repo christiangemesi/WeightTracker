@@ -31,9 +31,9 @@ public class UserController {
         User user = userService.findContact(id).orElseThrow();
         if (user.getId() == userId) {
             model.addAttribute("user", user);
-            return "edit";
+            return "pages/edit";
         }
-        return "error";
+        return "pages/error";
     }
 
     @PostMapping("/{id}/edit")
@@ -66,8 +66,8 @@ public class UserController {
             userService.delete(user);
             SecurityContextHolder.getContext().setAuthentication(null);
 
-            return "redirect:/login";
+            return "redirect:/pages/login";
         }
-        return "error";
+        return "pages/error";
     }
 }

@@ -30,7 +30,7 @@ public class WeigthController {
 
     @RequestMapping("/addweight")
     public String  addWeight() {
-        return "addWeight.html";
+        return "pages/addWeight.html";
     }
 
     @RequestMapping(path = "/addweight", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -84,7 +84,7 @@ public class WeigthController {
 
         WeightEntry weightEntry = weightEntityService.getWeightEntryById(id);
         if (!weightEntry.getUser().getId().equals(customUser.getId())) {
-            return "error";
+            return "pages/error";
         }
 
         model.addAttribute("weightEntry", weightEntry);
@@ -100,7 +100,7 @@ public class WeigthController {
                 .filter(image -> image.getName().equals("side"))
                 .findFirst().orElse(null));
 
-        return "editWeight.html";
+        return "pages/editWeight.html";
     }
 
     @PostMapping("/editweight/{id}")

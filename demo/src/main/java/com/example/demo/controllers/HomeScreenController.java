@@ -29,6 +29,6 @@ public class HomeScreenController {
         model.addAttribute("weightEntries", weightEntries);
         model.addAttribute("user", customUser);
 
-        return "home.html";
+        return "pages/home.html";
     }
 }

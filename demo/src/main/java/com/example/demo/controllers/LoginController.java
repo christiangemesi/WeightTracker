@@ -29,7 +29,7 @@ public class LoginController {
         } else {
             model.addAttribute("hasLoginError", error.isPresent());
 
-            return "login";
+            return "pages/login";
         }
     }
 
@@ -48,7 +48,7 @@ public class LoginController {
         if (bindingResult.hasErrors()) {
             model.addAttribute("user", user);
 
-            return "signup";
+            return "pages/signup";
         } else {
             this.userService.addUser(user.getUsername(), user.getPassword(), Set.of("ROLE_USER"));
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
