@@ -26,11 +26,11 @@
                 <div class="col-sm-8 col-md-6 col-xl-4">
                     <form class="d-grid gap-2" th:action="@{/login}" method="post">
                         <div class="form-floating">
-                            <input id="username" type="text" class="form-control" placeholder="Username" >
+                            <input id="username" name="username" type="text" class="form-control" placeholder="Username" >
                             <label for="username">Username</label>
                         </div>
                         <div class="form-floating">
-                            <input id="password" type="password" class="form-control" placeholder="Passwort" >
+                            <input id="password" name="password" type="password" class="form-control" placeholder="Passwort" >
                             <label for="password">Password</label>
                         </div>
 
