@@ -2,29 +2,48 @@
 <html
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     layout:decorate="~{layout}"
+    lang="en"
 >
 <head>
-    <title>Login</title>
+    <title>WeightTracker - Anmelden</title>
 
     <link type="text/css" rel="stylesheet" th:href="@{public/css/pages/login.css}"  />
 </head>
 <body>
     <header layout:fragment="header"></header>
     <main layout:fragment="content">
-        <h1>Login Page</h1>
-
-        <form name ="f" th:action="@{/login}" method="post">
-            <label for="username">Username</label><br/>
-            <input type="text" id="username" name="username"/>
-
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password"/>
-
-            <div class="form-actions">
-                <button type="submit" id="submit" class="btn">Log in</button>
+        <section class="container text-center">
+            <div class="mb-4">
+                <p class="lead">
+                    Welcome to
+                </p>
+                <h1 class="display-1">
+                    WeightTracker
+                </h1>
             </div>
-            <a href="/signup">not having an account yet?</a>
-        </form>
+
+            <div class="row justify-content-center">
+                <div class="col-sm-8 col-md-6 col-xl-4">
+                    <form class="d-grid gap-2" th:action="@{/login}" method="post">
+                        <div class="form-floating">
+                            <input id="username" type="text" class="form-control" placeholder="Username" >
+                            <label for="username">Username</label>
+                        </div>
+                        <div class="form-floating">
+                            <input id="password" type="password" class="form-control" placeholder="Passwort" >
+                            <label for="password">Password</label>
+                        </div>
+
+                        <div class="d-grid">
+                            <button class="btn btn-primary" type="submit">
+                                Sign in
+                            </button>
+                        </div>
+                        <a href="/signup" class="text-end small">Don't have an account yet?</a>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
     <footer layout:fragment="footer"></footer>
 </body>
