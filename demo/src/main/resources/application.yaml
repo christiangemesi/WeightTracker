@@ -22,3 +22,6 @@ spring:
 
   mvc:
     static-path-pattern: /public/**
+    hiddenmethod:
+      filter:
+        enabled: true

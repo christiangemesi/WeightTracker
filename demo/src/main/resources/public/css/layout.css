@@ -1,4 +1,8 @@
+main {
+    min-height: calc(100vh - 56px);
+}
 
+/* A dropdown-toggle whose default icon is removed. */
 .dropdown-toggle--no-icon:after {
     display: none;
 }

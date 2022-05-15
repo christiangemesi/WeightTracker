@@ -5,7 +5,7 @@
     lang="en"
 >
 <head>
-    <title>Edit Account ◆ WeightTracker</title>
+    <title>Account ◆ WeightTracker</title>
 </head>
 <body>
 <main layout:fragment="content">
@@ -18,18 +18,18 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Edit Account</li>
+                        <li class="breadcrumb-item active" aria-current="page">Account</li>
                     </ol>
                 </nav>
                 <h1 class="mb-4">
-                    Edit your Account
+                    Your Account
                 </h1>
 
                 <ul class="nav nav-tabs nav-fill mb-3">
                     <li class="nav-item" th:with="isActive = ${tab.equals('0')}">
                         <a
                             th:class="${isActive ? 'nav-link active' : 'nav-link'}"
-                            th:aria-current="${isActive ? 'page' : null}" href="/user/edit?tab=0"
+                            th:aria-current="${isActive ? 'page' : null}" href="/account?tab=0"
                         >
                             Change Username
                         </a>
@@ -38,7 +38,7 @@
                         <a
                             th:class="${isActive ? 'nav-link active' : 'nav-link'}"
                             th:aria-current="${isActive ? 'page' : null}"
-                            href="/user/edit?tab=1"
+                            href="/account?tab=1"
                         >
                             Change Password
                         </a>
@@ -47,7 +47,7 @@
                         <a
                             th:class="${isActive ? 'nav-link active' : 'nav-link'}"
                             th:aria-current="${isActive ? 'page' : null}"
-                            href="/user/edit?tab=2"
+                            href="/account?tab=2"
                         >
                             Delete Account
                         </a>
@@ -55,7 +55,7 @@
                 </ul>
 
                 <section th:if="${tab.equals('0')}" aria-label="Change Username">
-                    <form th:action="@{/user/edit-username}" method="post" class="d-flex flex-column gap-2">
+                    <form th:action="@{/account/username}" th:method="put" class="d-flex flex-column gap-2">
                         <div class="form-floating">
                             <input
                                 id="username"
@@ -74,7 +74,7 @@
                 </section>
 
                 <section th:if="${tab.equals('1')}" aria-label="Change Password">
-                    <form th:action="@{/user/edit-password}" method="post" class="d-flex flex-column gap-2">
+                    <form th:action="@{/account/password}" th:method="put" class="d-flex flex-column gap-2">
                         <div class="form-floating">
                             <input
                                 id="password"
@@ -105,7 +105,7 @@
                     <p>
                         Deletes your account. This action cannot be reverted.
                     </p>
-                    <form th:action="@{delete}" method="post">
+                    <form th:action="@{/account}" th:method="delete">
                         <button type="submit" class="btn btn-danger" title="Delete your account">
                             <i class="bi bi-exclamation-circle me-2"></i>
                             Delete
