@@ -22,34 +22,32 @@ public class UserController {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @GetMapping("/{id}/edit")
-    public String showUser(@PathVariable int id,
-                           Model model) {
+    @GetMapping("/user/edit")
+    public String edit(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User customUser = (User) authentication.getPrincipal();
-        long userId = customUser.getId();
-        User user = userService.findContact(id).orElseThrow();
-        if (user.getId() == userId) {
-            model.addAttribute("user", user);
-            return "pages/edit";
-        }
-        return "pages/error";
+        User currentUser = (User) authentication.getPrincipal();
+        model.addAttribute("user", currentUser);
+        return "pages/edit";
     }
 
-    @PostMapping("/{id}/edit")
-    public String editContact(@PathVariable int id,
-                              @RequestParam String username,
-                              @RequestParam String password) {
-        var contact = userService.findContact(id).orElseThrow();
-        contact.setUsername(username);
-        contact.setPassword(passwordEncoder.encode(password));
-        System.out.println(username);
-        System.out.println(password);
+    @PostMapping("/user/edit")
+    public String update(
+        @RequestParam String username,
+        @RequestParam String password
+    ) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User currentUser = (User) authentication.getPrincipal();
+        currentUser.setUsername(username);
+        currentUser.setPassword(passwordEncoder.encode(password));
+        currentUser = userService.update(currentUser);
 
-        Authentication auth = new UsernamePasswordAuthenticationToken(contact,contact.getPassword(),contact.getAuthorities());
+        Authentication auth = new UsernamePasswordAuthenticationToken(
+            currentUser,
+            currentUser.getPassword(),
+            currentUser.getAuthorities()
+        );
         SecurityContextHolder.getContext().setAuthentication(auth);
 
-        userService.update(contact);
         return "redirect:/";
     }
 
