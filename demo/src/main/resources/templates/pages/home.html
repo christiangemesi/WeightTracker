@@ -12,37 +12,31 @@
 </head>
 <body>
     <main layout:fragment="content">
-    <section class="container text-center">
-        <H1>Homescreen</H1>
+        <section class="container">
+            <h1>Homescreen</h1>
 
+            <button onclick="location.href='/'" id="toHome" type="button">
+                Home
+            </button>
 
-        <span class="username" th:text="${#authentication.getPrincipal().getUsername()}">User-Email</span>
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Logout">
-        </form>
+            <button onclick="location.href='/addweight'" id="toAddweight" type="button">
+                addWeight
+            </button>
 
-        <button onclick="location.href='/'" id="toHome" type="button">
-            Home
-        </button>
+            <button onclick="location.href='/about'" id="toAbout"type="button">
+                About</button>
 
-        <button onclick="location.href='/addweight'" id="toAddweight" type="button">
-            addWeight
-        </button>
+            <button onclick="location.href='/' + user.id + '/edit'" id="toEdit" type="button">
+                Edit Account
+            </button>
 
-        <button onclick="location.href='/about'" id="toAbout"type="button">
-            About</button>
-
-        <button onclick="location.href='/' + user.id + '/edit'" id="toEdit" type="button">
-            Edit Account
-        </button>
-
-        <div>
-            <canvas id="myChart"></canvas>
-        </div>
-    </section>
+            <div>
+                <canvas id="myChart"></canvas>
+            </div>
+        </section>
     </main>
 
-    <script th:inline="javascript">
+    <script layout:fragment="script" th:inline="javascript">
         /*<![CDATA[*/
         let weightEntries = /*[[${weightEntries}]]*/ [];
         let user = /*[[${user}]]*/ {};
