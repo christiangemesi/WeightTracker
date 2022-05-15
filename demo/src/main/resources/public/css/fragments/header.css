@@ -1,0 +1,27 @@
+.navbar-brand__icon {
+    margin-right: 0.25rem;
+    transition: 150ms ease-in;
+    transition-property: margin-right;
+    will-change: margin-right;
+}
+.navbar-brand:hover > .navbar-brand__icon {
+    margin-right: 0.5rem;
+}
+
+.navbar-brand__name {
+    transition: 150ms ease-in;
+    transition-property: letter-spacing;
+    will-change: letter-spacing;
+}
+.navbar-brand:hover > .navbar-brand__name {
+    letter-spacing: 0.05em;
+}
+
+.btn-logout {
+    transition: 150ms ease-in;
+    transition-property: transform;
+    will-change: transform;
+}
+.btn-logout:hover {
+    transform: scale(1.1);
+}

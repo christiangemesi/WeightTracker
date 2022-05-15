@@ -1,91 +1,94 @@
 <!DOCTYPE html>
 <html
-    lang="de"
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}"
+    lang="en"
 >
 <head>
-    <meta charset="UTF-8">
-    <title>Homescreen</title>
+    <title>Home ◆ WeightTracker</title>
 
+    <link type="text/css" rel="stylesheet" th:href="@{public/css/pages/home.css}"  />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<H1>Homescreen</H1>
+    <main layout:fragment="content">
+    <section class="container text-center">
+        <H1>Homescreen</H1>
 
 
-<span class="username" th:text="${#authentication.getPrincipal().getUsername()}">User-Email</span>
-<form th:action="@{/logout}" method="post">
-    <input type="submit" value="Logout">
-</form>
+        <span class="username" th:text="${#authentication.getPrincipal().getUsername()}">User-Email</span>
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Logout">
+        </form>
 
-<button onclick="location.href='/'" id="toHome" type="button">
-    Home
-</button>
+        <button onclick="location.href='/'" id="toHome" type="button">
+            Home
+        </button>
 
-<button onclick="location.href='/addweight'" id="toAddweight" type="button">
-    addWeight
-</button>
+        <button onclick="location.href='/addweight'" id="toAddweight" type="button">
+            addWeight
+        </button>
 
-<button onclick="location.href='/about'" id="toAbout"type="button">
-    About</button>
+        <button onclick="location.href='/about'" id="toAbout"type="button">
+            About</button>
 
-<button onclick="location.href='/' + user.id + '/edit'" id="toEdit" type="button">
-    Edit Account
-</button>
+        <button onclick="location.href='/' + user.id + '/edit'" id="toEdit" type="button">
+            Edit Account
+        </button>
 
-<div>
-    <canvas id="myChart"></canvas>
-</div>
+        <div>
+            <canvas id="myChart"></canvas>
+        </div>
+    </section>
+    </main>
 
-<script th:inline="javascript">
-    /*<![CDATA[*/
-    let weightEntries = /*[[${weightEntries}]]*/ [];
-    let user = /*[[${user}]]*/ {};
-    /*]]>*/
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        let weightEntries = /*[[${weightEntries}]]*/ [];
+        let user = /*[[${user}]]*/ {};
+        /*]]>*/
 
-    const labels = weightEntries.map(weightEntry => {
-        const date = new Date(weightEntry.date);
-        return date.toDateString();
-    });
+        const labels = weightEntries.map(weightEntry => {
+            const date = new Date(weightEntry.date);
+            return date.toDateString();
+        });
 
-    const values = weightEntries.map(weightEntry => {
-        return weightEntry.weight
-    });
+        const values = weightEntries.map(weightEntry => {
+            return weightEntry.weight
+        });
 
-    const data = {
-        labels: labels,
-        datasets: [{
-            label: 'My Weight Journey',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: values,
-        }]
-    };
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'My Weight Journey',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: values,
+            }]
+        };
 
-    const config = {
-        type: 'line',
-        data: data,
-        options: {
-            onClick: (e) => {
-                const canvasPosition = Chart.helpers.getRelativePosition(e, myChart);
+        const config = {
+            type: 'line',
+            data: data,
+            options: {
+                onClick: (e) => {
+                    const canvasPosition = Chart.helpers.getRelativePosition(e, myChart);
 
-                // Substitute the appropriate scale IDs
-                const dataX = myChart.scales.x.getValueForPixel(canvasPosition.x);
-                const dataY = myChart.scales.y.getValueForPixel(canvasPosition.y);
+                    // Substitute the appropriate scale IDs
+                    const dataX = myChart.scales.x.getValueForPixel(canvasPosition.x);
+                    const dataY = myChart.scales.y.getValueForPixel(canvasPosition.y);
 
-                const weightEntry = weightEntries[dataX];
+                    const weightEntry = weightEntries[dataX];
 
-                location.href = '/editweight/' + weightEntry.id;
-            },
-        }
-    };
+                    location.href = '/editweight/' + weightEntry.id;
+                },
+            }
+        };
 
-    const myChart = new Chart(
-        document.getElementById('myChart'),
-        config
-    );
-</script>
-
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>
 </body>
 </html>
