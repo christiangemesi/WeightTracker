@@ -1,3 +1,3 @@
 #!/bin/sh
-gradle build -x test -x jar -x distTar -x distZip --continuous &
+gradle build --continuous &
 gradle bootRun --no-build-cache
