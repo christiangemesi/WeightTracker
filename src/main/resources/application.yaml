@@ -1,10 +1,9 @@
 spring:
-  sql:
-    init:
-      mode: always
-  h2:
-    console:
-      enabled: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://database:3306/${WT_DATABASE_NAME}?allowPublicKeyRetrieval=true&useSSL=false
+    username: ${WT_DATABASE_USERNAME}
+    password: ${WT_DATABASE_PASSWORD}
   jpa:
     defer-datasource-initialization: true
     hibernate:

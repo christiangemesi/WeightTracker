@@ -1,0 +1,48 @@
+version: '3.9'
+services:
+  web:
+    image: gradle:7.4.2-jdk17-alpine
+    command: ['sh', 'runDev.sh']
+    working_dir: /app
+    restart: always
+    ports:
+      - '8080:8080'
+      - '5005:5005'
+    environment:
+      - TZ=Europe/Zurich
+    volumes:
+      - .:/app
+      - gradle.global-cache:/home/gradle/.gradle
+      - gradle.local-cache:/app/.gradle
+      - gradle.build-cache:/app/build
+      - /etc/localtime:/etc/localtime:ro
+    depends_on:
+      - database
+    env_file:
+      - .env
+
+  database:
+    image: mysql:8.0
+    command:
+      - '--default-authentication-plugin=mysql_native_password'
+    restart: always
+    environment:
+      - MYSQL_DATABASE=${WT_DATABASE_NAME}
+      - MYSQL_USER=${WT_DATABASE_USERNAME}
+      - MYSQL_PASSWORD=${WT_DATABASE_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=${WT_DATABASE_ROOT_PASSWORD}
+    ports:
+      - '8081:3306'
+    volumes:
+      - database:/var/lib/mysql
+      - ./data-sample.sql:/data-sample.sql
+      - ./data-prod.sql:/data-prod.sql
+      - ./data-minimal.sql:/data-minimal.sql
+    env_file:
+      - .env
+
+volumes:
+  gradle.global-cache:
+  gradle.local-cache:
+  gradle.build-cache:
+  database:

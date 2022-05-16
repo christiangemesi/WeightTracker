@@ -16,7 +16,7 @@ repositories {
 }
 
 apply plugin: 'application'
-mainClassName = 'ch.rfobaden.incidentmanager.backend.Application'
+mainClassName = 'ch.fhnw.webeng.weighttracker.Application'
 
 dependencies {
     implementation "org.springframework.boot:spring-boot-starter:${springVersion}"
@@ -31,13 +31,15 @@ dependencies {
     implementation 'org.apache.tika:tika-core:2.4.0'
     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0'
 
+    runtimeOnly 'mysql:mysql-connector-java:8.0.25'
+
     testImplementation "org.springframework.boot:spring-boot-starter-test:${springVersion}"
     testImplementation "org.springframework.boot:spring-boot-test-autoconfigure:${springVersion}"
     testImplementation 'org.springframework.security:spring-security-test:5.6.2'
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.seleniumhq.selenium:htmlunit-driver:2.54.0'
 
-    runtimeOnly 'com.h2database:h2:1.4.200'
+    testRuntimeOnly 'com.h2database:h2:1.4.200'
 }
 
 tasks.withType(JavaCompile) {
