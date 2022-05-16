@@ -54,7 +54,7 @@
         });
 
         const data = {
-            labels: labels,
+            labels,
             datasets: [{
                 label: 'My Weight Journey',
                 backgroundColor: 'rgb(255, 99, 132)',
@@ -65,7 +65,7 @@
 
         const config = {
             type: 'line',
-            data: data,
+            data,
             options: {
                 onClick: (e) => {
                     const canvasPosition = Chart.helpers.getRelativePosition(e, myChart);
@@ -79,7 +79,7 @@
             }
         };
 
-        const myChart = new Chart(
+        new Chart(
             document.getElementById('weight-chart'),
             config
         );
