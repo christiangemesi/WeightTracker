@@ -35,8 +35,10 @@
                                         id="weight"
                                         name="weight"
                                         type="number"
+                                        step="0.1"
                                         class="form-control"
                                         placeholder="Your Weight"
+                                        required
                                     >
                                     <label for="weight">Your Weight</label>
                                 </div>
@@ -51,6 +53,7 @@
                                             class="form-control"
                                             placeholder="Date"
                                             th:value="${currentDate}"
+                                            required
                                         >
                                         <label for="date">Date</label>
                                     </div>
@@ -69,6 +72,7 @@
                                     class="form-control"
                                     type="file"
                                     id="images"
+                                    name="images"
                                     accept="image/*"
                                     placeholder="images"
                                     multiple
