@@ -1,5 +1,12 @@
+body {
+    min-height: 100vh;
+}
+
 main {
-    min-height: calc(100vh - 56px);
+    /* Take up at least the full window height, but keep enough space for the header and footer. */
+    min-height: calc(100vh - 56px - 57px);
+    padding-top: 1rem;
+    padding-bottom: 2rem;
 }
 
 /* A dropdown-toggle whose default icon is removed. */
