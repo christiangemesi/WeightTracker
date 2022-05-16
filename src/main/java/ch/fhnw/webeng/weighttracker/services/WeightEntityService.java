@@ -1,13 +1,18 @@
 package ch.fhnw.webeng.weighttracker.services;
 
+import ch.fhnw.webeng.weighttracker.models.Image;
 import ch.fhnw.webeng.weighttracker.models.User;
 import ch.fhnw.webeng.weighttracker.models.WeightEntry;
 import ch.fhnw.webeng.weighttracker.repositories.WeightEntryRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 @Service
 public class WeightEntityService {
@@ -18,19 +23,15 @@ public class WeightEntityService {
         this.weightEntryRepository = weightEntryRepository;
     }
 
-    public WeightEntry addWeightEntity(double weight, Date date, User user) {
-        return this.weightEntryRepository.save(new WeightEntry(weight, date, user));
+    public WeightEntry save(WeightEntry entry) {
+        WeightEntry duplicateEntry = isDuplicateWeightEntryPresent(entry.getDate(), entry.getUser());
+        if (duplicateEntry != null) {
+            removeWeightEntryById(duplicateEntry.getId());
+        }
+        return this.weightEntryRepository.save(entry);
     }
 
-    public WeightEntry updateWeightEntry(long id, double weight, Date date) {
-        WeightEntry weightEntry = getWeightEntryById(id);
-        weightEntry.setWeight(weight);
-        weightEntry.setDate(date);
-
-        return weightEntryRepository.save(weightEntry);
-    }
-
-    public WeightEntry isDuplicateWeightEntryPresent(Date date, User user) {
+    public WeightEntry isDuplicateWeightEntryPresent(LocalDate date, User user) {
         return weightEntryRepository.listWithDuplicates(user.getId(), date);
     }
 

@@ -29,10 +29,11 @@ public class Image {
         this.weightEntry = weightEntry;
     }
 
-    public Image(String name, byte[] file, WeightEntry weightEntry) {
+    public Image(String name, byte[] file, WeightEntry weightEntry, String mimeType) {
         this.name = name;
         this.file = file;
         this.weightEntry = weightEntry;
+        this.mimeType = mimeType;
     }
 
     @Override

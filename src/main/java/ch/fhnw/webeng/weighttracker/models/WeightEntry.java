@@ -1,8 +1,8 @@
 package ch.fhnw.webeng.weighttracker.models;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.*;
-
 
 @Entity
 @Table(name="WeightEntry")
@@ -15,28 +15,21 @@ public class WeightEntry {
     @ManyToOne()
     private User user;
 
-    @OneToMany(mappedBy = "weightEntry")
+    @OneToMany(mappedBy = "weightEntry", cascade = CascadeType.ALL)
     private List<Image> imageList = new ArrayList<>();
 
     private double weight;
 
-
-    private Date date;
+    @Column(nullable = false)
+    private LocalDate date;
 
     public WeightEntry() {
     }
 
-    public WeightEntry(double weight, Date date, User user) {
+    public WeightEntry(double weight, LocalDate date, User user) {
         this.weight = weight;
         this.date = date;
         this.user = user;
-    }
-
-    public WeightEntry(User user, List<Image> imageSet, double weight, Date date) {
-        this.user = user;
-        this.imageList = imageSet;
-        this.weight = weight;
-        this.date = date;
     }
 
 
@@ -64,11 +57,11 @@ public class WeightEntry {
         this.weight = weight;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
