@@ -68,9 +68,9 @@
             data,
             options: {
                 onClick: (e) => {
-                    const canvasPosition = Chart.helpers.getRelativePosition(e, myChart);
-                    const dataX = myChart.scales.x.getValueForPixel(canvasPosition.x);
-                    const dataY = myChart.scales.y.getValueForPixel(canvasPosition.y);
+                    const canvasPosition = Chart.helpers.getRelativePosition(e, chart);
+                    const dataX = chart.scales.x.getValueForPixel(canvasPosition.x);
+                    const dataY = chart.scales.y.getValueForPixel(canvasPosition.y);
                     const weightEntry = weightEntries[dataX];
                     if (dataY >= weightEntry.weight - 1 && dataY <= weightEntry.weight + 1) {
                         location.href = `/weights/${weightEntry.id}/edit`
@@ -79,7 +79,7 @@
             }
         };
 
-        new Chart(
+        const chart = new Chart(
             document.getElementById('weight-chart'),
             config
         );
