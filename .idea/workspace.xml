@@ -4,82 +4,136 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="37696f1e-93f6-40af-9361-c8e65685cfec" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/checkstyle-idea.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/checkstyleidea-libs/readme.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+    <list default="true" id="ffda05ad-05bd-49f8-bacd-a2597c1a1a06" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/remote-targets.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webeng-project_christian.gemesi_daniel.vonatzigen.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/demo.mv.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/demo.trace.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/designIdea.png" beforeDir="false" afterPath="$PROJECT_DIR$/designIdea.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/DemoApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/bootstrap/BootstrapData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/bootstrap/BootstrapData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controllers/AboutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/AboutController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controllers/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/AccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controllers/HomeScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/HomeScreenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/controllers/WeigthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/WeigthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/models/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/models/Image.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/models/WeightEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/models/WeightEntry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/repositories/ImageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/ImageRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/repositories/WeightEntryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/WeightEntryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/services/AccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/services/ImageFileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/services/ImageFileService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/java/com/example/demo/services/WeightEntityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/services/WeightEntityService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/public/css/fragments/alerts.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/public/css/fragments/alerts.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/public/css/fragments/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/public/css/fragments/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/public/css/layout.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/public/css/layout.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/public/css/pages/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/public/css/pages/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/public/css/pages/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/public/css/pages/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/templates/fragments/alerts.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/alerts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/templates/fragments/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/templates/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/templates/pages/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/pages/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/templates/pages/account.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/pages/account.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/templates/pages/addWeight.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/pages/addWeight.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/templates/pages/editWeight.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/pages/editWeight.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/templates/pages/error.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/pages/error.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/templates/pages/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/pages/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/templates/pages/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/pages/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/main/resources/templates/pages/signUp.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/pages/signUp.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/test/java/com/example/demo/DemoApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/DemoApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/test/java/com/example/demo/E2ETests/PageTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/E2ETests/PageTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/test/java/com/example/demo/Model/ImageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/Model/ImageTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/test/java/com/example/demo/Model/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/Model/UserTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/test/java/com/example/demo/Model/WeightEntryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/Model/WeightEntryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/test/java/com/example/demo/Repository/ImageRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/Repository/ImageRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/test/java/com/example/demo/Repository/UserRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/Repository/UserRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/test/java/com/example/demo/Repository/WeightEntryRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/Repository/WeightEntryRepositoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/test/java/com/example/demo/services/ImageServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/services/ImageServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demo/src/test/java/com/example/demo/services/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/services/UserServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/LICENSE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/auto/auto.esm.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/auto/auto.esm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/auto/auto.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/auto/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/dist/chart.esm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/dist/chart.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/dist/chart.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/dist/chunks/helpers.segment.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/dist/helpers.esm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/helpers/helpers.esm.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/helpers/helpers.esm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/helpers/helpers.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/helpers/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/types/adapters.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/types/animation.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/types/basic.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/types/color.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/types/element.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/types/geometric.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/types/helpers/helpers.canvas.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/types/helpers/helpers.collection.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/types/helpers/helpers.color.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/types/helpers/helpers.core.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/types/helpers/helpers.curve.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/types/helpers/helpers.dom.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/types/helpers/helpers.easing.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/types/helpers/helpers.extras.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/types/helpers/helpers.interpolation.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/types/helpers/helpers.intl.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/types/helpers/helpers.math.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/types/helpers/helpers.options.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/types/helpers/helpers.rtl.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/types/helpers/helpers.segment.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/types/helpers/index.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/types/index.esm.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/types/layout.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/chart.js/types/utils.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/bootstrap/BootstrapData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/bootstrap/BootstrapData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/AboutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/controllers/AboutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/controllers/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/HomeScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/controllers/HomeScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controllers/WeigthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/controllers/WeigthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/models/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/models/Image.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/models/WeightEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/models/WeightEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/ImageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/repositories/ImageRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/repositories/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/repositories/WeightEntryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/repositories/WeightEntryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/services/AccountService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/services/ImageFileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/services/ImageFileService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/services/WeightEntityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/services/WeightEntityService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/DemoApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ch/fhnw/webeng/weighttracker/DemoApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/E2ETests/PageTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ch/fhnw/webeng/weighttracker/E2ETests/PageTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/Model/ImageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ch/fhnw/webeng/weighttracker/Model/ImageTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/Model/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ch/fhnw/webeng/weighttracker/Model/UserTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/Model/WeightEntryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ch/fhnw/webeng/weighttracker/Model/WeightEntryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/Repository/ImageRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ch/fhnw/webeng/weighttracker/Repository/ImageRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/Repository/UserRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ch/fhnw/webeng/weighttracker/Repository/UserRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/Repository/WeightEntryRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ch/fhnw/webeng/weighttracker/Repository/WeightEntryRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/services/ImageServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ch/fhnw/webeng/weighttracker/services/ImageServiceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/demo/services/UserServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ch/fhnw/webeng/weighttracker/services/UserServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="demo" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="demo" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="demo" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="demo" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -87,50 +141,53 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="$PROJECT_DIR$/../../../../../../ProgramData/chocolatey/lib/maven/apache-maven-3.6.0" />
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
-  <component name="ProjectId" id="29EbM0NKtyW4jnbvbN6eEa1Nyap" />
+  <component name="ProjectId" id="29Ech2OyzsMBDtECcd03XV7Xx0Z" />
   <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "settings.editor.selected.configurable": "MavenSettings"
+    "nodejs_package_manager_path": "npm",
+    "spring.configuration.checksum": "9de0862494cc3aa211be7c76dc6b547b"
   }
 }]]></component>
   <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="demo" />
+    <configuration name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="demo.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="ch.fhnw.webeng.weighttracker.Application" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ch.fhnw.webeng.weighttracker.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="demo" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.Application" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="37696f1e-93f6-40af-9361-c8e65685cfec" name="Changes" comment="" />
-      <created>1652681143603</created>
+      <changelist id="ffda05ad-05bd-49f8-bacd-a2597c1a1a06" name="Changes" comment="" />
+      <created>1652681804153</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1652681143603</updated>
-      <workItem from="1652681149529" duration="84000" />
+      <updated>1652681804153</updated>
+      <workItem from="1652681810143" duration="212000" />
     </task>
     <servers />
   </component>
