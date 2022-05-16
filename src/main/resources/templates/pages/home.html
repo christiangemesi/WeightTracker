@@ -7,32 +7,34 @@
 <head>
     <title>Home ◆ WeightTracker</title>
 
-    <link type="text/css" rel="stylesheet" th:href="@{public/css/pages/home.css}"  />
+    <link type="text/css" rel="stylesheet" th:href="@{/public/css/pages/home.css}"  />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <main layout:fragment="content">
         <section class="container">
-            <h1>Homescreen</h1>
-
-            <button onclick="location.href='/'" id="toHome" type="button">
-                Home
-            </button>
-
-            <button onclick="location.href='/addweight'" id="toAddweight" type="button">
-                addWeight
-            </button>
-
-            <button onclick="location.href='/about'" id="toAbout"type="button">
-                About</button>
-
-            <button onclick="location.href='/' + user.id + '/edit'" id="toEdit" type="button">
-                Edit Account
-            </button>
-
-            <div>
-                <canvas id="myChart"></canvas>
+            <div class="d-flex justify-content-between align-items-center">
+                <h1>Your Weight Journey</h1>
+                <div>
+                    <a
+                        class="btn btn-primary"
+                        href="/weights/add"
+                        role="button"
+                    >
+                        <i class="bi bi-plus me-1"></i>
+                        Add Weight
+                    </a>
+                </div>
             </div>
+            <div>
+                <div th:if="firstEntryDate != null">
+                    Your first entry was on the [[${firstEntryDate}]].
+                </div>
+                <div th:if="lastEntryDate != null">
+                    Your last entry was on the [[${lastEntryDate}]].
+                </div>
+            </div>
+            <canvas id="weight-chart"></canvas>
         </section>
     </main>
 
@@ -67,20 +69,18 @@
             options: {
                 onClick: (e) => {
                     const canvasPosition = Chart.helpers.getRelativePosition(e, myChart);
-
-                    // Substitute the appropriate scale IDs
                     const dataX = myChart.scales.x.getValueForPixel(canvasPosition.x);
                     const dataY = myChart.scales.y.getValueForPixel(canvasPosition.y);
-
                     const weightEntry = weightEntries[dataX];
-
-                    location.href = `/weights/${weightEntry.id}/edit`;
+                    if (dataY >= weightEntry.weight - 1 && dataY <= weightEntry.weight + 1) {
+                        location.href = `/weights/${weightEntry.id}/edit`
+                    }
                 },
             }
         };
 
         const myChart = new Chart(
-            document.getElementById('myChart'),
+            document.getElementById('weight-chart'),
             config
         );
     </script>
