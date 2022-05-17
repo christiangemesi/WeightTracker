@@ -26,7 +26,6 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springVersion}"
     implementation "org.springframework.boot:spring-boot-starter-security:${springVersion}"
 
-    implementation 'org.projectlombok:lombok:1.18.24'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.0.4.RELEASE'
     implementation 'org.apache.tika:tika-core:2.4.0'
     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.1.0'
