@@ -1,14 +1,16 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://database:3306/${WT_DATABASE_NAME:database}?allowPublicKeyRetrieval=true&useSSL=false
+    url: jdbc:mysql://${WT_DATABASE_HOST:localhost}:${WT_DATABASE_PORT:8081}/${WT_DATABASE_NAME:database}?allowPublicKeyRetrieval=true&useSSL=false
     username: ${WT_DATABASE_USERNAME:username}
     password: ${WT_DATABASE_PASSWORD:password}
+
   jpa:
-    defer-datasource-initialization: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
       ddl-auto: update
     show-sql: true
+
   security:
     user:
       name: admin

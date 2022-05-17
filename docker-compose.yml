@@ -10,6 +10,8 @@ services:
       - '5005:5005'
     environment:
       - TZ=Europe/Zurich
+      - WT_DATABASE_HOST=database
+      - WT_DATABASE_PORT=3306
     volumes:
       - .:/app
       - gradle.global-cache:/home/gradle/.gradle
