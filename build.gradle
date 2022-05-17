@@ -9,22 +9,22 @@ version = '0.0.1'
 description = 'weighttracker'
 java.sourceCompatibility = JavaVersion.VERSION_17
 
-def springVersion = '2.6.7'
-
 repositories {
     mavenCentral()
 }
 
+apply plugin: 'idea'
 apply plugin: 'application'
+
 mainClassName = 'ch.fhnw.webeng.weighttracker.Application'
 
 dependencies {
-    implementation "org.springframework.boot:spring-boot-starter:${springVersion}"
-    implementation "org.springframework.boot:spring-boot-devtools:${springVersion}"
-    implementation "org.springframework.boot:spring-boot-starter-web:${springVersion}"
-    implementation "org.springframework.boot:spring-boot-starter-thymeleaf:${springVersion}"
-    implementation "org.springframework.boot:spring-boot-starter-data-jpa:${springVersion}"
-    implementation "org.springframework.boot:spring-boot-starter-security:${springVersion}"
+    implementation "org.springframework.boot:spring-boot-starter"
+    implementation "org.springframework.boot:spring-boot-devtools"
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation "org.springframework.boot:spring-boot-starter-thymeleaf"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+    implementation "org.springframework.boot:spring-boot-starter-security"
 
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5:3.0.4.RELEASE'
     implementation 'org.apache.tika:tika-core:2.4.0'
@@ -32,16 +32,26 @@ dependencies {
 
     runtimeOnly 'mysql:mysql-connector-java:8.0.25'
 
-    testImplementation "org.springframework.boot:spring-boot-starter-test:${springVersion}"
-    testImplementation "org.springframework.boot:spring-boot-test-autoconfigure:${springVersion}"
-    testImplementation 'org.springframework.security:spring-security-test:5.6.2'
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    testImplementation "org.springframework.boot:spring-boot-test-autoconfigure"
+    testImplementation 'org.springframework.security:spring-security-test:5.6.3'
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.seleniumhq.selenium:htmlunit-driver:2.54.0'
 
     testRuntimeOnly 'com.h2database:h2:1.4.200'
 }
 
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-    inputs.files fileTree('src/resources')
+idea {
+    module {
+        inheritOutputDirs = false
+        outputDir = file("$buildDir/classes/main/")
+    }
+}
+
+compileJava {
+    // Enable compilation in a separate daemon process
+    options.fork = true
+
+    // Enable incremental compilation
+    options.incremental = true
 }
