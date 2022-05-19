@@ -32,8 +32,8 @@ public class HomeController {
         model.addAttribute("weightEntries", weightEntries);
         model.addAttribute("user", currentUser);
 
-        WeightEntry firstEntry = weightEntries.get(0);
-        if (firstEntry != null) {
+        if (!weightEntries.isEmpty()) {
+            WeightEntry firstEntry = weightEntries.get(0);
             model.addAttribute("firstEntryDate", firstEntry.getDate().format(DATE_FORMATTER));
             if (weightEntries.size() > 1) {
                 WeightEntry lastEntry = weightEntries.get(weightEntries.size() - 1);
