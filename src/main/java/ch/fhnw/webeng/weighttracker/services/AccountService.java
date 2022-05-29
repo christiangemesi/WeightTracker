@@ -28,6 +28,10 @@ public class AccountService {
         if (authentication == null) {
             return Optional.empty();
         }
+        Object principal = authentication.getPrincipal();
+        if (!(principal instanceof User)) {
+            return Optional.empty();
+        }
         User currentUser = (User) authentication.getPrincipal();
         return Optional.of(currentUser);
     }
