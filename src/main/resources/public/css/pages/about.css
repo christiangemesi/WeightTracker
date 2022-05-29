@@ -1,0 +1,20 @@
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+
+    margin-top: -3rem;
+}
+
+h1 {
+    margin-top: -0.5rem;
+}
+
+a.back-link {
+    position: relative;
+    z-index: 2;
+}

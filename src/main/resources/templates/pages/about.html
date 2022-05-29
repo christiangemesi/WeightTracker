@@ -5,36 +5,46 @@
     lang="en"
 >
 <head>
-    <title>Account ◆ WeightTracker</title>
+    <title>About ◆ WeightTracker</title>
+
+    <link type="text/css" rel="stylesheet" th:href="@{public/css/pages/about.css}"  />
 </head>
 <body>
-<main layout:fragment="content">
-    <section class="container">
-        <h1>Über uns</h1>
+    <header layout:fragment="header" th:if="${!hasUser}"></header>
+    <main layout:fragment="content">
+        <article class="container text-center">
+            <a href="/signup" class="small back-link" th:if="${!hasUser}">
+                <i class="bi bi-arrow-left"></i>
+                go to login
+            </a>
+            <h1 class="display-1">
+                About
+            </h1>
 
-        Unser Tool hilft dabei die Übersicht über sein Gewicht zu behalten.
-        Durch eine einfache Navigation ist es einfach sich zurechtzufinden.
-        Das moderne Design hat eine einfache Struktur und ist auch mobile gut bedienbar. 
-        Ausserdem ist unsere Applikation in einem Docker Container. Dies dient zur Vereinfachung der Aufsetzung der Applikation.
+            Unser Tool hilft dabei die Übersicht über sein Gewicht zu behalten.
+            Durch eine einfache Navigation ist es einfach sich zurechtzufinden.
+            Das moderne Design hat eine einfache Struktur und ist auch mobile gut bedienbar.
+            Ausserdem ist unsere Applikation in einem Docker Container. Dies dient zur Vereinfachung der Aufsetzung der Applikation.
 
-        Das Tool besteht aus 3 Entitäten, welche wie auf dem Bild (Datenbank.png) miteinander verbunden sind.
+            Das Tool besteht aus 3 Entitäten, welche wie auf dem Bild (Datenbank.png) miteinander verbunden sind.
 
-        Im Zentrum steht ein Gewichtseintrag welches einen Eintrag von Gewicht (double) und Datum (LocalDate) von einem User zeigt. 
-        Jeder User kann natürlich mehrere Einträge haben, jedoch nur einen Eintrag pro Datum. 
-        Ausserdem können zu jedem Gewichtseintrag mehrere Bilder hochgeladen werden. 
-        Dies dient zur Veranschaulichung des Verlaufes des Körpers über die Zeit.
+            Im Zentrum steht ein Gewichtseintrag welches einen Eintrag von Gewicht (double) und Datum (LocalDate) von einem User zeigt.
+            Jeder User kann natürlich mehrere Einträge haben, jedoch nur einen Eintrag pro Datum.
+            Ausserdem können zu jedem Gewichtseintrag mehrere Bilder hochgeladen werden.
+            Dies dient zur Veranschaulichung des Verlaufes des Körpers über die Zeit.
 
-        Folgende Funktionen sind bei unserer Applikation möglich:
-        - Ein User kann sich einloggen, sowie einen Account erstellen, falls er noch keinen Account hat.
-        - Ein User kann seine Userdaten verwalten. Dazu zählen das Ändern des Usernamen, Passwort, sowie löschen des Accounts. (klicken auf den Usernamen oben rechts)
-        - Ein User kann einen Gewichtseintrag erfassen, bearbeiten sowie überschreiben.
-        
-        - Ein Gewichtseintrag wird auf dem Homescreen (home.html) mittels Chart.js als Chart angezeigt. 
-        - Ein Gewichtseintrag kann bearbeitet werden, wenn auf diesen geklickt wird. Folglich wird man auf eine Edit Page weitergeleitet, wo man den Eintrag bearbeiten kann.
-        
-         - Die Bilder welche zu jedem Gewichtseintrag hochgeladen wurden, werden beim "Hovern" über dem jeweiligen Punkt auf dem Homescreen angezeigt.
-        
-    </section>
-</main>
+            Folgende Funktionen sind bei unserer Applikation möglich:
+            - Ein User kann sich einloggen, sowie einen Account erstellen, falls er noch keinen Account hat.
+            - Ein User kann seine Userdaten verwalten. Dazu zählen das Ändern des Usernamen, Passwort, sowie löschen des Accounts. (klicken auf den Usernamen oben rechts)
+            - Ein User kann einen Gewichtseintrag erfassen, bearbeiten sowie überschreiben.
+
+            - Ein Gewichtseintrag wird auf dem Homescreen (home.html) mittels Chart.js als Chart angezeigt.
+            - Ein Gewichtseintrag kann bearbeitet werden, wenn auf diesen geklickt wird. Folglich wird man auf eine Edit Page weitergeleitet, wo man den Eintrag bearbeiten kann.
+
+             - Die Bilder welche zu jedem Gewichtseintrag hochgeladen wurden, werden beim "Hovern" über dem jeweiligen Punkt auf dem Homescreen angezeigt.
+
+        </article>
+    </main>
+    <footer layout:fragment="footer" th:if="${!hasUser}"></footer>
 </body>
 </html>
