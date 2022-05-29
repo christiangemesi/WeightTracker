@@ -5,10 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ecde4d1-0e9e-4354-ad41-911d7876dda3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/controllers/WeightController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/controllers/WeightController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/models/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/models/Image.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/public/css/pages/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/public/css/pages/home.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/pages/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/pages/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,7 +88,7 @@
       <workItem from="1652683762174" duration="13606000" />
       <workItem from="1652805577081" duration="4394000" />
       <workItem from="1653657931212" duration="1577000" />
-      <workItem from="1653814867419" duration="9161000" />
+      <workItem from="1653814867419" duration="9461000" />
     </task>
     <servers />
   </component>
