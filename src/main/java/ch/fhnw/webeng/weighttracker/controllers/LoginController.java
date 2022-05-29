@@ -35,7 +35,7 @@ public class LoginController {
 
     @RequestMapping("/signup")
     public String  signUp() {
-        return "signUp.html";
+        return "signup";
     }
 
     @RequestMapping(path = "/signup", method = RequestMethod.POST)
@@ -48,7 +48,7 @@ public class LoginController {
         if (bindingResult.hasErrors()) {
             model.addAttribute("user", user);
 
-            return "pages/signup";
+            return "signup";
         } else {
             this.userService.addUser(user.getUsername(), user.getPassword(), Set.of("ROLE_USER"));
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -57,5 +57,4 @@ public class LoginController {
             return "redirect:/login";
         }
     }
-
 }
