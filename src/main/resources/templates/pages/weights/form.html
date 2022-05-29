@@ -85,7 +85,7 @@
                         <button class="btn btn-primary" type="submit" th:text="${title}"></button>
                     </form>
 
-                    <th:block th:if="isEdit">
+                    <th:block th:if="${isEdit}">
                         <ul class="row g-3 weight-images">
                             <th:block th:each="image : ${entry.imageList}">
                                 <li class="col-6 col-lg-4">

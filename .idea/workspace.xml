@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2ecde4d1-0e9e-4354-ad41-911d7876dda3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/services/ImageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/controllers/WeightController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/controllers/WeightController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/models/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/models/Image.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/services/WeightEntityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/services/WeightEntityService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/pages/weights/form.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/pages/weights/form.html" afterDir="false" />
-    </list>
+    <list default="true" id="2ecde4d1-0e9e-4354-ad41-911d7876dda3" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,7 +53,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Daniel/dev-w/fhnw/webeng/webeng-project/src/main/resources/public/css/pages",
+    "last_opened_file_path": "C:/Users/Daniel/dev-w/fhnw/webeng/webeng-project/src/main/resources/public",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -75,6 +68,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Daniel\dev-w\fhnw\webeng\webeng-project\src\main\resources\public" />
       <recent name="C:\Users\Daniel\dev-w\fhnw\webeng\webeng-project\src\main\resources\public\css\pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -94,7 +88,7 @@
       <workItem from="1652683762174" duration="13606000" />
       <workItem from="1652805577081" duration="4394000" />
       <workItem from="1653657931212" duration="1577000" />
-      <workItem from="1653814867419" duration="12817000" />
+      <workItem from="1653814867419" duration="13187000" />
     </task>
     <servers />
   </component>
