@@ -10,41 +10,86 @@
     <link type="text/css" rel="stylesheet" th:href="@{public/css/pages/about.css}"  />
 </head>
 <body>
-    <header layout:fragment="header" th:if="${!hasUser}"></header>
+    <th:block layout:fragment="header" th:if="${hasUser}">
+        <header th:replace="fragments/header"></header>
+    </th:block>
     <main layout:fragment="content">
-        <article class="container text-center">
-            <a href="/signup" class="small back-link" th:if="${!hasUser}">
-                <i class="bi bi-arrow-left"></i>
-                go to login
-            </a>
-            <h1 class="display-1">
-                About
-            </h1>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col col-md-8 col-lg-7">
+                    <article class="text-center">
+                        <a href="/login" class="small back-link" th:if="${!hasUser}">
+                            <i class="bi bi-arrow-left"></i>
+                            go to login
+                        </a>
+                        <h1 class="display-1">
+                            About
+                        </h1>
 
-            Unser Tool hilft dabei die Übersicht über sein Gewicht zu behalten.
-            Durch eine einfache Navigation ist es einfach sich zurechtzufinden.
-            Das moderne Design hat eine einfache Struktur und ist auch mobile gut bedienbar.
-            Ausserdem ist unsere Applikation in einem Docker Container. Dies dient zur Vereinfachung der Aufsetzung der Applikation.
-
-            Das Tool besteht aus 3 Entitäten, welche wie auf dem Bild (Datenbank.png) miteinander verbunden sind.
-
-            Im Zentrum steht ein Gewichtseintrag welches einen Eintrag von Gewicht (double) und Datum (LocalDate) von einem User zeigt.
-            Jeder User kann natürlich mehrere Einträge haben, jedoch nur einen Eintrag pro Datum.
-            Ausserdem können zu jedem Gewichtseintrag mehrere Bilder hochgeladen werden.
-            Dies dient zur Veranschaulichung des Verlaufes des Körpers über die Zeit.
-
-            Folgende Funktionen sind bei unserer Applikation möglich:
-            - Ein User kann sich einloggen, sowie einen Account erstellen, falls er noch keinen Account hat.
-            - Ein User kann seine Userdaten verwalten. Dazu zählen das Ändern des Usernamen, Passwort, sowie löschen des Accounts. (klicken auf den Usernamen oben rechts)
-            - Ein User kann einen Gewichtseintrag erfassen, bearbeiten sowie überschreiben.
-
-            - Ein Gewichtseintrag wird auf dem Homescreen (home.html) mittels Chart.js als Chart angezeigt.
-            - Ein Gewichtseintrag kann bearbeitet werden, wenn auf diesen geklickt wird. Folglich wird man auf eine Edit Page weitergeleitet, wo man den Eintrag bearbeiten kann.
-
-             - Die Bilder welche zu jedem Gewichtseintrag hochgeladen wurden, werden beim "Hovern" über dem jeweiligen Punkt auf dem Homescreen angezeigt.
-
-        </article>
+                        <p>
+                            The WeightTracker helps you keep track of your weight.
+                        </p>
+                        <p>
+                            It presents an intuitive interface which allows everyone to feel at home right from the start.
+                            The modern design and simple structure makes the app suitable for almost everyone.
+                            The WeightTracker is usable on all kind of devices, be they phones, tablets or desktops.
+                        </p>
+                        <p>
+                            Running your own WeightTracker instance could also not be easier:
+                            The application has been built using <a href="https://www.docker.com/" target="_blank" rel="external">Docker</a>,
+                            which makes deploying it to any kind of host machine very easy.
+                        </p>
+                        <p>
+                            The tool stores all your data using just three entities, as seen here:
+                            <img th:src="@{public/Datenbank.png}" alt="database layout" class="img-fluid" />
+                            The center of the WeightTracker is the <em>WeightEntry</em>, which stores the weight
+                            of a single person on a specific day. There can be many such entities for each user,
+                            although each user may only have one for a specific day.
+                            Also, users have the ability to attach images to their weight entries.
+                            This allows one to visually see their progress over time.
+                        </p>
+                        <p>
+                            The WeightTracker consists of the following features:
+                        </p>
+                        <div class="d-flex justify-content-center">
+                            <ul>
+                                <li>
+                                    Users can create new accounts.
+                                </li>
+                                <li>
+                                    Users can sign in using their account.
+                                </li>
+                                <li>
+                                    Users can change the username of their account.
+                                </li>
+                                <li>
+                                    Users can change the password of their account.
+                                </li>
+                                <li>
+                                    Users can delete their account.
+                                </li>
+                                <li>
+                                    Users can save a single weight for a specific day.
+                                </li>
+                                <li>
+                                    Users can edit and delete any of their saved weights.
+                                </li>
+                                <li>
+                                    Users can attach images to any of their weight entries.
+                                </li>
+                            </ul>
+                        </div>
+                        <p>
+                            Weights are presented to the user in a chronological order, using a line chart.
+                            Clicking on the data points of the chart allows the user to edit the corresponding weight entry.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </div>
     </main>
-    <footer layout:fragment="footer" th:if="${!hasUser}"></footer>
+    <th:block layout:fragment="footer" th:if="${hasUser}">
+        <footer th:replace="fragments/footer"></footer>
+    </th:block>
 </body>
 </html>

@@ -1,13 +1,15 @@
 
-main {
+main > .container:only-child {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
+}
 
-    margin-top: -3rem;
+main > .container:only-child > .row:only-child {
+    margin: auto 0;
+    width: 100%;
 }
 
 h1 {
@@ -17,4 +19,13 @@ h1 {
 a.back-link {
     position: relative;
     z-index: 2;
+}
+
+article em {
+    font-style: italic;
+}
+
+article ul {
+    list-style: circle;
+    text-align: left;
 }

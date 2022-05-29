@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="2ecde4d1-0e9e-4354-ad41-911d7876dda3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/controllers/AboutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/controllers/AboutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Datenbank.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/public/Datenbank.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/css/pages/about.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/public/css/pages/about.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/pages/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/pages/about.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,6 +75,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Daniel\dev-w\fhnw\webeng\webeng-project\src\main\resources\public\css\pages" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Daniel\dev-w\fhnw\webeng\webeng-project\src\main\resources\public" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -87,7 +91,7 @@
       <workItem from="1652683762174" duration="13606000" />
       <workItem from="1652805577081" duration="4394000" />
       <workItem from="1653657931212" duration="1577000" />
-      <workItem from="1653814867419" duration="3905000" />
+      <workItem from="1653814867419" duration="5671000" />
     </task>
     <servers />
   </component>
