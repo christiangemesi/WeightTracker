@@ -1,14 +1,14 @@
 package ch.fhnw.webeng.weighttracker.controllers;
 
+import ch.fhnw.webeng.weighttracker.services.AccountService;
 import ch.fhnw.webeng.weighttracker.services.UserService;
 import ch.fhnw.webeng.weighttracker.models.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Optional;
 import java.util.Set;
@@ -17,9 +17,11 @@ import java.util.Set;
 public class LoginController {
 
     private final UserService userService;
+    private final AccountService accountService;
 
-    public LoginController(UserService userService) {
+    public LoginController(UserService userService, AccountService accountService) {
         this.userService = userService;
+        this.accountService = accountService;
     }
 
     @RequestMapping(path = "/login", method = RequestMethod.GET)
@@ -33,28 +35,32 @@ public class LoginController {
         }
     }
 
-    @RequestMapping("/signup")
-    public String  signUp() {
-        return "signup";
+    @RequestMapping(path = "/signup", method = RequestMethod.GET)
+    public String signUp() {
+        return "pages/signup";
     }
 
     @RequestMapping(path = "/signup", method = RequestMethod.POST)
-    public String signup(User user, BindingResult bindingResult, Model model) {
-
+    public String signup(
+        User user,
+        RedirectAttributes redirectAttributes
+    ) {
+        redirectAttributes.addFlashAttribute("username", user.getUsername());
+        if (user.getUsername().isEmpty()) {
+            redirectAttributes.addFlashAttribute("error", "Username must not be empty.");
+            return "redirect:/signup";
+        }
+        if (user.getPassword().isEmpty()) {
+            redirectAttributes.addFlashAttribute("error", "Password must not be empty.");
+            return "redirect:/signup";
+        }
         if (this.userService.usernameAlreadyExists(user.getUsername())) {
-            bindingResult.addError(new FieldError("user", "username", "Username already exists"));
+            redirectAttributes.addFlashAttribute("error", "Username already exists.");
+            return "redirect:/signup";
         }
 
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("user", user);
-
-            return "signup";
-        } else {
-            this.userService.addUser(user.getUsername(), user.getPassword(), Set.of("ROLE_USER"));
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            SecurityContextHolder.getContext().setAuthentication(null);
-
-            return "redirect:/login";
-        }
+        user = this.userService.addUser(user.getUsername(), user.getPassword(), Set.of("ROLE_USER"));
+        accountService.setCurrentUser(user);
+        return "redirect:/";
     }
 }

@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2ecde4d1-0e9e-4354-ad41-911d7876dda3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/public/css/pages/signup.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Application.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Application.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runDev.sh" beforeDir="false" afterPath="$PROJECT_DIR$/runDev.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/pages/signUp.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/pages/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ch/fhnw/webeng/weighttracker/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/pages/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/pages/signup.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +73,11 @@
     "spring.configuration.checksum": "31d36c142f3b31882720aa17830df958"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Daniel\dev-w\fhnw\webeng\webeng-project\src\main\resources\public\css\pages" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -84,7 +90,7 @@
       <workItem from="1652683762174" duration="13606000" />
       <workItem from="1652805577081" duration="4394000" />
       <workItem from="1653657931212" duration="1577000" />
-      <workItem from="1653814867419" duration="928000" />
+      <workItem from="1653814867419" duration="2955000" />
     </task>
     <servers />
   </component>

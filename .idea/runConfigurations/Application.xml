@@ -1,9 +1,10 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
     <option name="ACTIVE_PROFILES" />
-    <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+    <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateResources" />
     <module name="weighttracker.main" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="ch.fhnw.webeng.weighttracker.Application" />
+    <option name="UPDATE_ACTION_UPDATE_POLICY" value="UpdateClassesAndTriggerFile" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="ch.fhnw.webeng.weighttracker.*" />
