@@ -4,6 +4,7 @@ import ch.fhnw.webeng.weighttracker.models.Image;
 import ch.fhnw.webeng.weighttracker.models.User;
 import ch.fhnw.webeng.weighttracker.models.WeightEntry;
 import ch.fhnw.webeng.weighttracker.services.AccountService;
+import ch.fhnw.webeng.weighttracker.services.ImageService;
 import ch.fhnw.webeng.weighttracker.services.WeightEntityService;
 import org.apache.tika.Tika;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -27,13 +28,16 @@ import java.util.Objects;
 public class WeightController {
     private final WeightEntityService weightEntityService;
     private final AccountService accountService;
+    private final ImageService imageService;
 
     public WeightController(
         WeightEntityService weightEntityService,
-        AccountService accountService
+        AccountService accountService,
+        ImageService imageService
     ) {
         this.weightEntityService = weightEntityService;
         this.accountService = accountService;
+        this.imageService = imageService;
     }
 
     @GetMapping("add")
@@ -87,14 +91,24 @@ public class WeightController {
 
     @GetMapping("/{id}/images/{imageId}")
     public ResponseEntity<byte[]> getImageById(@PathVariable long id, @PathVariable long imageId) {
-        WeightEntry weightEntry = weightEntityService.getWeightEntryById(id);
+        WeightEntry weightEntry = loadWeightEntry(id);
         Image image = weightEntry.getImageList().stream()
-                .filter(img -> img.getId().equals(imageId))
-                .findFirst().orElseThrow();
+            .filter(img -> img.getId().equals(imageId))
+            .findFirst().orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         return ResponseEntity.ok()
-                .contentType(MediaType.valueOf(image.getMimeType()))
-                .body(image.getFile());
+            .contentType(MediaType.valueOf(image.getMimeType()))
+            .body(image.getFile());
+    }
+
+    @DeleteMapping("/{id}/images/{imageId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteImage(@PathVariable long id, @PathVariable long imageId) {
+        WeightEntry weightEntry = loadWeightEntry(id);
+        Image image = weightEntry.getImageList().stream()
+            .filter(img -> img.getId().equals(imageId))
+            .findFirst().orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        imageService.delete(image);
     }
 
     private WeightEntry loadWeightEntry(Long id) {
