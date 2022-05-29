@@ -1,0 +1,9 @@
+
+#weightImageContainer {
+}
+
+.weight-display img {
+    max-width: calc(33.333% - 1rem);
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}

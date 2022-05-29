@@ -34,7 +34,16 @@
                     Your last entry was on the [[${lastEntryDate}]].
                 </div>
             </div>
-            <canvas id="weight-chart"></canvas>
+
+            <div class="weight-display">
+                <div class="row">
+                    <div class="col">
+                        <canvas id="weightChart"></canvas>
+                    </div>
+                    <div id="weightImageContainer" class="col col-sm-0 col-md-4">
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -63,26 +72,68 @@
             }]
         };
 
+        const mapEventToEntry = (e) => {
+            const canvasPosition = Chart.helpers.getRelativePosition(e, chart);
+            const dataX = chart.scales.x.getValueForPixel(canvasPosition.x);
+            return weightEntries[dataX];
+        }
+
+        let activeWeightEntryId = null
+        const imageContainer = document.getElementById('weightImageContainer')
+        const handleWeightHover = (weightEntry) => {
+            if (activeWeightEntryId === weightEntry.id) {
+                return
+            }
+
+            activeWeightEntryId = weightEntry.id
+            imageContainer.innerHTML = ''
+
+            const titleElement = document.createElement('h3')
+            titleElement.innerText = `${new Date(weightEntry.date).toLocaleDateString()} - ${weightEntry.weight}kg`
+            imageContainer.appendChild(titleElement)
+
+            if (weightEntry.imageList.length === 0) {
+
+                const textElement = document.createElement('p')
+                textElement.innerText = 'No images for this date.'
+                imageContainer.appendChild(textElement)
+                return
+            }
+
+            for (const image of weightEntry.imageList) {
+                const imageElement = document.createElement('img')
+                imageElement.src = `/weights/${weightEntry.id}/images/${image.id}`
+                imageElement.classList.add('img-fluid')
+                imageContainer.appendChild(imageElement)
+            }
+        }
+
         const config = {
             type: 'line',
             data,
             options: {
+                events: ['click', 'mousemove'],
                 onClick: (e) => {
-                    const canvasPosition = Chart.helpers.getRelativePosition(e, chart);
-                    const dataX = chart.scales.x.getValueForPixel(canvasPosition.x);
-                    const dataY = chart.scales.y.getValueForPixel(canvasPosition.y);
-                    const weightEntry = weightEntries[dataX];
-                    if (dataY >= weightEntry.weight - 1 && dataY <= weightEntry.weight + 1) {
-                        location.href = `/weights/${weightEntry.id}/edit`
+                    const weightEntry = mapEventToEntry(e);
+                    location.href = `/weights/${weightEntry.id}/edit`
+                },
+                onHover: (e) => {
+                    if (e.type !== 'mousemove') {
+                        return;
                     }
+                    const weightEntry = mapEventToEntry(e);
+                    handleWeightHover(weightEntry)
                 },
             }
         };
 
-        const chart = new Chart(
-            document.getElementById('weight-chart'),
-            config
-        );
+        const chartElement = document.getElementById('weightChart');
+        chartElement.onmouseout = (e) => {
+            activeWeightEntryId = null
+            imageContainer.innerHTML = ''
+        }
+
+        const chart = new Chart(chartElement, config);
     </script>
 </body>
 </html>

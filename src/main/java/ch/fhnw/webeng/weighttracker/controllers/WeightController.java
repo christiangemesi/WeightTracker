@@ -85,9 +85,9 @@ public class WeightController {
         return "redirect:/";
     }
 
-    @GetMapping("/weightentries/{weightEntryId}/images/{imageId}")
-    public ResponseEntity<byte[]> getImageById(@PathVariable long weightEntryId, @PathVariable long imageId) {
-        WeightEntry weightEntry = weightEntityService.getWeightEntryById(weightEntryId);
+    @GetMapping("/{id}/images/{imageId}")
+    public ResponseEntity<byte[]> getImageById(@PathVariable long id, @PathVariable long imageId) {
+        WeightEntry weightEntry = weightEntityService.getWeightEntryById(id);
         Image image = weightEntry.getImageList().stream()
                 .filter(img -> img.getId().equals(imageId))
                 .findFirst().orElseThrow();
