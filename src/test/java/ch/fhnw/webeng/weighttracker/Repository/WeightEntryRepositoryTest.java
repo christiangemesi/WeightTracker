@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Set;
@@ -31,7 +32,7 @@ public class WeightEntryRepositoryTest {
         User admin = new User("admin","admin",Set.of("USER_ADMIN"));
         userRepository.save(admin);
 
-        Date date1 = new Date(10, Calendar.FEBRUARY,30);
+        LocalDate date1 = LocalDate.of(10, Calendar.FEBRUARY,30);
         var weightEntry1 = new WeightEntry(50,date1, admin);
         weightEntryRepository.save(weightEntry1);
 

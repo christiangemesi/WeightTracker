@@ -4,6 +4,7 @@ import ch.fhnw.webeng.weighttracker.models.Image;
 import ch.fhnw.webeng.weighttracker.models.WeightEntry;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,7 +15,7 @@ public class WeightEntryTest {
     public void testCreateWeightEntry() {
 
         var weightEntry = new WeightEntry();
-        Date date = new Date(2022, Calendar.MAY,10);
+        LocalDate date = LocalDate.of(2022, Calendar.MAY,10);
         Image image = new Image();
 
         weightEntry.setId(1L);

@@ -4,6 +4,7 @@ import ch.fhnw.webeng.weighttracker.models.User;
 import ch.fhnw.webeng.weighttracker.models.WeightEntry;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -32,8 +33,8 @@ public class UserTest {
     public void testAddMultipleWeightEntries() {
         var user = new User();
 
-        Date date = new Date(10, Calendar.NOVEMBER,10);
-        Date date2 = new Date(11, Calendar.NOVEMBER,10);
+        LocalDate date = LocalDate.of(10, Calendar.NOVEMBER, 10);
+        LocalDate date2 =  LocalDate.of((11, Calendar.NOVEMBER, 10);
 
         var weightEntry1 = new WeightEntry(20,date,user);
         var weightEntry2 = new WeightEntry(200,date2,user);
