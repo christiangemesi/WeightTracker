@@ -4,6 +4,7 @@ import ch.fhnw.webeng.weighttracker.models.User;
 import ch.fhnw.webeng.weighttracker.models.WeightEntry;
 import ch.fhnw.webeng.weighttracker.repositories.UserRepository;
 import ch.fhnw.webeng.weighttracker.repositories.WeightEntryRepository;
+import org.apache.tomcat.jni.Local;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -49,7 +50,7 @@ public class WeightEntryRepositoryTest {
         User admin = new User("admin","admin",Set.of("USER_ADMIN"));
         userRepository.save(admin);
 
-        Date date1 = new Date(10, Calendar.FEBRUARY,30);
+        LocalDate date1 = LocalDate.of(2020, 1, 8);
         var weightEntry1 = new WeightEntry(50,date1, admin);
         weightEntryRepository.save(weightEntry1);
 

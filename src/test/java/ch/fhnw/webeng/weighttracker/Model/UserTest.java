@@ -34,7 +34,7 @@ public class UserTest {
         var user = new User();
 
         LocalDate date = LocalDate.of(10, Calendar.NOVEMBER, 10);
-        LocalDate date2 =  LocalDate.of((11, Calendar.NOVEMBER, 10);
+        LocalDate date2 =  LocalDate.of(11, Calendar.NOVEMBER, 10);
 
         var weightEntry1 = new WeightEntry(20,date,user);
         var weightEntry2 = new WeightEntry(200,date2,user);

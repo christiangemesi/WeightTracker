@@ -55,3 +55,7 @@ compileJava {
     // Enable incremental compilation
     options.incremental = true
 }
+
+test {
+    useJUnitPlatform()
+}

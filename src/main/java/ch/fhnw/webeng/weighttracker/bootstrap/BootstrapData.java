@@ -1,5 +1,6 @@
 package ch.fhnw.webeng.weighttracker.bootstrap;
 
+import ch.fhnw.webeng.weighttracker.repositories.UserRepository;
 import ch.fhnw.webeng.weighttracker.services.UserService;
 import ch.fhnw.webeng.weighttracker.repositories.WeightEntryRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -18,6 +19,7 @@ public class BootstrapData implements CommandLineRunner {
         this.weightEntryRepository = weightEntryRepository;
         this.userService = userService;
     }
+
 
     @Override
     public void run(String... args) throws Exception {

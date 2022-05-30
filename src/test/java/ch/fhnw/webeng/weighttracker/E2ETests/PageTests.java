@@ -1,7 +1,10 @@
 package ch.fhnw.webeng.weighttracker.E2ETests;
 
+import ch.fhnw.webeng.weighttracker.repositories.UserRepository;
+import ch.fhnw.webeng.weighttracker.services.UserService;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 
@@ -15,13 +18,13 @@ public class PageTests {
         var driver = new HtmlUnitDriver();
         driver.navigate().to("http://localhost:8080/login");
 
-        var singupLink = driver.findElementByPartialLinkText("not having an account yet?");
+        var singupLink = driver.findElementByPartialLinkText("Don't have an account yet?");
 
         assertEquals("http://localhost:8080/signup", singupLink.getAttribute("href"));
     }
 
-    /*
-    Note this Test will only work until username and password are valid
+    /**
+     * Note this Test will only work until username and password are valid
      */
     @Test
     void loginValid() {
@@ -61,7 +64,6 @@ public class PageTests {
         assertEquals("http://localhost:8080/login?error", currentUrl);
     }
 
-    /* Note this only works if not logged in */
     @Test
     void signupInvalid() {
 
@@ -79,6 +81,25 @@ public class PageTests {
         var currentUrl = driver.getCurrentUrl();
 
         assertEquals("http://localhost:8080/signup", currentUrl);
+    }
+
+    @Test
+    void signupValid() {
+
+        var driver = new HtmlUnitDriver();
+        driver.navigate().to("http://localhost:8080/signup");
+
+        var username = driver.findElementById("username");
+        var password = driver.findElementById("password");
+        var submit = driver.findElementById("submit");
+
+        username.sendKeys("dasdkljaödw3");
+        password.sendKeys("dasdkljaödwpw");
+        submit.click();
+
+        var currentUrl = driver.getCurrentUrl();
+
+        assertEquals("http://localhost:8080/", currentUrl);
     }
 
 
