@@ -14,7 +14,7 @@ public class AccountService {
         Authentication auth = new UsernamePasswordAuthenticationToken(
             user,
             user.getPassword(),
-            user.getAuthorities()
+            user.getRoles()
         );
         SecurityContextHolder.getContext().setAuthentication(auth);
     }

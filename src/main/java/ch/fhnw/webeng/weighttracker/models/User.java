@@ -28,31 +28,19 @@ public class User implements UserDetails, Serializable {
     private String password;
 
     @ElementCollection(fetch = FetchType.EAGER)
-    private Set<String> authorities;
+    private Set<String> roles;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     @JsonIgnore
     @Transient
     private List<WeightEntry> weightEntries = new ArrayList<>();
 
-    public User() {
-    }
+    public User() {}
 
-    public User(String email) {
-        this.username = email;
-    }
-
-    public User(String username, String password, Set<String> authorities) {
+    public User(String username, String password, Set<String> roles) {
         this.username = username;
         this.password = password;
-        this.authorities = authorities;
-    }
-
-    public User(String email, String password, Set<String> authorities, List<WeightEntry> weightEntrySet) {
-        this.username = email;
-        this.password = password;
-        this.authorities = authorities;
-        this.weightEntries = weightEntrySet;
+        this.roles = roles;
     }
 
     public Long getId() {
@@ -65,7 +53,7 @@ public class User implements UserDetails, Serializable {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return this.authorities.stream().map(SimpleGrantedAuthority::new).toList();
+        return this.roles.stream().map(SimpleGrantedAuthority::new).toList();
     }
 
     @Override
@@ -133,7 +121,7 @@ public class User implements UserDetails, Serializable {
         return Objects.equals(id, that.id)
             && Objects.equals(username, that.username)
             && Objects.equals(password, that.password)
-            && Objects.equals(authorities, that.authorities);
+            && Objects.equals(roles, that.roles);
     }
 
     @Override
