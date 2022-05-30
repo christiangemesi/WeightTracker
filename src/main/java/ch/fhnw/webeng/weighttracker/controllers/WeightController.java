@@ -113,10 +113,9 @@ public class WeightController {
 
     private WeightEntry loadWeightEntry(Long id) {
         User currentUser = accountService.requireCurrentUser();
-        WeightEntry entry = weightEntryService.find(id);
-        if (entry == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
+        WeightEntry entry = weightEntryService.find(id).orElseThrow(() -> (
+            new ResponseStatusException(HttpStatus.NOT_FOUND)
+        ));
         if (!Objects.equals(entry.getUser().getId(), currentUser.getId())) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN, "user is not allowed to modify this entry");
         }

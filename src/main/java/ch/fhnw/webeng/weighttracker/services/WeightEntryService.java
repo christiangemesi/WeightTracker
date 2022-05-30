@@ -6,20 +6,18 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class WeightEntryService {
-
     private final WeightEntryRepository weightEntryRepository;
 
     public WeightEntryService(WeightEntryRepository weightEntryRepository) {
         this.weightEntryRepository = weightEntryRepository;
     }
 
-    public WeightEntry find(long weightEntryId) {
-        return weightEntryRepository
-            .findById(weightEntryId)
-            .orElseThrow();
+    public Optional<WeightEntry> find(Long weightEntryId) {
+        return weightEntryRepository.findById(weightEntryId);
     }
 
     public List<WeightEntry> findAllByUserId(Long userId) {
