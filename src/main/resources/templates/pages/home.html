@@ -27,10 +27,10 @@
                 </div>
             </div>
             <div>
-                <div th:if="firstEntryDate != null">
+                <div th:if="${firstEntryDate != null}">
                     Your first entry was on the [[${firstEntryDate}]].
                 </div>
-                <div th:if="lastEntryDate != null">
+                <div th:if="${lastEntryDate != null}">
                     Your last entry was on the [[${lastEntryDate}]].
                 </div>
             </div>
