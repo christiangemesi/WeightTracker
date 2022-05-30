@@ -16,6 +16,6 @@ public class AboutController {
     @RequestMapping("/about")
     public String about(Model model) {
         model.addAttribute("hasUser", accountService.getCurrentUser().isPresent());
-        return "pages/about.html";
+        return "pages/about";
     }
 }

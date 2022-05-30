@@ -24,7 +24,7 @@ public class HomeController {
     }
 
     @RequestMapping("/")
-    public String welcome(Model model) {
+    public String index(Model model) {
         User currentUser = accountService.requireCurrentUser();
         List<WeightEntry> weightEntries = weightEntryService.findAllByUserId(currentUser.getId());
         model.addAttribute("weightEntries", weightEntries);
@@ -39,6 +39,6 @@ public class HomeController {
             }
         }
 
-        return "pages/home.html";
+        return "pages/home";
     }
 }

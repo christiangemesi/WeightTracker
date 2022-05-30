@@ -24,14 +24,14 @@ public class LoginController {
     }
 
     @RequestMapping(path = "/login", method = RequestMethod.GET)
-    public String login(Authentication authentication, @RequestParam("error") Optional<String> error, Model model) {
+    public String login(
+        Authentication authentication,
+        Model model
+    ) {
         if (authentication != null && authentication.isAuthenticated()) {
             return "redirect:/";
-        } else {
-            model.addAttribute("hasLoginError", error.isPresent());
-
-            return "pages/login";
         }
+        return "pages/login";
     }
 
     @RequestMapping(path = "/signup", method = RequestMethod.GET)
