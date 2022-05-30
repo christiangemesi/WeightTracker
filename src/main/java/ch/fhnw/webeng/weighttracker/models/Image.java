@@ -3,6 +3,8 @@ package ch.fhnw.webeng.weighttracker.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Arrays;
+import java.util.Objects;
 
 @Entity
 public class Image {
@@ -22,42 +24,13 @@ public class Image {
 
     private String mimeType;
 
-    public Image() {
-    }
-
-    public Image(WeightEntry weightEntry) {
-        this.weightEntry = weightEntry;
-    }
+    public Image() {}
 
     public Image(String name, byte[] file, WeightEntry weightEntry, String mimeType) {
         this.name = name;
         this.file = file;
         this.weightEntry = weightEntry;
         this.mimeType = mimeType;
-    }
-
-    @Override
-    public String toString() {
-        return "Image{" +
-                "id=" + id +
-                ", weightEntry=" + weightEntry +
-                ", name='" + name + '\'' +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Image image = (Image) o;
-
-        return id != null ? id.equals(image.id) : image.id == null;
-    }
-
-    @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
     }
 
     public Long getId() {
@@ -99,5 +72,35 @@ public class Image {
 
     public void setWeightEntry(WeightEntry weightEntry) {
         this.weightEntry = weightEntry;
+    }
+
+    @Override
+    public String toString() {
+        return "Image{" +
+            "id=" + id +
+            ", weightEntry=" + weightEntry +
+            ", name='" + name + '\'' +
+            ", mimeType='" + mimeType + '\'' +
+            '}';
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+        if (other == null || getClass() != other.getClass()) {
+            return false;
+        }
+        var that = (Image) other;
+        return Objects.equals(id, that.id)
+            && Objects.equals(name, that.name)
+            && Objects.equals(mimeType, that.mimeType)
+            && Objects.equals(weightEntry, that.weightEntry);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }
