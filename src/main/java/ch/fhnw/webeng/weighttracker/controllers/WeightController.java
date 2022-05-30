@@ -89,6 +89,14 @@ public class WeightController {
         return "redirect:/";
     }
 
+    @DeleteMapping("/{id}")
+    public String delete(@PathVariable Long id) {
+        System.out.println("DELETE" + id);
+        WeightEntry entry = loadWeightEntry(id);
+        weightEntryService.delete(entry.getId());
+        return "redirect:/";
+    }
+
     @GetMapping("/{id}/images/{imageId}")
     public ResponseEntity<byte[]> showImage(@PathVariable long id, @PathVariable long imageId) {
         WeightEntry weightEntry = loadWeightEntry(id);

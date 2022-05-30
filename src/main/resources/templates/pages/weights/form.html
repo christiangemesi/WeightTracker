@@ -82,7 +82,20 @@
                                 >
                             </div>
                         </div>
-                        <button class="btn btn-primary" type="submit" th:text="${title}"></button>
+                        <div class="row">
+                            <div class="col">
+                                <button class="btn btn-primary w-100" type="submit" th:text="${title}"></button>
+                            </div>
+                            <div class="col-auto" th:if="${isEdit}">
+                                <button
+                                    class="btn btn-danger"
+                                    type="button"
+                                    th:onclick="'deleteEntry(' + ${entry.id} + ')'"
+                                >
+                                    Delete Weight
+                                </button>
+                            </div>
+                        </div>
                     </form>
 
                     <th:block th:if="${isEdit}">
@@ -120,9 +133,7 @@
             const imageId = deleteButton.dataset.imageId
             deleteButton.addEventListener('click', async () => {
                 if (confirm('Do you really want to delete this image?')) {
-                    const result = await fetch(`/weights/${entryId}/images/${imageId}`, {
-                        method: 'DELETE'
-                    })
+                    const result = await fetch(`/weights/${entryId}/images/${imageId}`, { method: 'DELETE' })
                     if (result.ok) {
                         weightImageItem.remove()
                     } else {
@@ -130,6 +141,15 @@
                     }
                 }
             })
+        }
+
+        const deleteEntry = async (entryId) => {
+            const result = await fetch(`/weights/${entryId}`, { method: 'DELETE' })
+            if (result.ok) {
+                window.location.href = '/'
+            } else {
+                console.error(result.status, await result.text())
+            }
         }
     </script>
 </body>
