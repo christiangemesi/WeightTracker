@@ -4,8 +4,6 @@ import ch.fhnw.webeng.weighttracker.models.User;
 import ch.fhnw.webeng.weighttracker.models.WeightEntry;
 import ch.fhnw.webeng.weighttracker.services.AccountService;
 import ch.fhnw.webeng.weighttracker.services.WeightEntityService;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +26,7 @@ public class HomeController {
     @RequestMapping("/")
     public String welcome(Model model) {
         User currentUser = accountService.requireCurrentUser();
-        List<WeightEntry> weightEntries = weightEntityService.getAllWeights(currentUser.getId());
+        List<WeightEntry> weightEntries = weightEntityService.findAllByUserId(currentUser.getId());
         model.addAttribute("weightEntries", weightEntries);
         model.addAttribute("user", currentUser);
 

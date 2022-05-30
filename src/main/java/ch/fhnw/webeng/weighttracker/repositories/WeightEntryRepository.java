@@ -1,6 +1,7 @@
 package ch.fhnw.webeng.weighttracker.repositories;
 
 import ch.fhnw.webeng.weighttracker.models.WeightEntry;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -12,7 +13,7 @@ import java.util.Optional;
 
 @Repository
 public interface WeightEntryRepository extends JpaRepository<WeightEntry,Long> {
-    List<WeightEntry> findAllByUserId(Long userId);
+    List<WeightEntry> findAllByUserId(Long userId, Sort sort);
 
     @Query("SELECT weightEntry"
             + " FROM "
