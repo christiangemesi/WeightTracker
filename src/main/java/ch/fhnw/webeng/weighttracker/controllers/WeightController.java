@@ -90,7 +90,7 @@ public class WeightController {
     }
 
     @GetMapping("/{id}/images/{imageId}")
-    public ResponseEntity<byte[]> getImageById(@PathVariable long id, @PathVariable long imageId) {
+    public ResponseEntity<byte[]> showImage(@PathVariable long id, @PathVariable long imageId) {
         WeightEntry weightEntry = loadWeightEntry(id);
         Image image = weightEntry.getImages().stream()
             .filter(img -> img.getId().equals(imageId))
