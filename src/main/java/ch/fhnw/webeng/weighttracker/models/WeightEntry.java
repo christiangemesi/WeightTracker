@@ -31,7 +31,6 @@ public class WeightEntry {
         this.user = user;
     }
 
-
     public User getUser() {
         return user;
     }
@@ -74,23 +73,31 @@ public class WeightEntry {
 
     @Override
     public String toString() {
-        return "{ weight=" + weight +
-                ", date=" + date +
-                '}';
+        return "WeightEntry{" +
+            "id=" + id +
+            ", user=" + user +
+            ", images=" + images +
+            ", weight=" + weight +
+            ", date=" + date +
+            '}';
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        WeightEntry that = (WeightEntry) o;
-
-        return id != null ? id.equals(that.id) : that.id == null;
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+        if (other == null || getClass() != other.getClass()) {
+            return false;
+        }
+        var that = (WeightEntry) other;
+        return Objects.equals(id, that.id)
+            && Objects.equals(weight, that.weight)
+            && Objects.equals(user, that.user);
     }
 
     @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return Objects.hashCode(id);
     }
 }
