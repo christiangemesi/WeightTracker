@@ -1,12 +1,10 @@
 package ch.fhnw.webeng.weighttracker.bootstrap;
 
 import ch.fhnw.webeng.weighttracker.services.UserService;
-import ch.fhnw.webeng.weighttracker.repositories.WeightEntryRepository;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.Set;
 
 
 @Component

@@ -98,7 +98,7 @@ public class WeightController {
     }
 
     @GetMapping("/{id}/images/{imageId}")
-    public ResponseEntity<byte[]> showImage(@PathVariable long id, @PathVariable long imageId) {
+    public ResponseEntity<byte[]> showImage(@PathVariable Long id, @PathVariable Long imageId) {
         WeightEntry weightEntry = loadWeightEntry(id);
         Image image = weightEntry.getImages().stream()
             .filter(img -> img.getId().equals(imageId))
@@ -111,7 +111,7 @@ public class WeightController {
 
     @DeleteMapping("/{id}/images/{imageId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteImage(@PathVariable long id, @PathVariable long imageId) {
+    public void deleteImage(@PathVariable Long id, @PathVariable Long imageId) {
         WeightEntry weightEntry = loadWeightEntry(id);
         Image image = weightEntry.getImages().stream()
             .filter(img -> img.getId().equals(imageId))
