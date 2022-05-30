@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -28,14 +29,12 @@ public class ImageRepositoryTest {
 
     @Test
     public void testSaveImage() {
+        var user = userRepository.save(new User("user","user",Set.of("ROLE_USER")));
 
-        User user = new User("user","user",Set.of("ROLE_USER"));
-        userRepository.save(user);
-
-        WeightEntry weightEntry = new WeightEntry();
+        WeightEntry weightEntry = new WeightEntry(84, LocalDate.now(), user);
         weightEntryRepository.save(weightEntry);
 
-        Image image = new Image();
+        Image image = new Image("Test", new byte[] {}, weightEntry, "image/png");
         imageRepository.save(image);
 
         var images = imageRepository.findAll();
@@ -45,18 +44,15 @@ public class ImageRepositoryTest {
 
     @Test
     public void testDeleteImage() {
-        User user = new User("user","user",Set.of("ROLE_USER"));
-        userRepository.save(user);
+        var user = userRepository.save(new User("user","user",Set.of("ROLE_USER")));
 
-        WeightEntry weightEntry = new WeightEntry();
+        WeightEntry weightEntry = new WeightEntry(84, LocalDate.now(), user);
         weightEntryRepository.save(weightEntry);
 
-        Image image = new Image();
+        Image image = new Image("Test", new byte[] {}, weightEntry, "image/png");
         imageRepository.save(image);
 
         imageRepository.delete(image);
         assertEquals(0, imageRepository.findAll().size());
     }
-
-
 }

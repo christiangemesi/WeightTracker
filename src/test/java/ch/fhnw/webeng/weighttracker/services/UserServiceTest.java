@@ -15,27 +15,29 @@ public class UserServiceTest {
     @Autowired
     private UserService userService;
 
-    /**
-     *  Note this Test only works if executed alone
-     *  */
+
     @Test
-    public void testSaveUserWithSameUsername() {
-        var user3 = new User("username1", "username1", Set.of("ROLE_USER"));
+    public void testFindByUsername() {
+        var username = "username0";
+        var password = "password0";
+        var user = userService.create(username, password, Set.of("ROLE_USER"));
 
-        userService.create(user3.getUsername(), user3.getPassword(), Set.of("ROLE_USER"));
+        var userOption = userService.findByUsername(user.getUsername());
 
-        assertTrue(userService.findByUsername("username1").isPresent());
+        assertTrue(userOption.isPresent());
+        assertEquals(username, userOption.get().getUsername());
+        assertNotEquals(password, userOption.get().getPassword());
     }
 
     @Test
     public void testLoadUserByUsername() {
-        var user2 = new User("username1", "password1", Set.of("ROLE_USER"));
+        var username = "username1";
+        var password = "password1";
+        var user = userService.create(username, password, Set.of("ROLE_USER"));
 
-        userService.create(user2.getUsername(),user2.getPassword(),Set.of("ROLE_USER"));
+        var userDetails = userService.loadUserByUsername(user.getUsername());
 
-        var userDetails = userService.loadUserByUsername(user2.getUsername());
-
-        assertEquals("username1",userDetails.getUsername());
-        assertNotEquals(user2.getPassword(),userDetails.getPassword());
+        assertEquals(username, userDetails.getUsername());
+        assertNotEquals(password, userDetails.getPassword());
     }
 }

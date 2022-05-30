@@ -1,15 +1,17 @@
 package ch.fhnw.webeng.weighttracker.E2ETests;
 
-import ch.fhnw.webeng.weighttracker.repositories.UserRepository;
-import ch.fhnw.webeng.weighttracker.services.UserService;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * E2E Tests.
+ * Note that the application needs to be running in order for these tests to run successfully.
+ */
 @DataJpaTest
 public class PageTests {
 
@@ -24,7 +26,7 @@ public class PageTests {
     }
 
     /**
-     * Note this Test will only work until username and password are valid
+     * Note this Test will only work as long as username and password are valid
      */
     @Test
     void loginValid() {
@@ -85,11 +87,10 @@ public class PageTests {
 
 
     /**
-     * Note this Test creates a valid User!
+     * Note this Test creates a new User!
      */
     @Test
     void signupValid() {
-
         var driver = new HtmlUnitDriver();
         driver.navigate().to("http://localhost:8080/signup");
 
@@ -97,16 +98,12 @@ public class PageTests {
         var password = driver.findElementById("password");
         var submit = driver.findElementById("submit");
 
-        username.sendKeys("dasdkljaödw3"); //This line needs to be modified after every run
-        password.sendKeys("dasdkljaödwpw");
+        username.sendKeys("username" + System.currentTimeMillis());
+        password.sendKeys("password!");
         submit.click();
 
         var currentUrl = driver.getCurrentUrl();
 
         assertEquals("http://localhost:8080/", currentUrl);
     }
-
-
-
-
 }

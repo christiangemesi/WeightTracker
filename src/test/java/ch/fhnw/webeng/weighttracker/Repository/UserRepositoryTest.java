@@ -49,19 +49,14 @@ public class UserRepositoryTest {
         assertThrows(DataIntegrityViolationException.class, () -> userRepository.saveAndFlush(user2));
     }
 
-
-    /*note this only works if tested alone */
     @Test
     public void testDeleteUser() {
-        var user1 = new User("username1","password1", Set.of("ROLE_USER"));
-        userRepository.save(user1);
+        var user1 = userRepository.save(new User("username1","password1", Set.of("ROLE_USER")));
 
-        var users = this.userRepository.findById(1L).get();
+        var users = this.userRepository.findById(user1.getId()).get();
         assertEquals(1, this.userRepository.findAll().size());
 
         this.userRepository.delete(users);
         assertEquals(0, this.userRepository.findAll().size());
     }
-
-
 }
