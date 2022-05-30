@@ -15,14 +15,16 @@ public class UserServiceTest {
     @Autowired
     private UserService userService;
 
-    /* Note this Test only works if executed alone */
+    /**
+     *  Note this Test only works if executed alone
+     *  */
     @Test
     public void testSaveUserWithSameUsername() {
-        var user3 = new User("username1", "password1", Set.of("ROLE_USER"));
+        var user3 = new User("username1", "username1", Set.of("ROLE_USER"));
 
         userService.addUser(user3.getUsername(), user3.getPassword(), Set.of("ROLE_USER"));
 
-        assertTrue(userService.usernameAlreadyExists(user3.getUsername()));
+        assertTrue(userService.usernameAlreadyExists("username1"));
     }
 
     @Test
