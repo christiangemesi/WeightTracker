@@ -36,19 +36,14 @@ public class UserService implements UserDetailsService {
         ));
     }
 
-    public Optional<User> findContact(int id) {
-        return userRepository.findById((long) id);
-    }
-
-    public User update(User user) {
+    public User save(User user) {
         return userRepository.save(user);
     }
 
-    public User updatePassword(User user, String password) {
+    public User savePassword(User user, String password) {
         user.setPassword(passwordEncoder.encode(password));
         return userRepository.save(user);
     }
-
 
     public void delete(User user) {
         userRepository.delete(user);

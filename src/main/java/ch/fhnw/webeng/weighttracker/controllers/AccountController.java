@@ -30,7 +30,7 @@ public class AccountController {
     ) {
         User currentUser = accountService.requireCurrentUser();
         currentUser.setUsername(username);
-        currentUser = userService.update(currentUser);
+        currentUser = userService.save(currentUser);
         accountService.setCurrentUser(currentUser);
         redirectAttributes.addFlashAttribute("success", "Username has been changed.");
         return "redirect:/account";
@@ -47,7 +47,7 @@ public class AccountController {
             return "redirect:/account?tab=1";
         }
         User currentUser = accountService.requireCurrentUser();
-        currentUser = userService.updatePassword(currentUser, password);
+        currentUser = userService.savePassword(currentUser, password);
         accountService.setCurrentUser(currentUser);
         redirectAttributes.addFlashAttribute("success", "Password has been changed.");
         return "redirect:/account?tab=1";
