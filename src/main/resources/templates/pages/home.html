@@ -92,15 +92,14 @@
             titleElement.innerText = `${new Date(weightEntry.date).toLocaleDateString()} - ${weightEntry.weight}kg`
             imageContainer.appendChild(titleElement)
 
-            if (weightEntry.imageList.length === 0) {
-
+            if (weightEntry.images.length === 0) {
                 const textElement = document.createElement('p')
                 textElement.innerText = 'No images for this date.'
                 imageContainer.appendChild(textElement)
                 return
             }
 
-            for (const image of weightEntry.imageList) {
+            for (const image of weightEntry.images) {
                 const imageElement = document.createElement('img')
                 imageElement.src = `/weights/${weightEntry.id}/images/${image.id}`
                 imageElement.classList.add('img-fluid')

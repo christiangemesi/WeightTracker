@@ -7,7 +7,6 @@ import java.util.*;
 @Entity
 @Table(name="WeightEntry")
 public class WeightEntry {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -16,7 +15,7 @@ public class WeightEntry {
     private User user;
 
     @OneToMany(mappedBy = "weightEntry", cascade = CascadeType.ALL)
-    private List<Image> imageList = new ArrayList<>();
+    private List<Image> images = new ArrayList<>();
 
     private double weight;
 
@@ -65,12 +64,12 @@ public class WeightEntry {
         this.date = date;
     }
 
-    public List<Image> getImageList() {
-        return imageList;
+    public List<Image> getImages() {
+        return images;
     }
 
-    public void setImageList(List<Image> imageList) {
-        this.imageList = imageList;
+    public void setImages(List<Image> images) {
+        this.images = images;
     }
 
     @Override

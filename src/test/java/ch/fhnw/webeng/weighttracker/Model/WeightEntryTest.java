@@ -21,12 +21,12 @@ public class WeightEntryTest {
         weightEntry.setId(1L);
         weightEntry.setDate(date);
         weightEntry.setWeight(60);
-        weightEntry.setImageList(List.of(image));
+        weightEntry.setImages(List.of(image));
 
         assertEquals(1L,weightEntry.getId());
         assertEquals(date,weightEntry.getDate());
         assertEquals(60,weightEntry.getWeight());
-        assertEquals(List.of(image),weightEntry.getImageList());
+        assertEquals(List.of(image),weightEntry.getImages());
     }
 
     @Test
@@ -40,9 +40,9 @@ public class WeightEntryTest {
         list.add(image1);
         list.add(image2);
 
-        weightEntry.setImageList(list);
+        weightEntry.setImages(list);
 
-        assertEquals(2,weightEntry.getImageList().size());
+        assertEquals(2,weightEntry.getImages().size());
     }
 
 }

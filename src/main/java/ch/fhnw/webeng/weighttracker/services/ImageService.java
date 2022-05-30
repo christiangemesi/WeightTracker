@@ -13,7 +13,7 @@ public class ImageService {
     }
 
     public void delete(Image image) {
-        image.getWeightEntry().getImageList().remove(image);
+        image.getWeightEntry().getImages().remove(image);
         imageRepository.delete(image);
     }
 }

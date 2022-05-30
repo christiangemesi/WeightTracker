@@ -66,7 +66,7 @@ public class WeightController {
             : loadWeightEntry(id);
         entry.setWeight(weight);
         entry.setDate(date);
-        entry.getImageList().addAll(Arrays.stream(images)
+        entry.getImages().addAll(Arrays.stream(images)
             .map((file) -> {
                 try {
                     byte[] bytes = file.getBytes();
@@ -92,7 +92,7 @@ public class WeightController {
     @GetMapping("/{id}/images/{imageId}")
     public ResponseEntity<byte[]> getImageById(@PathVariable long id, @PathVariable long imageId) {
         WeightEntry weightEntry = loadWeightEntry(id);
-        Image image = weightEntry.getImageList().stream()
+        Image image = weightEntry.getImages().stream()
             .filter(img -> img.getId().equals(imageId))
             .findFirst().orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
@@ -105,7 +105,7 @@ public class WeightController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteImage(@PathVariable long id, @PathVariable long imageId) {
         WeightEntry weightEntry = loadWeightEntry(id);
-        Image image = weightEntry.getImageList().stream()
+        Image image = weightEntry.getImages().stream()
             .filter(img -> img.getId().equals(imageId))
             .findFirst().orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         imageService.delete(image);
