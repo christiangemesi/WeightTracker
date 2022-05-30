@@ -55,29 +55,6 @@ public class User implements UserDetails, Serializable {
         this.weightEntryList = weightEntrySet;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", email='" + username + '\'' +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        User user = (User) o;
-
-        return id != null ? id.equals(user.id) : user.id == null;
-    }
-
-    @Override
-    public int hashCode() {
-        return id != null ? id.hashCode() : 0;
-    }
-
     public Long getId() {
         return id;
     }
@@ -134,5 +111,33 @@ public class User implements UserDetails, Serializable {
 
     public void setWeightEntryList(List<WeightEntry> weightEntrySet) {
         this.weightEntryList = weightEntrySet;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+            "id=" + id +
+            ", email='" + username + '\'' +
+            '}';
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+        if (other == null || getClass() != other.getClass()) {
+            return false;
+        }
+        var that = (User) other;
+        return Objects.equals(id, that.id)
+            && Objects.equals(username, that.username)
+            && Objects.equals(password, that.password)
+            && Objects.equals(authorities, that.authorities);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 }
