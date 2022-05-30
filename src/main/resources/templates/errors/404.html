@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}"
+    lang="en"
+>
+<body th:replace="/fragments/error">
+<th:block layout:fragment="title">
+    <p class="lead">
+        We searched real hard, but
+    </p>
+    <h1 class="display-1">
+        This page does not exist!
+    </h1>
+</th:block>
+</body>
+</html>

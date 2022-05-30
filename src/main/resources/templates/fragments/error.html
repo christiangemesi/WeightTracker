@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout}"
+    lang="en"
+>
+<head>
+    <title>Internal Server Error ◆ WeightTracker</title>
+
+    <link type="text/css" rel="stylesheet" th:href="@{/public/css/fragments/error.css}"  />
+</head>
+<body>
+<header layout:fragment="header"></header>
+<main layout:fragment="content">
+    <section class="container text-center">
+        <div class="mb-4">
+            <th:block layout:fragment="title">
+                <p class="lead">
+                    Uh-Oh,
+                </p>
+                <h1 class="display-1">
+                    Something went wrong!
+                </h1>
+            </th:block>
+        </div>
+        <p>
+            <em class="blockquote">
+                [[${status.value()}]] [[${status.getReasonPhrase()}]]
+            </em>
+            <th:block th:if="${status.value() >= 500 && status.value() <= 599}">
+                <br>
+                Contact our engineers if this problem persists.
+            </th:block>
+        </p>
+        <p>
+            <a href="#" class="small" onclick="location.reload()">Reload</a>
+            <br>
+            <a href="/" class="small">Go back</a>
+        </p>
+    </section>
+</main>
+<footer layout:fragment="footer"></footer>
+</body>
+</html>
