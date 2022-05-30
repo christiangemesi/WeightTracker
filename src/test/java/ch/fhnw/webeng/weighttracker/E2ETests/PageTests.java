@@ -83,6 +83,10 @@ public class PageTests {
         assertEquals("http://localhost:8080/signup", currentUrl);
     }
 
+
+    /**
+     * Note this Test creates a valid User!
+     */
     @Test
     void signupValid() {
 
@@ -93,7 +97,7 @@ public class PageTests {
         var password = driver.findElementById("password");
         var submit = driver.findElementById("submit");
 
-        username.sendKeys("dasdkljaödw3");
+        username.sendKeys("dasdkljaödw3"); //This line needs to be modified after every run
         password.sendKeys("dasdkljaödwpw");
         submit.click();
 
