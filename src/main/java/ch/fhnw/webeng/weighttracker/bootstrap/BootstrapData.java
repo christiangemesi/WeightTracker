@@ -11,25 +11,18 @@ import java.util.*;
 
 @Component
 public class BootstrapData implements CommandLineRunner {
-    private final WeightEntryRepository weightEntryRepository;
     private final UserService userService;
 
-    public BootstrapData(WeightEntryRepository weightEntryRepository, UserService userService) {
-        this.weightEntryRepository = weightEntryRepository;
+    public BootstrapData(UserService userService) {
         this.userService = userService;
     }
 
-
     @Override
-    public void run(String... args) throws Exception {
-        try {
-            userService.loadUserByUsername("admin");
-        } catch (UsernameNotFoundException e) {
+    public void run(String... args) {
+        if (userService.findByUsername("admin").isEmpty()) {
             this.userService.create("admin", "admin", Set.of("ROLE_ADMIN"));
         }
-        try {
-            userService.loadUserByUsername("user");
-        } catch (UsernameNotFoundException e) {
+        if (userService.findByUsername("user").isEmpty()) {
             this.userService.create("user", "user", Set.of("ROLE_USER"));
         }
     }
