@@ -3,7 +3,7 @@ package ch.fhnw.webeng.weighttracker.controllers;
 import ch.fhnw.webeng.weighttracker.models.User;
 import ch.fhnw.webeng.weighttracker.models.WeightEntry;
 import ch.fhnw.webeng.weighttracker.services.AccountService;
-import ch.fhnw.webeng.weighttracker.services.WeightEntityService;
+import ch.fhnw.webeng.weighttracker.services.WeightEntryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,18 +15,18 @@ import java.util.List;
 public class HomeController {
     private final static DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
-    private final WeightEntityService weightEntityService;
+    private final WeightEntryService weightEntryService;
     private final AccountService accountService;
 
-    public HomeController(WeightEntityService weightEntityService, AccountService accountService) {
-        this.weightEntityService = weightEntityService;
+    public HomeController(WeightEntryService weightEntryService, AccountService accountService) {
+        this.weightEntryService = weightEntryService;
         this.accountService = accountService;
     }
 
     @RequestMapping("/")
     public String welcome(Model model) {
         User currentUser = accountService.requireCurrentUser();
-        List<WeightEntry> weightEntries = weightEntityService.findAllByUserId(currentUser.getId());
+        List<WeightEntry> weightEntries = weightEntryService.findAllByUserId(currentUser.getId());
         model.addAttribute("weightEntries", weightEntries);
         model.addAttribute("user", currentUser);
 

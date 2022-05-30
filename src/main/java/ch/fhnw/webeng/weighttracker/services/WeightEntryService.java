@@ -8,11 +8,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class WeightEntityService {
+public class WeightEntryService {
 
     private final WeightEntryRepository weightEntryRepository;
 
-    public WeightEntityService(WeightEntryRepository weightEntryRepository) {
+    public WeightEntryService(WeightEntryRepository weightEntryRepository) {
         this.weightEntryRepository = weightEntryRepository;
     }
 

@@ -5,7 +5,7 @@ import ch.fhnw.webeng.weighttracker.models.User;
 import ch.fhnw.webeng.weighttracker.models.WeightEntry;
 import ch.fhnw.webeng.weighttracker.services.AccountService;
 import ch.fhnw.webeng.weighttracker.services.ImageService;
-import ch.fhnw.webeng.weighttracker.services.WeightEntityService;
+import ch.fhnw.webeng.weighttracker.services.WeightEntryService;
 import org.apache.tika.Tika;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -26,16 +26,16 @@ import java.util.Objects;
 @Controller
 @RequestMapping("weights")
 public class WeightController {
-    private final WeightEntityService weightEntityService;
+    private final WeightEntryService weightEntryService;
     private final AccountService accountService;
     private final ImageService imageService;
 
     public WeightController(
-        WeightEntityService weightEntityService,
+        WeightEntryService weightEntryService,
         AccountService accountService,
         ImageService imageService
     ) {
-        this.weightEntityService = weightEntityService;
+        this.weightEntryService = weightEntryService;
         this.accountService = accountService;
         this.imageService = imageService;
     }
@@ -85,7 +85,7 @@ public class WeightController {
             })
             .toList()
         );
-        weightEntityService.save(entry);
+        weightEntryService.save(entry);
         return "redirect:/";
     }
 
@@ -113,7 +113,7 @@ public class WeightController {
 
     private WeightEntry loadWeightEntry(Long id) {
         User currentUser = accountService.requireCurrentUser();
-        WeightEntry entry = weightEntityService.find(id);
+        WeightEntry entry = weightEntryService.find(id);
         if (entry == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
