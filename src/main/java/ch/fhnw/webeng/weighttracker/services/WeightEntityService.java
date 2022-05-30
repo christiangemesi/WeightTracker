@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class WeightEntityService {
@@ -19,15 +20,10 @@ public class WeightEntityService {
     }
 
     public WeightEntry save(WeightEntry entry) {
-        WeightEntry duplicateEntry = isDuplicateWeightEntryPresent(entry.getDate(), entry.getUser());
-        if (duplicateEntry != null) {
-            removeWeightEntryById(duplicateEntry.getId());
-        }
+        weightEntryRepository.findDuplicate(entry.getUser().getId(), entry.getDate()).ifPresent((duplicate) -> {
+            entry.setId(duplicate.getId());
+        });
         return this.weightEntryRepository.save(entry);
-    }
-
-    public WeightEntry isDuplicateWeightEntryPresent(LocalDate date, User user) {
-        return weightEntryRepository.listWithDuplicates(user.getId(), date);
     }
 
     public void removeWeightEntryById(Long weightEntryId) {

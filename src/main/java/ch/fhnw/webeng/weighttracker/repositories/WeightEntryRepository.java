@@ -7,8 +7,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface WeightEntryRepository extends JpaRepository<WeightEntry,Long> {
@@ -18,9 +18,8 @@ public interface WeightEntryRepository extends JpaRepository<WeightEntry,Long> {
             + " FROM "
             + "WeightEntry weightEntry"
             + " WHERE "
-            + "weightEntry.user.id = :#{#userId}"
+            + "weightEntry.user.id = :userId"
             + " AND "
-            + "weightEntry.date = :#{#date}")
-    WeightEntry listWithDuplicates(@Param("userId") Long userId, @Param("date") LocalDate date);
-
+            + "weightEntry.date = :date")
+    Optional<WeightEntry> findDuplicate(@Param("userId") Long userId, @Param("date") LocalDate date);
 }
