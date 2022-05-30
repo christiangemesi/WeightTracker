@@ -5,7 +5,6 @@ import ch.fhnw.webeng.weighttracker.repositories.WeightEntryRepository;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -17,6 +16,16 @@ public class WeightEntityService {
         this.weightEntryRepository = weightEntryRepository;
     }
 
+    public WeightEntry find(long weightEntryId) {
+        return weightEntryRepository
+            .findById(weightEntryId)
+            .orElseThrow();
+    }
+
+    public List<WeightEntry> findAllByUserId(Long userId) {
+        return weightEntryRepository.findAllByUserId(userId, Sort.by(Sort.Direction.ASC, "date"));
+    }
+
     public WeightEntry save(WeightEntry entry) {
         weightEntryRepository.findDuplicate(entry.getUser().getId(), entry.getDate()).ifPresent((duplicate) -> {
             entry.setId(duplicate.getId());
@@ -26,15 +35,5 @@ public class WeightEntityService {
 
     public void removeWeightEntryById(Long weightEntryId) {
         weightEntryRepository.deleteById(weightEntryId);
-    }
-
-    public List<WeightEntry> findAllByUserId(Long userId) {
-        return weightEntryRepository.findAllByUserId(userId, Sort.by(Sort.Direction.ASC, "date"));
-    }
-
-    public WeightEntry getWeightEntryById(long weightEntryId) {
-        return weightEntryRepository
-                .findById(weightEntryId)
-                .orElseThrow();
     }
 }

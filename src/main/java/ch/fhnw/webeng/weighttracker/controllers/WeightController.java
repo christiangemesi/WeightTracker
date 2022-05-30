@@ -113,7 +113,7 @@ public class WeightController {
 
     private WeightEntry loadWeightEntry(Long id) {
         User currentUser = accountService.requireCurrentUser();
-        WeightEntry entry = weightEntityService.getWeightEntryById(id);
+        WeightEntry entry = weightEntityService.find(id);
         if (entry == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
