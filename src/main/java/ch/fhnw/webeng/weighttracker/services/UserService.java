@@ -21,7 +21,7 @@ public class UserService implements UserDetailsService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public User addUser(String username, String password, Set<String> authorities) {
+    public User create(String username, String password, Set<String> authorities) {
         return this.userRepository.save(new User(username, this.passwordEncoder.encode(password), authorities));
     }
 

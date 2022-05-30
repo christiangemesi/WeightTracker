@@ -1,6 +1,5 @@
 package ch.fhnw.webeng.weighttracker.bootstrap;
 
-import ch.fhnw.webeng.weighttracker.repositories.UserRepository;
 import ch.fhnw.webeng.weighttracker.services.UserService;
 import ch.fhnw.webeng.weighttracker.repositories.WeightEntryRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -26,12 +25,12 @@ public class BootstrapData implements CommandLineRunner {
         try {
             userService.loadUserByUsername("admin");
         } catch (UsernameNotFoundException e) {
-            this.userService.addUser("admin", "admin", Set.of("ROLE_ADMIN"));
+            this.userService.create("admin", "admin", Set.of("ROLE_ADMIN"));
         }
         try {
             userService.loadUserByUsername("user");
         } catch (UsernameNotFoundException e) {
-            this.userService.addUser("user", "user", Set.of("ROLE_USER"));
+            this.userService.create("user", "user", Set.of("ROLE_USER"));
         }
     }
 }

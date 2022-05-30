@@ -4,7 +4,6 @@ import ch.fhnw.webeng.weighttracker.services.AccountService;
 import ch.fhnw.webeng.weighttracker.services.UserService;
 import ch.fhnw.webeng.weighttracker.models.User;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -59,7 +58,7 @@ public class LoginController {
             return "redirect:/signup";
         }
 
-        user = this.userService.addUser(user.getUsername(), user.getPassword(), Set.of("ROLE_USER"));
+        user = this.userService.create(user.getUsername(), user.getPassword(), Set.of("ROLE_USER"));
         accountService.setCurrentUser(user);
         return "redirect:/";
     }
