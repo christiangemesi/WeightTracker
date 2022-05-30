@@ -33,7 +33,7 @@ public class User implements UserDetails, Serializable {
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
     @JsonIgnore
     @Transient
-    private List<WeightEntry> weightEntryList = new ArrayList<>();
+    private List<WeightEntry> weightEntries = new ArrayList<>();
 
     public User() {
     }
@@ -52,7 +52,7 @@ public class User implements UserDetails, Serializable {
         this.username = email;
         this.password = password;
         this.authorities = authorities;
-        this.weightEntryList = weightEntrySet;
+        this.weightEntries = weightEntrySet;
     }
 
     public Long getId() {
@@ -105,12 +105,12 @@ public class User implements UserDetails, Serializable {
         this.username = email;
     }
 
-    public List<WeightEntry> getWeightEntryList() {
-        return weightEntryList;
+    public List<WeightEntry> getWeightEntries() {
+        return weightEntries;
     }
 
-    public void setWeightEntryList(List<WeightEntry> weightEntrySet) {
-        this.weightEntryList = weightEntrySet;
+    public void setWeightEntries(List<WeightEntry> weightEntrySet) {
+        this.weightEntries = weightEntrySet;
     }
 
     @Override

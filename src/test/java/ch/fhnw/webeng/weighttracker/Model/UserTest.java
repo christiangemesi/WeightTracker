@@ -21,12 +21,12 @@ public class UserTest {
         user.setUsername("test");
         user.setPassword("test");
         user.setId(10L);
-        user.setWeightEntryList(List.of(weightEntry));
+        user.setWeightEntries(List.of(weightEntry));
 
         assertEquals("test",user.getUsername());
         assertEquals("test",user.getPassword());
         assertEquals(10L,user.getId());
-        assertEquals(List.of(weightEntry),user.getWeightEntryList());
+        assertEquals(List.of(weightEntry),user.getWeightEntries());
     }
 
     @Test
@@ -43,9 +43,9 @@ public class UserTest {
         list.add(weightEntry1);
         list.add(weightEntry2);
 
-        user.setWeightEntryList(list);
+        user.setWeightEntries(list);
 
-        assertEquals(2,user.getWeightEntryList().size());
+        assertEquals(2,user.getWeightEntries().size());
     }
 
 }
