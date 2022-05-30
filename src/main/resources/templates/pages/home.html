@@ -114,14 +114,18 @@
                 events: ['click', 'mousemove'],
                 onClick: (e) => {
                     const weightEntry = mapEventToEntry(e);
-                    location.href = `/weights/${weightEntry.id}/edit`
+                    if (weightEntry != null) {
+                        location.href = `/weights/${weightEntry.id}/edit`
+                    }
                 },
                 onHover: (e) => {
                     if (e.type !== 'mousemove') {
                         return;
                     }
                     const weightEntry = mapEventToEntry(e);
-                    handleWeightHover(weightEntry)
+                    if (weightEntry != null) {
+                        handleWeightHover(weightEntry)
+                    }
                 },
             }
         };
