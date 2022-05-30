@@ -16,8 +16,8 @@ public class WeightEntryService {
         this.weightEntryRepository = weightEntryRepository;
     }
 
-    public Optional<WeightEntry> find(Long weightEntryId) {
-        return weightEntryRepository.findById(weightEntryId);
+    public Optional<WeightEntry> find(Long id) {
+        return weightEntryRepository.findById(id);
     }
 
     public List<WeightEntry> findAllByUserId(Long userId) {
@@ -31,7 +31,7 @@ public class WeightEntryService {
         return this.weightEntryRepository.save(entry);
     }
 
-    public void removeWeightEntryById(Long weightEntryId) {
-        weightEntryRepository.deleteById(weightEntryId);
+    public void delete(Long id) {
+        weightEntryRepository.deleteById(id);
     }
 }
