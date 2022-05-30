@@ -24,7 +24,7 @@ public class UserServiceTest {
 
         userService.create(user3.getUsername(), user3.getPassword(), Set.of("ROLE_USER"));
 
-        assertTrue(userService.usernameAlreadyExists("username1"));
+        assertTrue(userService.findByUsername("username1").isPresent());
     }
 
     @Test

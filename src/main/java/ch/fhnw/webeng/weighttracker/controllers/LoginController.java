@@ -53,7 +53,7 @@ public class LoginController {
             redirectAttributes.addFlashAttribute("error", "Password must not be empty.");
             return "redirect:/signup";
         }
-        if (this.userService.usernameAlreadyExists(user.getUsername())) {
+        if (this.userService.findByUsername(user.getUsername()).isPresent()) {
             redirectAttributes.addFlashAttribute("error", "Username already exists.");
             return "redirect:/signup";
         }

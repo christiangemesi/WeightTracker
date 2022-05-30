@@ -25,13 +25,15 @@ public class UserService implements UserDetailsService {
         return this.userRepository.save(new User(username, this.passwordEncoder.encode(password), authorities));
     }
 
-    public boolean usernameAlreadyExists(String username) {
-        return this.userRepository.findByUsername(username).isPresent();
+    public Optional<User> findByUsername(String username) {
+        return this.userRepository.findByUsername(username);
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Username not found."));
+        return userRepository.findByUsername(username).orElseThrow(() -> (
+            new UsernameNotFoundException("No such user found: " + username)
+        ));
     }
 
     public Optional<User> findContact(int id) {
