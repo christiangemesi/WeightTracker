@@ -12,17 +12,7 @@ import java.util.List;
 
 @Repository
 public interface WeightEntryRepository extends JpaRepository<WeightEntry,Long> {
-
-
-    @Query("SELECT weightEntry"
-            + " FROM "
-            + "WeightEntry weightEntry"
-            + " WHERE "
-            + "weightEntry.user.id = :#{#userId}")
-    List<WeightEntry> findWeightEntryById(@Param("userId") Long userId);
-
     List<WeightEntry> findAllByUserId(Long userId);
-
 
     @Query("SELECT weightEntry"
             + " FROM "
