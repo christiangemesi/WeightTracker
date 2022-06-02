@@ -19,3 +19,7 @@ For Windows cmd:
 docker compose down
 for %I in (.) do docker volume rm %~nxI_database
 ```
+
+# Testing
+
+> Tests can  run locally, without requiring a docker container. Except the E2ETests, they require a docker container to be running
